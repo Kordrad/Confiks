@@ -1,0 +1,11 @@
+{
+  "name": "startly",
+  "version": "1.0.0-alpha.0",
+  "description": "library to helps install and configure initial projects ",
+  "main": "src/index.ts",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Code Design",
+  "license": "MIT"
+}
