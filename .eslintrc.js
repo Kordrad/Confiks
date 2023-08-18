@@ -1,5 +1,6 @@
 module.exports = {
   plugins: ['unused-imports', 'simple-import-sort', 'prettier'],
+  parser: '@typescript-eslint/parser',
   env: {
     browser: true,
     commonjs: true,
