@@ -7,7 +7,7 @@
     "startly": "build/bin/index.js"
   },
   "scripts": {
-    "startly": "npx ts-node src/index.ts",
+    "start": "npx ts-node src/index.ts",
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "npx tsc",
     "prepare": "husky install",

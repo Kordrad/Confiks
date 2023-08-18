@@ -41,3 +41,8 @@ Thumbs.db
 
 #builds
 /build
+
+# Test Environment
+/test/*
+!/test/package.json
+
