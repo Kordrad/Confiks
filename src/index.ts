@@ -1,39 +1,51 @@
-import * as cp from 'node:child_process';
+import { BASE, HAS_EXTENSIONS, PACKAGES } from './constants';
+import { PackagesEnum } from './enums';
+import { AnswersPackagesInterface } from './interfaces';
+import { packageIsInstalled } from './utils';
 
 async function loadMyModule() {
   const { default: inquirer } = await import('inquirer');
-
+  const NAME = 'packages';
   inquirer
     .prompt([
       {
         type: 'checkbox',
-        message: 'packages to install:',
-        name: 'packages',
-        choices: [
-          new inquirer.Separator('Commitlint'),
-          { name: '@commitlint/cli' },
-          { name: '@commitlint/config-conventional' },
-          new inquirer.Separator('Other'),
-          { name: 'husky' },
-          { name: 'lint-staged' },
-        ],
+        message: 'Packages to install',
+        name: NAME,
+        choices: BASE,
       },
+      ...HAS_EXTENSIONS.map((package_, id) => ({
+        type: 'checkbox',
+        message: `install external dependencies for ${package_.name}? (enter to skip)`,
+        name: `${NAME}${id}`,
+        choices: package_.extensions,
+        when: (answers: AnswersPackagesInterface) => {
+          return (
+            answers[NAME].includes(package_.value) ||
+            packageIsInstalled(package_.package)
+          );
+        },
+      })),
     ])
-    .then(answers => {
-      cp.exec(
-        `npm i -D ${answers.packages.join(' ')}`,
-        (error: cp.ExecException | null, stdout: string, stderr: string) => {
-          if (error) {
-            console.log(`error: ${error.message}`);
-            return;
-          }
-          if (stderr) {
-            console.log(`stderr: ${stderr}`);
-            return;
-          }
-          console.log(stdout);
+    .then((answers: AnswersPackagesInterface) => {
+      let packagesToInstall: PackagesEnum[] = [];
+      for (const key of Object.keys(answers)) {
+        if (key.includes(NAME)) {
+          packagesToInstall = [...packagesToInstall, ...answers[key]];
         }
+      }
+
+      const preparedPackages = packagesToInstall.map(value =>
+        PACKAGES.get?.(value)
       );
+
+      for (const package_ of preparedPackages) {
+        package_?.install();
+      }
+
+      for (const package_ of preparedPackages) {
+        package_?.afterInstall?.();
+      }
     });
 }
 
