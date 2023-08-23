@@ -1,50 +1,50 @@
-import { BASE, HAS_EXTENSIONS, PACKAGES } from './constants';
-import { PackagesEnum } from './enums';
-import { AnswersPackagesInterface } from './interfaces';
-import { packageIsInstalled } from './utils';
+import { catchError, finalize, throwError } from 'rxjs';
+
+import { NAMES, questions$ } from './questions';
+import { packageManagerService } from './services/package-menager.service';
+import { PackagesEnum } from './type/enums';
+import { BasePackageInterface } from './type/interfaces';
+import { getPackageByKey } from './utils';
 
 async function loadMyModule() {
   const { default: inquirer } = await import('inquirer');
-  const NAME = 'packages';
+
+  const answers = {
+    install: [] as BasePackageInterface[],
+    prepare: [] as BasePackageInterface[],
+  };
+
   inquirer
-    .prompt([
-      {
-        type: 'checkbox',
-        message: 'Packages to install',
-        name: NAME,
-        choices: BASE,
-      },
-      ...HAS_EXTENSIONS.map((package_, id) => ({
-        type: 'checkbox',
-        message: `install external dependencies for ${package_.name}? (enter to skip)`,
-        name: `${NAME}${id}`,
-        choices: package_.extensions,
-        when: (answers: AnswersPackagesInterface) => {
-          return (
-            answers[NAME].includes(package_.value) ||
-            packageIsInstalled(package_.package)
+    // @ts-ignore
+    .prompt(questions$)
+    .ui.process.pipe(
+      finalize(() => {
+        const { install, prepare } = answers;
+        for (const package_ of install) {
+          packageManagerService.addPackage(
+            package_.package,
+            package_.dependencyType
           );
-        },
-      })),
-    ])
-    .then((answers: AnswersPackagesInterface) => {
-      let packagesToInstall: PackagesEnum[] = [];
-      for (const key of Object.keys(answers)) {
-        if (key.includes(NAME)) {
-          packagesToInstall = [...packagesToInstall, ...answers[key]];
+        }
+
+        packageManagerService.install();
+
+        for (const package_ of prepare) package_.prepare?.();
+      }),
+      catchError(error => throwError(() => error))
+    )
+    .subscribe(({ name, answer }: { name: string; answer: unknown[] }) => {
+      if (name.includes(NAMES.install)) {
+        for (const key of answer) {
+          const package_ = getPackageByKey(key as PackagesEnum);
+          if (package_) answers.install.push(package_);
         }
       }
+      if (name.includes(NAMES.prepare) && answer) {
+        const packageValue = name.replace(`${NAMES.prepare}_`, '');
+        const package_ = getPackageByKey(Number(packageValue));
 
-      const preparedPackages = packagesToInstall.map(value =>
-        PACKAGES.get?.(value)
-      );
-
-      for (const package_ of preparedPackages) {
-        package_?.install();
-      }
-
-      for (const package_ of preparedPackages) {
-        package_?.afterInstall?.();
+        if (package_) answers.prepare.push(package_);
       }
     });
 }

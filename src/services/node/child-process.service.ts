@@ -2,7 +2,7 @@ import * as cp from 'node:child_process';
 
 class ChildProcessService {
   exec(command: string): void {
-    cp.exec(command + ' --dry-run', this.#callback);
+    cp.exec(command, this.#callback);
   }
 
   execSync(command: string, options?: cp.ExecSyncOptions): string {
