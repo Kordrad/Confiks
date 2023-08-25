@@ -12,7 +12,7 @@ export abstract class BasePackage implements BasePackageInterface {
   abstract readonly dependencyType: DependencyTypeEnum;
 
   get disabled(): string | boolean {
-    if (packageIsInstalled(this.name)) {
+    if (packageIsInstalled(this.package)) {
       return 'Package is already installed';
     }
     return false;
