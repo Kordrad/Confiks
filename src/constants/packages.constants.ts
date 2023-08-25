@@ -1,6 +1,6 @@
-import { PackagesEnum } from '../enums';
-import { BasePackageInterface } from '../interfaces';
-import { commitLint, husky } from '../packages';
+import { commitLint, husky, lintStaged } from '../packages';
+import { PackagesEnum } from '../type/enums';
+import { BasePackageInterface } from '../type/interfaces';
 
 function flatPackagesArray(array: BasePackageInterface[]) {
   const result: BasePackageInterface[] = [];
@@ -12,9 +12,12 @@ function flatPackagesArray(array: BasePackageInterface[]) {
   return result;
 }
 
-export const BASE: BasePackageInterface[] = [husky, commitLint];
+export const BASE: BasePackageInterface[] = [husky, commitLint, lintStaged];
 export const HAS_EXTENSIONS: BasePackageInterface[] = BASE.filter(
   ({ extensions }) => extensions?.length
+);
+export const HAS_PREPARATION: BasePackageInterface[] = BASE.filter(
+  package_ => typeof package_.prepare == 'function'
 );
 
 export const PACKAGES = new Map<PackagesEnum, BasePackageInterface>(
