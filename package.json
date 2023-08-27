@@ -13,7 +13,16 @@
     "prepare": "husky install",
     "lint:check": "eslint ."
   },
-  "author": "Code Design",
+  "author": {
+    "name": "Konrad Stępień",
+    "email": "kord.stp@gmail.com"
+  },
+  "repository": {
+    "url": "https://github.com/Kordrad/startly"
+  },
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com"
+  },
   "license": "MIT",
   "dependencies": {
     "inquirer": "^9.2.10",
