@@ -37,3 +37,12 @@ testem.log
 # System Files
 .DS_Store
 Thumbs.db
+
+
+#builds
+/build
+
+# Test Environment
+/test/*
+!/test/package.json
+
