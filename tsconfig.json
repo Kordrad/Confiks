@@ -12,5 +12,7 @@
     "strict": true,
     "noImplicitAny": true,
     "skipLibCheck": true
-  }
+  },
+  "include": ["src", "bin"],
+  "exclude": ["node_modules", "commitlint.config.js"]
 }

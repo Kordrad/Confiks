@@ -5,7 +5,7 @@ A streamlined tool designed to accelerate frontend project setup
 ## Usage/Examples
 
 ```bash
-$ startly
+startly
 ```
 
 ## Run Locally
@@ -28,6 +28,13 @@ npm run startly
 ```bash
 cd path/to/your/project
 startly
+```
+
+or
+
+```bash
+cd path/to/your/project
+npx startly
 ```
 
 ## Requirements
