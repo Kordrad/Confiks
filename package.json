@@ -20,9 +20,6 @@
   "repository": {
     "url": "https://github.com/Kordrad/startly"
   },
-  "publishConfig": {
-    "registry": "https://npm.pkg.github.com"
-  },
   "license": "MIT",
   "dependencies": {
     "inquirer": "^9.2.10",
