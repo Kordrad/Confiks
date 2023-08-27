@@ -10,6 +10,10 @@ class FileSystemService {
       ...options,
     });
   }
+
+  writeFile(fileName: string, content: string): void {
+    fs.writeFile(fileName, content, () => {});
+  }
 }
 
 export const fileSystem = new FileSystemService();
