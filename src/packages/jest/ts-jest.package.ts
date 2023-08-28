@@ -4,6 +4,7 @@ import { BasePackage } from '../base.package';
 
 /**
  * @see https://kulshekhar.github.io/ts-jest/docs/getting-started/installation/
+ * @see https://www.npmjs.com/package/ts-jest
  * */
 class TsJestPackage extends BasePackage {
   readonly dependencyType: DependencyTypeEnum =

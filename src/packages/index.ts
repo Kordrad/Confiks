@@ -1,11 +1,11 @@
 import { PackagesEnum } from '../type/enums';
 import { BasePackageInterface } from '../type/interfaces';
-import { commitLint } from './commit-lint.package';
-import { husky } from './husky.package';
-import { jest } from './jest.package';
-import { lintStaged } from './lint-staged.package';
-import { prettier } from './prettier.package';
-import { prettyQuick } from './pretty-quick.package';
+import { commitLint } from './commit-lint/commit-lint.package';
+import { husky } from './husky/husky.package';
+import { jest } from './jest/jest.package';
+import { lintStaged } from './lint-staged/lint-staged.package';
+import { prettier } from './prettier/prettier.package';
+import { prettyQuick } from './pretty-quick/pretty-quick.package';
 
 function flatPackagesArray(
   array: BasePackageInterface[]
@@ -19,12 +19,12 @@ function flatPackagesArray(
   return result;
 }
 
-export * from './commit-lint.package';
-export * from './husky.package';
-export * from './jest.package';
-export * from './lint-staged.package';
-export * from './prettier.package';
-export * from './pretty-quick.package';
+export * from './commit-lint/commit-lint.package';
+export * from './husky/husky.package';
+export * from './jest/jest.package';
+export * from './lint-staged/lint-staged.package';
+export * from './prettier/prettier.package';
+export * from './pretty-quick/pretty-quick.package';
 
 export const BASE: BasePackageInterface[] = [
   husky,
