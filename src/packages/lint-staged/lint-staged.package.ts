@@ -1,11 +1,14 @@
-import { huskyService } from '../services/husky.service';
-import { fileSystem } from '../services/node';
-import { DependencyTypeEnum, PackagesEnumKeys } from '../type/enums';
-import { packageIsInstalled } from '../utils';
-import { BasePackage } from './base.package';
-import { husky } from './husky.package';
-import { prettier } from './prettier.package';
+import { huskyService } from '../../services/husky.service';
+import { fileSystem } from '../../services/node';
+import { DependencyTypeEnum, PackagesEnumKeys } from '../../type/enums';
+import { packageIsInstalled } from '../../utils';
+import { BasePackage } from '../base.package';
+import { husky } from '../husky/husky.package';
+import { prettier } from '../prettier/prettier.package';
 
+/**
+ * @see https://www.npmjs.com/package/lint-staged
+ * */
 class LintStagedPackage extends BasePackage {
   readonly name: string = '🚫💩 lint-staged';
   readonly package: PackagesEnumKeys = 'lint-staged';

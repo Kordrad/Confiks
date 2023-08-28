@@ -1,7 +1,10 @@
-import { childProcess } from '../services/node';
-import { DependencyTypeEnum, PackagesEnumKeys } from '../type/enums';
-import { BasePackage } from './base.package';
+import { childProcess } from '../../services/node';
+import { DependencyTypeEnum, PackagesEnumKeys } from '../../type/enums';
+import { BasePackage } from '../base.package';
 
+/**
+ * @see https://typicode.github.io/husky/
+ * */
 class HuskyPackage extends BasePackage {
   readonly name: string = 'Husky 🐶';
   readonly package: PackagesEnumKeys = 'husky';

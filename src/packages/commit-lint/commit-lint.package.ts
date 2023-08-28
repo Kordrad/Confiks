@@ -1,10 +1,14 @@
-import { huskyService } from '../services/husky.service';
-import { DependencyTypeEnum, PackagesEnumKeys } from '../type/enums';
-import { packageIsInstalled } from '../utils';
-import { BasePackage } from './base.package';
-import { configConventional } from './extensions';
-import { husky } from './husky.package';
+import { huskyService } from '../../services/husky.service';
+import { DependencyTypeEnum, PackagesEnumKeys } from '../../type/enums';
+import { packageIsInstalled } from '../../utils';
+import { BasePackage } from '../base.package';
+import { husky } from '../husky/husky.package';
+import { configConventional } from './config-conventional.package';
 
+/**
+ * @see https://commitlint.js.org/#/
+ * @see https://www.npmjs.com/package/@commitlint/cli
+ * */
 class CommitLintPackage extends BasePackage {
   readonly name: string = 'commitLint 📔';
   readonly package: PackagesEnumKeys = '@commitlint/cli';
