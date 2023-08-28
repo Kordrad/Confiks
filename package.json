@@ -1,7 +1,22 @@
 {
   "name": "startly",
   "version": "1.0.0-alpha.0",
-  "description": "library to helps install and configure initial projects ",
+  "description": "Library to helps install and configure initial projects. Use this CLI to quickly install important dependencies",
+  "keywords": [
+    "startly",
+    "cli",
+    "git",
+    "init",
+    "configure",
+    "commit-lint",
+    "husky",
+    "jest",
+    "lint-staged",
+    "prettier",
+    "pretty-quick",
+    "config-conventional",
+    "ts-jest"
+  ],
   "main": "build/bin/index.js",
   "bin": {
     "startly": "build/bin/index.js"
