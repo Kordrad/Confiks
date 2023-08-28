@@ -1,8 +1,8 @@
-import { huskyService } from '../services/husky.service';
-import { DependencyTypeEnum, PackagesEnumKeys } from '../type/enums';
-import { packageIsInstalled } from '../utils';
-import { BasePackage } from './base.package';
-import { husky } from './husky.package';
+import { huskyService } from '../../services/husky.service';
+import { DependencyTypeEnum, PackagesEnumKeys } from '../../type/enums';
+import { packageIsInstalled } from '../../utils';
+import { BasePackage } from '../base.package';
+import { husky } from '../husky/husky.package';
 
 /**
  * @see https://github.com/azz/pretty-quick

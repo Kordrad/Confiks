@@ -1,7 +1,11 @@
-import { DependencyTypeEnum, PackagesEnumKeys } from '../type/enums';
-import { BasePackage } from './base.package';
-import { tsJest, typesJest } from './extensions';
+import { DependencyTypeEnum, PackagesEnumKeys } from '../../type/enums';
+import { BasePackage } from '../base.package';
+import { tsJest } from './ts-jest.package';
+import { typesJest } from './typs-jest.package';
 
+/**
+ * @see https://jestjs.io/
+ * */
 class JestPackage extends BasePackage {
   readonly dependencyType: DependencyTypeEnum =
     DependencyTypeEnum.devDependency;
