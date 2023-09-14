@@ -1,12 +1,12 @@
-# Confik
+# Confiks
 
 ## Run Locally
 
 Clone the project
 
 ```shell
-git clone https://github.com/Kordrad/Confik
-cd .\Confik
+git clone https://github.com/Kordrad/Confiks
+cd .\Confiks
 npm i
 ```
 
@@ -28,12 +28,12 @@ git init
 #### Manual start
 
 ```shell
-node ..\Confik\dist\packages\cli\src
+node ..\Confiks\dist\packages\cli\src
 ```
 
 #### Via NPM
 
-Open path of Confik project
+Open path of Confiks project
 
 and install globally
 
@@ -44,7 +44,7 @@ npm i -g .
 run in test-project
 
 ```shell
-confik
+confiks
 # or
-npx confik
+npx confiks
 ```

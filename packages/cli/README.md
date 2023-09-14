@@ -1,14 +1,14 @@
-# Confik
+# Confiks
 
 Library to helps install and configure initial projects. Use this CLI to quickly install important dependencies
 
-![VERSION](https://img.shields.io/npm/v/confik)
-![LICENSE](https://img.shields.io/npm/l/confik)
+![VERSION](https://img.shields.io/npm/v/confiks)
+![LICENSE](https://img.shields.io/npm/l/confiks)
 
 ## Usage
 
 ```bash
-npx confik
+npx confiks
 ```
 
 ## Features

@@ -1,13 +1,13 @@
 {
-  "name": "confik",
+  "name": "confiks",
   "version": "1.0.0-alpha.1",
   "description": "library to helps install and configure initial projects ",
   "repository": {
-    "url": "https://github.com/Kordrad/Confik"
+    "url": "https://github.com/Kordrad/Confiks"
   },
   "license": "MIT",
   "keywords": [
-    "confik",
+    "confiks",
     "cli",
     "git",
     "init",
@@ -21,7 +21,7 @@
   ],
   "main": "./src/index.js",
   "bin": {
-    "confik": "./src/index.js"
+    "confiks": "./src/index.js"
   },
   "type": "module"
 }
