@@ -1,0 +1,27 @@
+{
+  "name": "confik",
+  "version": "1.0.0-alpha.0",
+  "description": "library to helps install and configure initial projects ",
+  "repository": {
+    "url": "https://github.com/Kordrad/Confik"
+  },
+  "license": "MIT",
+  "keywords": [
+    "confik",
+    "cli",
+    "git",
+    "init",
+    "configure",
+    "commit-lint",
+    "config-conventional",
+    "husky",
+    "lint-staged",
+    "prettier",
+    "pretty-quick"
+  ],
+  "main": "./src/index.js",
+  "bin": {
+    "confik": "./src/index.js"
+  },
+  "type": "module"
+}
