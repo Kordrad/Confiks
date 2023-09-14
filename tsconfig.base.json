@@ -15,7 +15,7 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "confik": ["packages/cli/src/index.ts"]
+      "confiks": ["packages/cli/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]
