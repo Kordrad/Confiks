@@ -1,44 +1,24 @@
-# Startly
-
-Library to helps install and configure initial projects. Use this CLI to quickly install important dependencies
-
-![VERSION](https://img.shields.io/npm/v/startly)
-![LICENSE](https://img.shields.io/npm/l/startly)
-
-## Usage
-
-```bash
-npx startly
-```
-
-## Features
-
-#### Supports packages
-
-- commit-lint
-- husky
-- jest
-- lint-stagged
-- prettier
-- pretty-quick
-
-## Requirements
-
-**System**: Windows
-
-**Package manager**: NPM
+# Confik
 
 ## Run Locally
 
 Clone the project
 
-```bash
-git clone https://github.com/Kordrad/startly
+```shell
+git clone https://github.com/Kordrad/Confik
+cd .\Confik
+npm i
+```
+
+Create watch build
+
+```shell
+npm run cli:watch
 ```
 
 Create new empty project
 
-```bash
+```shell
 cd ..
 mkdir test-project
 npm init
@@ -47,21 +27,24 @@ git init
 
 #### Manual start
 
-```bash
-npx ts-node ../startly/src/index.ts
+```shell
+node ..\Confik\dist\packages\cli\src
 ```
 
 #### Via NPM
 
-Open path of Startly project and install globally
+Open path of Confik project
 
-```bash
-cd .\startly\
+and install globally
+
+```shell
 npm i -g .
 ```
 
 run in test-project
 
-```bash
-startly
+```shell
+confik
+# or
+npx confik
 ```
