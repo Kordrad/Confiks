@@ -52,8 +52,6 @@
     "packages/*"
   ],
   "dependencies": {
-    "inquirer": "^9.2.10",
-    "rxjs": "^7.8.1",
     "tslib": "^2.3.0"
   },
   "nx": {
