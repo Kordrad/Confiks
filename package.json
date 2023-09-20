@@ -5,8 +5,9 @@
   "scripts": {
     "cli": "node dist/packages/cli/src/cli",
     "cli:build": "nx run cli:build",
-    "cli:watch": "nx run cli:build --watch",
+    "cli:build:watch": "nx run cli:build --watch",
     "cli:test": "nx test cli",
+    "cli:test:watch": "nx test cli --watch",
     "prepare": "husky install"
   },
   "author": {
@@ -18,11 +19,11 @@
     "@commitlint/cli": "^17.7.1",
     "@commitlint/config-conventional": "^17.7.0",
     "@nx/devkit": "^16.8.1",
-    "@nx/eslint-plugin": "16.8.1",
-    "@nx/jest": "16.8.1",
-    "@nx/js": "16.8.1",
-    "@nx/linter": "16.8.1",
-    "@nx/node": "^16.8.1",
+    "@nx/eslint-plugin": "^16.2.2",
+    "@nx/jest": "^16.2.2",
+    "@nx/js": "^16.2.2",
+    "@nx/linter": "^16.2.2",
+    "@nx/node": "^16.2.2",
     "@types/inquirer": "^9.0.3",
     "@types/jest": "^29.4.0",
     "@types/node": "~18.7.1",
@@ -52,8 +53,6 @@
     "packages/*"
   ],
   "dependencies": {
-    "inquirer": "^9.2.10",
-    "rxjs": "^7.8.1",
     "tslib": "^2.3.0"
   },
   "nx": {

@@ -1,0 +1,22 @@
+name: Run Tests
+
+on:
+  pull_request:
+    branches: [master, develop]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v2
+        with:
+          node-version: 19
+      - run: npm ci
+      - run: npm run cli:test
+      - uses: actions/upload-artifact@v3
+        if: always()
+        with:
+          name: test-report
+          path: test-report/
+          retention-days: 30

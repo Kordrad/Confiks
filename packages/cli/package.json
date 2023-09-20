@@ -1,6 +1,6 @@
 {
   "name": "confiks",
-  "version": "1.0.0-alpha.1",
+  "version": "1.0.0-alpha.2",
   "description": "library to helps install and configure initial projects ",
   "repository": {
     "url": "https://github.com/Kordrad/Confiks"
@@ -23,5 +23,9 @@
   "bin": {
     "confiks": "./src/index.js"
   },
-  "type": "module"
+  "type": "module",
+  "dependencies": {
+    "inquirer": "^9.2.10",
+    "rxjs": "^7.8.1"
+  }
 }
