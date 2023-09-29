@@ -3,6 +3,7 @@ import { fileSystem } from '../../services/node/file-system.service.js';
 import { DependencyTypeEnum } from '../../type/enums/dependency-type.enum.js';
 import { packageIsInstalled } from '../../utils/package-json.utils.js';
 import { BasePackage } from '../base.package.js';
+import { eslint } from '../eslint/eslint.package.js';
 import { husky } from '../husky/husky.package.js';
 import { prettier } from '../prettier/prettier.package.js';
 
@@ -22,7 +23,10 @@ class LintStagedPackage extends BasePackage {
     }
 
     const lintStagedRules = [
-      ...this.#addRule('eslint', `"*.{js,ts}": ["eslint --quiet --fix"]`),
+      ...this.#addRule(
+        eslint.package,
+        `"*.{js,ts,jsx}": ["eslint --quiet --fix"]`
+      ),
       ...this.#addRule(
         prettier.package,
         `"*.{json,js,ts,html}": ["prettier --write --ignore-unknown"]`
