@@ -11,9 +11,23 @@ class FileSystemService {
     });
   }
 
-  writeFile(fileName: string, content: string): void {
-    // eslint-disable-next-line @typescript-eslint/no-empty-function
-    fs.writeFile(fileName, content, () => {});
+  writeFile(
+    fileName: string,
+    content: string,
+    callback = () => {
+      /**/
+    }
+  ): void {
+    fs.writeFile(fileName, content, callback);
+  }
+
+  appendFileSync(fileName: string, content: string): void {
+    fs.appendFileSync(fileName, content);
+  }
+
+  queryFileName(fileName: string): string | undefined {
+    const filesList = fs.readdirSync('./');
+    return filesList.find(fileList => fileList.includes(fileName));
   }
 }
 

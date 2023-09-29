@@ -1,11 +1,15 @@
 export enum PackagesEnum {
-  'husky',
   '@commitlint/cli',
   '@commitlint/config-conventional',
+  'eslint',
+  'eslint-plugin-prettier',
+  'eslint-plugin-simple-import-sort',
+  'eslint-plugin-unicorn',
+  'eslint-plugin-unused-imports',
+  'husky',
   'lint-staged',
-  'pretty-quick',
   'prettier',
-  '@types/jest',
+  'pretty-quick',
 }
 
 export type PackagesEnumKeys = keyof typeof PackagesEnum;

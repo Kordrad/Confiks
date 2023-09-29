@@ -15,6 +15,7 @@ import ora from 'ora';
 import { PackageChoice } from './components/package-choice.component.js';
 import { Separator } from './components/separator.component.js';
 import { commitLint } from './packages/commit-lint/commit-lint.package.js';
+import { eslint } from './packages/eslint/eslint.package.js';
 import { husky } from './packages/husky/husky.package.js';
 import { lintStaged } from './packages/lint-staged/lint-staged.package.js';
 import { prettier } from './packages/prettier/prettier.package.js';
@@ -41,6 +42,7 @@ async function selectPackages(): Promise<PackageInterface[]> {
       new PackageChoice(lintStaged),
 
       new Separator('Linters:'),
+      new PackageChoice(eslint),
       new PackageChoice(commitLint),
     ] satisfies Choice[],
     prefix: '📦',
@@ -121,17 +123,10 @@ ${pathsLog(untrackedFiles, 'untracked:  ')}
 `
       : '';
 
-  const RECOMENDATIONS = `
-To make the configuration complete, we recommend that you visit the links below to make a yet unsupported configuration. 
-https://eslint.org/
-
-`;
-
   console.log(`
 Everything has been configured.
 ${SUGGESTIONS_URL}
 ${PATHS}
-${dim(RECOMENDATIONS)}
 Then you can have a beer. Cheers! 🍻
 `);
 }
