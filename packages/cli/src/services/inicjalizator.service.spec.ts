@@ -14,7 +14,10 @@ describe('InitializerService', () => {
     jest.spyOn(packageManagerService, 'install').mockImplementation(jest.fn());
 
     for (const package_ of somePackages) {
-      jest.spyOn(package_, 'prepare').mockImplementation(jest.fn()).mockClear();
+      jest
+        .spyOn(package_, 'configure')
+        .mockImplementation(jest.fn())
+        .mockClear();
     }
   });
 
@@ -23,12 +26,12 @@ describe('InitializerService', () => {
     expect(packageManagerService.install).toHaveBeenCalledTimes(1);
   });
 
-  test('should prepare packages', () => {
+  test('should configure packages', () => {
     fixture.addPackages(somePackages.map(({ value }) => value));
     fixture.configureProject();
 
     for (const package_ of somePackages) {
-      expect(package_?.prepare).toHaveBeenCalledTimes(1);
+      expect(package_?.configure).toHaveBeenCalledTimes(1);
     }
   });
 });

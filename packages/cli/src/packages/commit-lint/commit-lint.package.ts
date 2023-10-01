@@ -15,7 +15,7 @@ class CommitLintPackage extends BasePackage {
   readonly extensions = [configConventional];
   readonly dependencyType = DependencyTypeEnum.devDependency;
 
-  prepare(): void {
+  configure(): void {
     if (!packageIsInstalled(husky.package)) {
       return;
     }

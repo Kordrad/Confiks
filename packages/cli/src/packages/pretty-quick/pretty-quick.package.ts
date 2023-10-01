@@ -12,7 +12,7 @@ class PrettyQuickPackage extends BasePackage {
   readonly name = 'pretty-quick';
   readonly package = 'pretty-quick';
 
-  prepare(): void {
+  configure(): void {
     if (!packageIsInstalled(husky.package)) {
       return;
     }

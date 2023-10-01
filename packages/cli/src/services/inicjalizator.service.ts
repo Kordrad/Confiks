@@ -11,7 +11,7 @@ export class InitializerService {
 
   configureProject(): void {
     this.install();
-    this.prepare();
+    this.configure();
   }
 
   private install(): void {
@@ -26,10 +26,10 @@ export class InitializerService {
     packageManagerService.install();
   }
 
-  private prepare(): void {
+  private configure(): void {
     for (const packageKey of this.packages) {
       const package_ = PACKAGES_MAP.get(packageKey);
-      package_.prepare?.();
+      package_.configure?.();
     }
   }
 }

@@ -11,7 +11,7 @@ class PrettierPackage extends BasePackage {
   readonly name = 'prettier';
   readonly package = 'prettier';
 
-  prepare(): void {
+  configure(): void {
     fileSystem.writeFile('.prettierrc', CONFIG);
     fileSystem.writeFile('.prettierignore', IGNORE);
   }

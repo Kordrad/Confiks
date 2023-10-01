@@ -8,7 +8,7 @@ describe('HuskyPackage', () => {
     expect(fixture).toBeDefined();
   });
 
-  describe('prepare', () => {
+  describe('configure', () => {
     beforeEach(() => {
       jest
         .spyOn(childProcess, 'execSync')
@@ -16,14 +16,14 @@ describe('HuskyPackage', () => {
         .mockClear();
     });
 
-    test('should has prepare method', () => {
-      const prepare = jest.spyOn(fixture, 'prepare');
-      fixture.prepare?.();
-      expect(prepare).toBeCalled();
+    test('should has configure method', () => {
+      const configure = jest.spyOn(fixture, 'configure');
+      fixture.configure?.();
+      expect(configure).toBeCalled();
     });
 
-    test('should prepare via execSync', () => {
-      fixture.prepare();
+    test('should configure via execSync', () => {
+      fixture.configure();
       expect(childProcess.execSync).toHaveBeenCalledTimes(2);
     });
   });

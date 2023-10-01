@@ -9,7 +9,7 @@ class Mock extends BasePackage {
   readonly name = 'Mock';
   readonly package = 'husky';
 
-  prepare(): void {
+  configure(): void {
     // empty
   }
 }

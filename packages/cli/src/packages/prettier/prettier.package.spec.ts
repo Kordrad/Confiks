@@ -15,15 +15,15 @@ describe('Prettier', () => {
     expect(fixture).toBeDefined();
   });
 
-  describe('prepare', () => {
-    let prepareFunction: unknown;
+  describe('configure', () => {
+    let configureFunction: unknown;
 
     beforeEach(() => {
-      prepareFunction = jest.spyOn(fixture, 'prepare');
-      fixture.prepare?.();
+      configureFunction = jest.spyOn(fixture, 'configure');
+      fixture.configure?.();
     });
-    test('should has prepare method', () => {
-      expect(prepareFunction).toBeCalled();
+    test('should has configure method', () => {
+      expect(configureFunction).toBeCalled();
     });
 
     test('should create files', () => {

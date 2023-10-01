@@ -10,9 +10,9 @@ class HuskyPackage extends BasePackage {
   readonly package = 'husky';
   readonly dependencyType = DependencyTypeEnum.devDependency;
 
-  prepare(): void {
+  configure(): void {
     childProcess.execSync('npx husky install');
-    childProcess.execSync('npm pkg set scripts.prepare="husky install"');
+    childProcess.execSync('npm pkg set scripts.configure="husky install"');
   }
 }
 

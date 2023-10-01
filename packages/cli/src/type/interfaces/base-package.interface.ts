@@ -9,5 +9,5 @@ export interface BasePackageInterface {
   readonly extensions?: BasePackageInterface[];
 
   disabled: boolean | string; // string as reason
-  prepare?: () => void;
+  configure?: () => void;
 }

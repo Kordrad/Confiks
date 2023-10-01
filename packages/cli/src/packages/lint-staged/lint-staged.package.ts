@@ -14,7 +14,7 @@ class LintStagedPackage extends BasePackage {
   readonly package = 'lint-staged';
   readonly dependencyType = DependencyTypeEnum.devDependency;
 
-  prepare(): void {
+  configure(): void {
     if (packageIsInstalled(husky.package)) {
       huskyService.addHook('pre-commit', 'npx lint-staged');
     }
