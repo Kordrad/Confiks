@@ -10,4 +10,5 @@ export interface BasePackageInterface {
 
   disabled: boolean | string; // string as reason
   configure?: () => void;
+  prepare?: () => void;
 }

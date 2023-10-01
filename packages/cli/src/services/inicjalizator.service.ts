@@ -4,7 +4,7 @@ import { BasePackageInterface } from '../type/interfaces/base-package.interface'
 import { packageManagerService } from './package-menager.service.js';
 
 export class InitializerService {
-  private packages: BasePackageInterface[] = [];
+  packages: BasePackageInterface[] = [];
 
   addPackages(packages: PackagesEnumKeys[]): void {
     this.packages.push(
