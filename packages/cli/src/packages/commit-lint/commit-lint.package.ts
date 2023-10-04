@@ -10,12 +10,12 @@ import { configConventional } from './config-conventional.package.js';
  * @see https://www.npmjs.com/package/@commitlint/cli
  * */
 class CommitLintPackage extends BasePackage {
-  readonly name: string = 'commitLint 📔';
+  readonly title = 'commitLint 📔';
   readonly package = '@commitlint/cli';
   readonly extensions = [configConventional];
   readonly dependencyType = DependencyTypeEnum.devDependency;
 
-  prepare(): void {
+  configure(): void {
     if (!packageIsInstalled(husky.package)) {
       return;
     }

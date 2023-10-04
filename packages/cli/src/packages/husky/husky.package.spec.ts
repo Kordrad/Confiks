@@ -17,13 +17,13 @@ describe('HuskyPackage', () => {
     });
 
     test('should has prepare method', () => {
-      const prepare = jest.spyOn(fixture, 'prepare');
-      fixture.prepare?.();
-      expect(prepare).toBeCalled();
+      const function_ = jest.spyOn(fixture, 'configure');
+      fixture.configure?.();
+      expect(function_).toBeCalled();
     });
 
     test('should prepare via execSync', () => {
-      fixture.prepare();
+      fixture.configure();
       expect(childProcess.execSync).toHaveBeenCalledTimes(2);
     });
   });
