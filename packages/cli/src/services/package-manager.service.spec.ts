@@ -1,13 +1,13 @@
-import { DependencyTypeEnum } from '../type/enums/dependency-type.enum';
+import { DependencyTypeEnum } from '../type/enums/dependency-type.enum.js';
 import { childProcess } from './node/child-process.service.js';
-import { packageManagerService } from './package-menager.service.js';
+import { packageManagerService } from './package-manager.service.js';
 
 describe('PackageManagerService', () => {
   const fixture = packageManagerService;
 
   beforeEach(() => {
     jest
-      .spyOn(childProcess, 'execSync')
+      .spyOn(childProcess, 'execAsync')
       .mockImplementation(jest.fn())
       .mockClear();
   });
@@ -17,7 +17,7 @@ describe('PackageManagerService', () => {
 
     expect(addPackage).not.toHaveBeenCalled();
     fixture.install();
-    expect(childProcess.execSync).not.toHaveBeenCalled();
+    expect(childProcess.execAsync).not.toHaveBeenCalled();
   });
 
   test.each([
@@ -26,9 +26,10 @@ describe('PackageManagerService', () => {
     DependencyTypeEnum.global,
   ])('should install package in %s', dependency => {
     fixture.addPackage('husky', dependency);
-    fixture.install();
-    expect(childProcess.execSync).toHaveBeenCalledWith(
-      expect.stringContaining(dependency)
-    );
+    fixture.install().then(() => {
+      expect(childProcess.execAsync).toHaveBeenCalledWith(
+        expect.stringContaining(dependency)
+      );
+    });
   });
 });

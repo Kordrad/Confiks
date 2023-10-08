@@ -10,11 +10,11 @@ import { prettier } from '../prettier/prettier.package.js';
  * @see https://www.npmjs.com/package/lint-staged
  * */
 class LintStagedPackage extends BasePackage {
-  readonly name = '🚫💩 lint-staged';
+  readonly title = '🚫💩 lint-staged';
   readonly package = 'lint-staged';
   readonly dependencyType = DependencyTypeEnum.devDependency;
 
-  prepare(): void {
+  configure(): void {
     if (packageIsInstalled(husky.package)) {
       huskyService.addHook('pre-commit', 'npx lint-staged');
     }

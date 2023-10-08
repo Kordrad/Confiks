@@ -6,11 +6,11 @@ import { BasePackage } from '../base.package.js';
  * @see https://typicode.github.io/husky/
  * */
 class HuskyPackage extends BasePackage {
-  readonly name: string = 'Husky 🐶';
+  readonly title = 'Husky 🐶';
   readonly package = 'husky';
   readonly dependencyType = DependencyTypeEnum.devDependency;
 
-  prepare(): void {
+  configure(): void {
     childProcess.execSync('npx husky install');
     childProcess.execSync('npm pkg set scripts.prepare="husky install"');
   }
