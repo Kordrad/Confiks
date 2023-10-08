@@ -6,6 +6,7 @@
     "cli": "node dist/packages/cli/src/cli",
     "cli:build": "nx run cli:build",
     "cli:build:watch": "nx run cli:build --watch",
+    "cli:lint": "nx lint cli",
     "cli:test": "nx test cli",
     "cli:test:watch": "nx test cli --watch",
     "prepare": "husky install"
