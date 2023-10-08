@@ -9,6 +9,7 @@ class HuskyPackage extends BasePackage {
   readonly title = 'Husky 🐶';
   readonly package = 'husky';
   readonly dependencyType = DependencyTypeEnum.devDependency;
+  readonly description = 'Husky improves your commits and more woof!';
 
   configure(): void {
     childProcess.execSync('npx husky install');

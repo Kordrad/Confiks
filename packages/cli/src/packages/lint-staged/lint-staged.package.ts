@@ -13,6 +13,8 @@ class LintStagedPackage extends BasePackage {
   readonly title = '🚫💩 lint-staged';
   readonly package = 'lint-staged';
   readonly dependencyType = DependencyTypeEnum.devDependency;
+  readonly description =
+    "Run linters against staged git files and don't let 💩 slip into your code base!";
 
   configure(): void {
     if (packageIsInstalled(husky.package)) {

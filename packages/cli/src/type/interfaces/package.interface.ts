@@ -5,6 +5,7 @@ export interface PackageInterface {
   readonly package: PackagesEnumKeys;
   readonly title: string;
   readonly dependencyType: DependencyTypeEnum;
+  readonly description?: string;
   readonly extensions?: PackageInterface[];
 
   configure?: () => void;

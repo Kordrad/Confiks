@@ -1,6 +1,7 @@
 import { PackagesEnumKeys } from '../type/enums/packages.enum.js';
 import { Choice } from '../type/interfaces/choice.interface.js';
 import { PackageInterface } from '../type/interfaces/package.interface.js';
+import { packageIsInstalled } from '../utils/package-json.utils.js';
 
 export class PackageChoice implements Choice {
   message: string;
@@ -17,9 +18,11 @@ export class PackageChoice implements Choice {
    *  @example "Package is already installed"
    * */
   get disabled(): string | boolean {
-    /*if (packageIsInstalled(this.name)) {
-      return 'Package is already installed';
-    }*/
+    if (packageIsInstalled(this.name)) {
+      const isInstalled = 'Package is already installed';
+      if (this.hint) this.hint = isInstalled;
+      return isInstalled;
+    }
     return this.#disabled;
   }
 
@@ -36,6 +39,8 @@ export class PackageChoice implements Choice {
     this.name = packageModel.package;
     this.message = packageModel.title;
     this.value = packageModel;
+
+    if (packageModel.description) this.hint = packageModel.description;
 
     if (!options) return;
     if (options.disabled) this.disabled = options.disabled;

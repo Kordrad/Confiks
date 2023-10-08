@@ -10,6 +10,7 @@ class PrettierPackage extends BasePackage {
   readonly dependencyType = DependencyTypeEnum.devDependency;
   readonly title = 'prettier';
   readonly package = 'prettier';
+  readonly description = 'An opinionated code formatter.';
 
   configure(): void {
     fileSystem.writeFile('.prettierrc', CONFIG);

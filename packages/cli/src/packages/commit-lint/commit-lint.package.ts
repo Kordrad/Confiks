@@ -14,6 +14,7 @@ class CommitLintPackage extends BasePackage {
   readonly package = '@commitlint/cli';
   readonly extensions = [configConventional];
   readonly dependencyType = DependencyTypeEnum.devDependency;
+  readonly description = 'Helps your team adhere to a commit convention.';
 
   configure(): void {
     if (!packageIsInstalled(husky.package)) {
