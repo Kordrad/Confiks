@@ -23,24 +23,28 @@ class PackageManagerService {
     }
   }
 
-  install() {
-    this.installPackages(this.dependencies, DependencyTypeEnum.dependency);
-    this.installPackages(
+  async install() {
+    await this.installPackages(
+      this.dependencies,
+      DependencyTypeEnum.dependency
+    );
+    await this.installPackages(
       this.devDependencies,
       DependencyTypeEnum.devDependency
     );
-    this.installPackages(this.global, DependencyTypeEnum.global);
+    await this.installPackages(this.global, DependencyTypeEnum.global);
   }
 
-  private installPackages(
+  private async installPackages(
     packages: PackagesEnumKeys[],
     installationType: DependencyTypeEnum
-  ): void {
-    if (packages.length > 0) {
-      childProcess.execSync(
-        `npm install ${installationType} ${packages.join(' ')}` // --dry-run
-      );
+  ): Promise<void> {
+    if (packages.length === 0) {
+      return;
     }
+    await childProcess.execAsync(
+      `npm install ${installationType} ${packages.join(' ')}` // --dry-run
+    );
   }
 }
 

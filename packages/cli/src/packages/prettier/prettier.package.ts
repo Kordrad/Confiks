@@ -8,10 +8,10 @@ import { CONFIG, IGNORE } from './prettier.constant.js';
  * */
 class PrettierPackage extends BasePackage {
   readonly dependencyType = DependencyTypeEnum.devDependency;
-  readonly name = 'prettier';
+  readonly title = 'prettier';
   readonly package = 'prettier';
 
-  prepare(): void {
+  configure(): void {
     fileSystem.writeFile('.prettierrc', CONFIG);
     fileSystem.writeFile('.prettierignore', IGNORE);
   }

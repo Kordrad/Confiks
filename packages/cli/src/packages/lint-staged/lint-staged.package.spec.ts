@@ -29,9 +29,9 @@ describe('Prettier', () => {
 
   describe('prepare', () => {
     test('should has prepare method', () => {
-      const prepare = jest.spyOn(fixture, 'prepare');
-      fixture.prepare?.();
-      expect(prepare).toBeCalled();
+      const function_ = jest.spyOn(fixture, 'configure');
+      fixture.configure?.();
+      expect(function_).toBeCalled();
     });
 
     test('should add pre-commit hook if husky is installed', () => {
@@ -39,7 +39,7 @@ describe('Prettier', () => {
         .spyOn(PackageJsonUtils, 'packageIsInstalled')
         .mockReturnValueOnce(true);
 
-      fixture.prepare();
+      fixture.configure();
       expect(huskyService.addHook).toHaveBeenCalledWith(
         'pre-commit',
         expect.anything()
@@ -51,12 +51,12 @@ describe('Prettier', () => {
         .spyOn(PackageJsonUtils, 'packageIsInstalled')
         .mockReturnValueOnce(false);
 
-      fixture.prepare();
+      fixture.configure();
       expect(huskyService.addHook).not.toHaveBeenCalled();
     });
 
     test('should create .lintstagedrc', () => {
-      fixture.prepare();
+      fixture.configure();
       expect(fileSystem.writeFile).toHaveBeenCalledWith(
         '.lintstagedrc',
         expect.anything()

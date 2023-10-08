@@ -9,10 +9,10 @@ import { husky } from '../husky/husky.package.js';
  * */
 class PrettyQuickPackage extends BasePackage {
   readonly dependencyType = DependencyTypeEnum.devDependency;
-  readonly name = 'pretty-quick';
+  readonly title = 'pretty-quick';
   readonly package = 'pretty-quick';
 
-  prepare(): void {
+  configure(): void {
     if (!packageIsInstalled(husky.package)) {
       return;
     }
