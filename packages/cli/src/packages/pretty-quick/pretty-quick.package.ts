@@ -11,6 +11,7 @@ class PrettyQuickPackage extends BasePackage {
   readonly dependencyType = DependencyTypeEnum.devDependency;
   readonly title = 'pretty-quick';
   readonly package = 'pretty-quick';
+  readonly description = 'Runs Prettier on your changed files.';
 
   configure(): void {
     if (!packageIsInstalled(husky.package)) {
