@@ -1,7 +1,7 @@
 {
   "name": "confiks",
   "version": "1.0.0-alpha.2",
-  "description": "CLI to helps install and configure initial projects.",
+  "description": "CLI to helps install and configure frontend projects.",
   "repository": {
     "url": "https://github.com/Kordrad/Confiks"
   },
@@ -17,7 +17,8 @@
     "husky",
     "lint-staged",
     "prettier",
-    "pretty-quick"
+    "pretty-quick",
+    "frontend"
   ],
   "main": "./src/index.js",
   "bin": {

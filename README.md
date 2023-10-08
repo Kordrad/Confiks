@@ -1,4 +1,4 @@
-# Confiks
+# [Confiks](https://github.com/Kordrad/Confiks/tree/master/packages/cli)
 
 ## Run Locally
 
