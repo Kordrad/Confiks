@@ -23,7 +23,13 @@
         "simple-import-sort/imports": "error",
         "simple-import-sort/exports": "error",
         "unused-imports/no-unused-imports": "warn",
-        "unicorn/prefer-string-replace-all": "off"
+        "unicorn/prefer-string-replace-all": "off",
+        "prettier/prettier": [
+          "error",
+          {
+            "endOfLine": "auto"
+          }
+        ]
       }
     },
     {

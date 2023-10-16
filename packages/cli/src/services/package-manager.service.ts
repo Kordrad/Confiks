@@ -1,5 +1,5 @@
 import { DependencyTypeEnum } from '../type/enums/dependency-type.enum.js';
-import { PackagesEnumKeys } from '../type/enums/packages.enum.js';
+import type { PackagesEnumKeys } from '../type/enums/packages.enum.js';
 import { childProcess } from './node/child-process.service.js';
 
 class PackageManagerService {
