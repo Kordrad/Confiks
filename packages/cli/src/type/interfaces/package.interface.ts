@@ -1,5 +1,5 @@
-import { DependencyTypeEnum } from '../enums/dependency-type.enum';
-import { PackagesEnumKeys } from '../enums/packages.enum';
+import type { DependencyTypeEnum } from '../enums/dependency-type.enum.js';
+import type { PackagesEnumKeys } from '../enums/packages.enum.js';
 
 export interface PackageInterface {
   readonly package: PackagesEnumKeys;

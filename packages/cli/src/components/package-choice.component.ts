@@ -1,6 +1,6 @@
-import { PackagesEnumKeys } from '../type/enums/packages.enum.js';
-import { Choice } from '../type/interfaces/choice.interface.js';
-import { PackageInterface } from '../type/interfaces/package.interface.js';
+import type { PackagesEnumKeys } from '../type/enums/packages.enum.js';
+import type { Choice } from '../type/interfaces/choice.interface.js';
+import type { PackageInterface } from '../type/interfaces/package.interface.js';
 import { packageIsInstalled } from '../utils/package-json.utils.js';
 
 export class PackageChoice implements Choice {
@@ -23,6 +23,7 @@ export class PackageChoice implements Choice {
       if (this.hint) this.hint = isInstalled;
       return isInstalled;
     }
+
     return this.#disabled;
   }
 

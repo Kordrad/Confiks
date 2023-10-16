@@ -1,4 +1,4 @@
-import { PackageInterface } from '../type/interfaces/package.interface.js';
+import type { PackageInterface } from '../type/interfaces/package.interface.js';
 import { packageManagerService } from './package-manager.service.js';
 
 export class InitializerService {

@@ -1,6 +1,6 @@
 import { DependencyTypeEnum } from '../type/enums/dependency-type.enum.js';
-import { PackagesEnumKeys } from '../type/enums/packages.enum.js';
-import { PackageInterface } from '../type/interfaces/package.interface.js';
+import type { PackagesEnumKeys } from '../type/enums/packages.enum.js';
+import type { PackageInterface } from '../type/interfaces/package.interface.js';
 
 /**
  * This is base abstract class to create new packages that you can install in your project

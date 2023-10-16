@@ -19,8 +19,8 @@ import { lintStaged } from './packages/lint-staged/lint-staged.package.js';
 import { prettier } from './packages/prettier/prettier.package.js';
 import { prettyQuick } from './packages/pretty-quick/pretty-quick.package.js';
 import { InitializerService } from './services/initializer.service.js';
-import { Choice } from './type/interfaces/choice.interface.js';
-import { PackageInterface } from './type/interfaces/package.interface.js';
+import { type Choice } from './type/interfaces/choice.interface.js';
+import { type PackageInterface } from './type/interfaces/package.interface.js';
 import { getModifiedFiles, getUntrackedFiles } from './utils/git.utils.js';
 import { pathsLog, welcomeLog } from './utils/logs.utils.js';
 
