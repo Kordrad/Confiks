@@ -3,7 +3,7 @@ import { fileSystem } from '../../services/node/file-system.service.js';
 import * as PackageJsonUtils from '../../utils/package-json.utils.js';
 import { lintStaged } from './lint-staged.package.js';
 
-describe('Prettier', () => {
+describe('LintStagedPackage', () => {
   const fixture = lintStaged;
 
   beforeEach(() => {
