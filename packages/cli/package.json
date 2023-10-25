@@ -3,7 +3,11 @@
   "version": "1.0.0",
   "description": "CLI to helps install and configure frontend projects.",
   "repository": {
-    "url": "https://github.com/Kordrad/Confiks"
+    "url": "https://github.com/Kordrad/Confiks",
+    "directory": "packages/cli"
+  },
+  "bugs": {
+    "url": "https://github.com/Kordrad/Confiks/issues"
   },
   "license": "MIT",
   "keywords": [
@@ -23,6 +27,9 @@
   "main": "./src/index.js",
   "bin": {
     "confiks": "./src/index.js"
+  },
+  "engines": {
+    "node": ">=v18"
   },
   "type": "module",
   "dependencies": {
