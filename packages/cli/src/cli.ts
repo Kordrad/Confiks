@@ -46,9 +46,10 @@ async function selectPackages(): Promise<PackageInterface[]> {
   return packages;
 }
 
-async function selectExtensions(
-  choices: PackageInterface[]
-): Promise<PackageInterface[]> {
+async function selectExtensions({
+  title,
+  extensions: choices,
+}: PackageInterface): Promise<PackageInterface[]> {
   if (choices.length === 0) {
     return [];
   }
@@ -57,7 +58,7 @@ async function selectExtensions(
   }>({
     type: 'multiselect',
     name: 'extensions',
-    message: 'Pick extensions to install',
+    message: `Pick extensions for ${title} to install`,
     choices: choices.map(choice => new PackageChoice(choice)),
     prefix: '🧰',
     result() {
@@ -133,9 +134,12 @@ Then you can have a beer. Cheers! 🍻
 //#cli
 welcomeLog(async () => {
   const packages: PackageInterface[] = await selectPackages();
-  const extensions: PackageInterface[] = await selectExtensions(
-    packages.filter(({ extensions }) => extensions?.length > 0)
-  );
+  const extensions: PackageInterface[] = [];
+  for (const package_ of packages.filter(
+    ({ extensions }) => extensions?.length > 0
+  )) {
+    extensions.push(...(await selectExtensions(package_)));
+  }
   await configureProject([...packages, ...extensions]);
   endScreen();
 });
