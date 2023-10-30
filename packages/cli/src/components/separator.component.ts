@@ -5,6 +5,6 @@ export class Separator {
   readonly role = 'separator';
 
   constructor(message: string) {
-    this.message = message;
+    this.message = `\n${message}`;
   }
 }
