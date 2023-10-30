@@ -13,6 +13,7 @@ import gradient from 'gradient-string';
 import ora from 'ora';
 
 import { PackageChoice } from './components/package-choice.component.js';
+import { Separator } from './components/separator.component.js';
 import { commitLint } from './packages/commit-lint/commit-lint.package.js';
 import { husky } from './packages/husky/husky.package.js';
 import { lintStaged } from './packages/lint-staged/lint-staged.package.js';
@@ -32,11 +33,15 @@ async function selectPackages(): Promise<PackageInterface[]> {
     name: 'packages',
     message: 'Pick packages to install',
     choices: [
-      new PackageChoice(commitLint),
-      new PackageChoice(husky),
-      new PackageChoice(lintStaged),
       new PackageChoice(prettier),
+
+      new Separator('Automations:'),
+      new PackageChoice(husky),
       new PackageChoice(prettyQuick),
+      new PackageChoice(lintStaged),
+
+      new Separator('Linters:'),
+      new PackageChoice(commitLint),
     ] satisfies Choice[],
     prefix: '📦',
     result() {
