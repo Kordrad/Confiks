@@ -1,6 +1,6 @@
 {
   "name": "confiks",
-  "version": "1.0.1",
+  "version": "1.1.0",
   "description": "CLI to helps install and configure frontend projects.",
   "repository": {
     "url": "https://github.com/Kordrad/Confiks"
