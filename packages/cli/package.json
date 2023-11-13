@@ -1,9 +1,18 @@
 {
   "name": "confiks",
   "version": "1.1.0",
-  "description": "CLI to helps install and configure frontend projects.",
+  "description": "Confiks is a library designed to assist in the installation and configuration of frontend projects. Utilize this Command Line Interface (CLI) to swiftly install essential dependencies.",
   "repository": {
-    "url": "https://github.com/Kordrad/Confiks"
+    "url": "https://github.com/Kordrad/Confiks",
+    "directory": "packages/cli"
+  },
+  "bugs": {
+    "url": "https://github.com/Kordrad/Confiks/issues"
+  },
+  "author": {
+    "name": "Konrad Stępień",
+    "email": "kord.stp@gmail.com",
+    "url": "https://www.linkedin.com/in/kordrad/"
   },
   "license": "MIT",
   "keywords": [
@@ -12,13 +21,19 @@
     "git",
     "init",
     "configure",
-    "commit-lint",
-    "config-conventional",
+    "configuration",
+    "frontend",
+    "@commitlint/cli",
+    "@commitlint/config-conventional",
+    "eslint",
+    "eslint-plugin-prettier",
+    "eslint-plugin-simple-import-sort",
+    "eslint-plugin-unicorn",
+    "eslint-plugin-unused-imports",
     "husky",
     "lint-staged",
     "prettier",
-    "pretty-quick",
-    "frontend"
+    "pretty-quick"
   ],
   "main": "./src/index.js",
   "bin": {

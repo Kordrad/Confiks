@@ -1,8 +1,17 @@
-# [Confiks](https://github.com/Kordrad/Confiks/tree/master/packages/cli)
+# [Confiks][confiks]
 
-## Run Locally
+A repository for the "confiks" package, allowing you to run the Command Line Interface (CLI) for easy and quick
+configuration of frontend projects with the required dependencies.
 
-Clone the project
+For detailed information about the CLI, please refer to the documentation [here][confiks].
+
+What will you find here?
+
+The following section contains technical documentation only.
+
+## How to Run Locally
+
+1. Clone the project
 
 ```shell
 git clone https://github.com/Kordrad/Confiks
@@ -10,22 +19,25 @@ cd .\Confiks
 npm i
 ```
 
-Create watch build
+2. Create build
 
 ```shell
-npm run cli:watch
+npm run cli:build #or cli:build:watch
 ```
 
-Create new empty project
+3. Create new empty project
 
 ```shell
 cd ..
 mkdir test-project
+cd test-project
 npm init
 git init
 ```
 
-#### Manual start
+#### Manual Start (Recommended)
+
+Execute the following command:
 
 ```shell
 node ..\Confiks\dist\packages\cli\src
@@ -33,18 +45,31 @@ node ..\Confiks\dist\packages\cli\src
 
 #### Via NPM
 
-Open path of Confiks project
+1. Open the path of the Confiks project
 
-and install globally
+```shell
+cd .\dist\packages\cli\
+```
+
+2. Install globally
 
 ```shell
 npm i -g .
 ```
 
-run in test-project
+3. Run in the test project
 
 ```shell
 confiks
 # or
 npx confiks
 ```
+
+## Commit Message Format
+
+In the project, we use commit-lint with [Conventional Commits][conventionalCommit] based
+on [Angular convention][angularConvention]
+
+[confiks]: https://github.com/Kordrad/Confiks/tree/master/packages/cli
+[conventionalCommit]: https://www.conventionalcommits.org/
+[angularConvention]: https://github.com/angular/angular/blob/main/CONTRIBUTING.md#commit
