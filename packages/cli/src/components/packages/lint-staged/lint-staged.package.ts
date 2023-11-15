@@ -1,6 +1,7 @@
 import { huskyService } from '../../../services/husky.service.js';
 import { fileSystem } from '../../../services/node/file-system.service.js';
 import { DependencyTypeEnum } from '../../../type/enums/dependency-type.enum.js';
+import { type PackagesEnumKeys } from '../../../type/enums/packages.enum.js';
 import { packageIsInstalled } from '../../../utils/package-json.utils.js';
 import { BasePackage } from '../base.package.js';
 import { eslint } from '../eslint/eslint.package.js';
@@ -31,11 +32,12 @@ class LintStagedPackage extends BasePackage {
         prettier.package,
         `"*.{json,js,ts,html}": ["prettier --write --ignore-unknown"]`
       ),
+      ...this.#addRule('stylelint', `"*.{css}": ["npx stylelint"]`),
     ].join(',\n  ');
     fileSystem.writeFile('.lintstagedrc', `{\n  ${lintStagedRules}\n}`);
   }
 
-  #addRule(packageName: string, line: string): string[] {
+  #addRule(packageName: PackagesEnumKeys, line: string): string[] {
     return packageIsInstalled(packageName) ? [line] : [];
   }
 }

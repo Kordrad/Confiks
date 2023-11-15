@@ -19,6 +19,7 @@ import { husky } from './components/packages/husky/husky.package.js';
 import { lintStaged } from './components/packages/lint-staged/lint-staged.package.js';
 import { prettier } from './components/packages/prettier/prettier.package.js';
 import { prettyQuick } from './components/packages/pretty-quick/pretty-quick.package.js';
+import { styleLint } from './components/packages/stylelint/stylelint.package.js';
 import { Separator } from './components/separator.component.js';
 import { InitializerService } from './services/initializer.service.js';
 import { type Choice } from './type/interfaces/choice.interface.js';
@@ -44,6 +45,7 @@ async function selectPackages(): Promise<PackageInterface[]> {
       new Separator('Linters:'),
       new PackageChoice(eslint),
       new PackageChoice(commitLint),
+      new PackageChoice(styleLint),
     ] satisfies Choice[],
     prefix: '📦',
     result() {

@@ -33,7 +33,9 @@
     "husky",
     "lint-staged",
     "prettier",
-    "pretty-quick"
+    "pretty-quick",
+    "stylelint",
+    "stylelint-config-standard-scss"
   ],
   "main": "./src/index.js",
   "bin": {

@@ -29,6 +29,8 @@ npx confiks
 - [lint-stagged][lint-stagged]: Lints only the files that are staged in Git.
 - [prettier][prettier]: A code formatter.
 - [pretty-quick][pretty-quick]: Runs Prettier on your changed files.
+- [stylelint][stylelint]: A mighty CSS linter.
+- [stylelint-config-standard-scss][stylelint-config-standard-scss]: The standard shareable SCSS config for Stylelint.
 
 [confiksNpm]: https://www.npmjs.com/package/confiks
 [confiksRepo]: https://github.com/Kordrad/Confiks
@@ -43,3 +45,5 @@ npx confiks
 [lint-stagged]: https://github.com/lint-staged/lint-staged
 [prettier]: https://prettier.io/
 [pretty-quick]: https://github.com/azz/pretty-quick
+[stylelint]: https://stylelint.io/
+[stylelint-config-standard-scss]: https://www.npmjs.com/package/stylelint-config-standard-scss

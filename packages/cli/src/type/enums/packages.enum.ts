@@ -10,6 +10,8 @@ export enum PackagesEnum {
   'lint-staged',
   'prettier',
   'pretty-quick',
+  'stylelint',
+  'stylelint-config-standard-scss',
 }
 
 export type PackagesEnumKeys = keyof typeof PackagesEnum;
