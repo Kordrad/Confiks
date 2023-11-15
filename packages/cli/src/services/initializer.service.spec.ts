@@ -1,6 +1,6 @@
-import { commitLint } from '../packages/commit-lint/commit-lint.package.js';
-import { husky } from '../packages/husky/husky.package.js';
-import { prettier } from '../packages/prettier/prettier.package.js';
+import { commitLint } from '../components/packages/commit-lint/commit-lint.package.js';
+import { husky } from '../components/packages/husky/husky.package.js';
+import { prettier } from '../components/packages/prettier/prettier.package.js';
 import { InitializerService } from './initializer.service';
 import { packageManagerService } from './package-manager.service.js';
 
