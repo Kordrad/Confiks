@@ -39,6 +39,9 @@
   "bin": {
     "confiks": "./src/index.js"
   },
+  "engines": {
+    "node": ">=v18"
+  },
   "type": "module",
   "dependencies": {
     "chalk": "^5.3.0",
