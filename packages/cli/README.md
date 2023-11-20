@@ -15,6 +15,10 @@ Line Interface (CLI) to swiftly install essential dependencies.
 npx confiks
 ```
 
+### Why?
+
+Confiks was developed out of the necessity to streamline and optimize the often-tedious process of setting up and configuring various tools within a new project. The main aim is to save time and simplify the initial project setup by automating numerous configuration tasks, enabling developers to focus more on coding and less on configuration complexities.
+
 ## Features
 
 #### Supports packages
