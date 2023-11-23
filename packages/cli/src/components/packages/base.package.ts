@@ -1,4 +1,4 @@
-import { DependencyTypeEnum } from '../../type/enums/dependency-type.enum.js';
+import type { DependencyTypeEnum } from '../../type/enums/dependency-type.enum.js';
 import type { PackagesEnumKeys } from '../../type/enums/packages.enum.js';
 import type { PackageInterface } from '../../type/interfaces/package.interface.js';
 
