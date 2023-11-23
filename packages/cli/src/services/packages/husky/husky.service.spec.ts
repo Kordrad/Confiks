@@ -1,5 +1,5 @@
+import { childProcess } from '../../node/child-process.service.js';
 import { huskyService } from './husky.service.js';
-import { childProcess } from './node/child-process.service.js';
 
 describe('HuskyService', () => {
   const fixture = huskyService;

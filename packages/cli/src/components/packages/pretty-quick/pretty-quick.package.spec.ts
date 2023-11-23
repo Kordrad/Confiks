@@ -1,4 +1,4 @@
-import { huskyService } from '../../../services/husky.service.js';
+import { huskyService } from '../../../services/packages/husky/husky.service.js';
 import * as PackageJsonUtils from '../../../utils/package-json.utils.js';
 import { prettyQuick } from './pretty-quick.package.js';
 
