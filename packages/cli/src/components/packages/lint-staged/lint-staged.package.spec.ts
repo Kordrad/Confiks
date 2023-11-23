@@ -3,20 +3,13 @@ import { huskyService } from '../../../services/packages/husky/husky.service.js'
 import * as PackageJsonUtils from '../../../utils/package-json.utils.js';
 import { lintStaged } from './lint-staged.package.js';
 
+jest.mock('../../../services/node/file-system.service.js');
+jest.mock('../../../services/packages/husky/husky.service.js');
+
 describe('LintStagedPackage', () => {
   const fixture = lintStaged;
 
   beforeEach(() => {
-    jest
-      .spyOn(fileSystem, 'writeFile')
-      .mockImplementation(jest.fn())
-      .mockClear();
-
-    jest
-      .spyOn(huskyService, 'addHook')
-      .mockImplementation(jest.fn())
-      .mockClear();
-
     jest
       .spyOn(PackageJsonUtils, 'packageIsInstalled')
       .mockReturnValue(true)

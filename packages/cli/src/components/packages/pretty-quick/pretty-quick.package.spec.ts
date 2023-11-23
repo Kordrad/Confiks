@@ -2,15 +2,12 @@ import { huskyService } from '../../../services/packages/husky/husky.service.js'
 import * as PackageJsonUtils from '../../../utils/package-json.utils.js';
 import { prettyQuick } from './pretty-quick.package.js';
 
+jest.mock('../../../services/packages/husky/husky.service.js');
+
 describe('PrettyQuick', () => {
   const fixture = prettyQuick;
 
   beforeEach(() => {
-    jest
-      .spyOn(huskyService, 'addHook')
-      .mockImplementation(jest.fn())
-      .mockClear();
-
     jest
       .spyOn(PackageJsonUtils, 'packageIsInstalled')
       .mockReturnValue(true)

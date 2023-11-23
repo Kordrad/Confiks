@@ -1,6 +1,6 @@
 import { childProcess } from '../../node/child-process.service.js';
 
-class HuskyService {
+export class HuskyService {
   /**
    * @see https://git-scm.com/docs/githooks
    * @see https://typicode.github.io/husky/getting-started.html

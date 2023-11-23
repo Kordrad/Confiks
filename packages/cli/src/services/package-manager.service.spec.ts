@@ -2,15 +2,10 @@ import { DependencyTypeEnum } from '../type/enums/dependency-type.enum.js';
 import { childProcess } from './node/child-process.service.js';
 import { packageManagerService } from './package-manager.service.js';
 
+jest.mock('./node/child-process.service.js');
+
 describe('PackageManagerService', () => {
   const fixture = packageManagerService;
-
-  beforeEach(() => {
-    jest
-      .spyOn(childProcess, 'execAsync')
-      .mockImplementation(jest.fn())
-      .mockClear();
-  });
 
   test('should not execute install without packages', () => {
     const addPackage = jest.spyOn(fixture, 'addPackage');
