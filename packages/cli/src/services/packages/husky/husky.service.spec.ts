@@ -1,5 +1,7 @@
 import { childProcess } from '../../node/child-process.service.js';
-import { huskyService } from './husky.service.js';
+import { huskyService } from './husky.service';
+
+jest.mock('../../node/child-process.service.js');
 
 describe('HuskyService', () => {
   const fixture = huskyService;
@@ -8,10 +10,6 @@ describe('HuskyService', () => {
   });
 
   describe('addHook', () => {
-    beforeEach(() => {
-      jest.spyOn(childProcess, 'execSync').mockImplementation(jest.fn());
-    });
-
     test('should call execSync', () => {
       fixture.addHook('commit-msg', '');
       expect(childProcess.execSync).toHaveBeenCalledTimes(1);

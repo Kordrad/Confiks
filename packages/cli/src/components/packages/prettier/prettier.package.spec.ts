@@ -1,15 +1,10 @@
 import { fileSystem } from '../../../services/node/file-system.service.js';
 import { prettier } from './prettier.package';
 
+jest.mock('../../../services/node/file-system.service.js');
+
 describe('Prettier', () => {
   const fixture = prettier;
-
-  beforeEach(() => {
-    jest
-      .spyOn(fileSystem, 'writeFile')
-      .mockImplementation(jest.fn())
-      .mockClear();
-  });
 
   test('instance is created', () => {
     expect(fixture).toBeDefined();

@@ -2,15 +2,12 @@ import { huskyService } from '../../../services/packages/husky/husky.service.js'
 import * as PackageJsonUtils from '../../../utils/package-json.utils.js';
 import { commitLint } from './commit-lint.package.js';
 
+jest.mock('../../../services/packages/husky/husky.service.js');
+
 describe('CommitLintPackage', () => {
   const fixture = commitLint;
 
   beforeEach(() => {
-    jest
-      .spyOn(huskyService, 'addHook')
-      .mockImplementation(jest.fn())
-      .mockClear();
-
     jest
       .spyOn(PackageJsonUtils, 'packageIsInstalled')
       .mockReturnValue(true)

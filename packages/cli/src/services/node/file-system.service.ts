@@ -1,6 +1,6 @@
 import * as fs from 'node:fs';
 
-class FileSystemService {
+export class FileSystemService {
   readFileSync(
     directory: fs.PathOrFileDescriptor,
     options?: fs.ReadSyncOptions
