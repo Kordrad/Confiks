@@ -1,4 +1,4 @@
-import { EslintService } from '../../../services/eslint/eslint.service.js';
+import { EslintService } from '../../../services/packages/eslint/eslint.service.js';
 import { DependencyTypeEnum } from '../../../type/enums/dependency-type.enum.js';
 import { stringify } from '../../../utils/json.utils.js';
 import { BasePackage } from '../base.package.js';

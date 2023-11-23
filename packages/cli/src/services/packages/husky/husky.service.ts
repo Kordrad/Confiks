@@ -1,4 +1,4 @@
-import { childProcess } from './node/child-process.service.js';
+import { childProcess } from '../../node/child-process.service.js';
 
 class HuskyService {
   /**

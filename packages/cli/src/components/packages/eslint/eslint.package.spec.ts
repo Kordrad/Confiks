@@ -1,7 +1,7 @@
-import { EslintService } from '../../../services/eslint/eslint.service.js';
+import { EslintService } from '../../../services/packages/eslint/eslint.service.js';
 import { EslintPackage } from './eslint.package.js';
 
-jest.mock('../../../services/eslint/eslint.service.js');
+jest.mock('../../../services/packages/eslint/eslint.service.js');
 
 describe('EslintPackage', () => {
   let fixture: EslintPackage;

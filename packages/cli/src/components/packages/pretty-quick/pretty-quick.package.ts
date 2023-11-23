@@ -1,4 +1,4 @@
-import { huskyService } from '../../../services/husky.service.js';
+import { huskyService } from '../../../services/packages/husky/husky.service.js';
 import { DependencyTypeEnum } from '../../../type/enums/dependency-type.enum.js';
 import { packageIsInstalled } from '../../../utils/package-json.utils.js';
 import { BasePackage } from '../base.package.js';

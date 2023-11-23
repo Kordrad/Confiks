@@ -1,5 +1,5 @@
-import { EslintConfigExtensions } from '../../type/enums/eslint-config-extensions.enum.js';
-import { fileSystem } from '../node/file-system.service.js';
+import { EslintConfigExtensions } from '../../../type/enums/eslint-config-extensions.enum.js';
+import { fileSystem } from '../../node/file-system.service.js';
 import type { ConfigManagement } from './config-management.interface.js';
 import { JsConfigService } from './js-config.service.js';
 import { JsonConfigService } from './json-config.service.js';
