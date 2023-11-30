@@ -50,10 +50,12 @@ describe('LintStagedPackage', () => {
 
     test('should create .lintstagedrc', () => {
       fixture.configure();
-      expect(fileSystem.writeFile).toHaveBeenCalledWith(
-        '.lintstagedrc',
-        expect.anything()
-      );
+      new Promise(resolve => setImmediate(resolve)).then(() => {
+        expect(fileSystem.writeFile).toHaveBeenCalledWith(
+          '.lintstagedrc',
+          expect.anything()
+        );
+      });
     });
   });
 });
