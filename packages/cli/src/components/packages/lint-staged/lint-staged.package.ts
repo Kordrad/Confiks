@@ -1,11 +1,10 @@
 import { fileSystem } from '../../../services/node/file-system.service.js';
 import { huskyService } from '../../../services/packages/husky/husky.service.js';
 import { DependencyTypeEnum } from '../../../type/enums/dependency-type.enum.js';
+import { stringify } from '../../../utils/json.utils.js';
 import { packageIsInstalled } from '../../../utils/package-json.utils.js';
 import { BasePackage } from '../base.package.js';
-import { eslint } from '../eslint/eslint.package.js';
 import { husky } from '../husky/husky.package.js';
-import { prettier } from '../prettier/prettier.package.js';
 
 /**
  * @see https://www.npmjs.com/package/lint-staged
@@ -22,21 +21,15 @@ class LintStagedPackage extends BasePackage {
       huskyService.addHook('pre-commit', 'npx lint-staged');
     }
 
-    const lintStagedRules = [
-      ...this.#addRule(
-        eslint.package,
-        `"*.{js,ts,jsx}": ["eslint --quiet --fix"]`
-      ),
-      ...this.#addRule(
-        prettier.package,
-        `"*.{json,js,ts,html}": ["prettier --write --ignore-unknown"]`
-      ),
-    ].join(',\n  ');
-    fileSystem.writeFile('.lintstagedrc', `{\n  ${lintStagedRules}\n}`);
+    this.#createConfig().then();
   }
 
-  #addRule(packageName: string, line: string): string[] {
-    return packageIsInstalled(packageName) ? [line] : [];
+  async #createConfig(): Promise<void> {
+    const { CONFIG, CONFIG_NAME } = await import(
+      './lint-staged-config.constant.js'
+    );
+
+    fileSystem.writeFile(CONFIG_NAME, stringify(CONFIG()));
   }
 }
 
