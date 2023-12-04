@@ -1,8 +1,8 @@
 import { eslint } from '../eslint.package';
-import { eslintPluginPrettier } from './eslint-plugin-prettier.package';
+import { EslintPluginPrettierPackage } from './eslint-plugin-prettier.package';
 
 describe('EslintPluginPrettierPackage', () => {
-  const fixture = eslintPluginPrettier;
+  const fixture = new EslintPluginPrettierPackage();
 
   test('instance is created', () => {
     expect(fixture).toBeDefined();

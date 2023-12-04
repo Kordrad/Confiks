@@ -1,8 +1,8 @@
 import { eslint } from '../eslint.package';
-import { eslintPluginSimpleImportSort } from './eslint-plugin-simple-import-sort.package';
+import { EslintPluginSimpleImportSortPackage } from './eslint-plugin-simple-import-sort.package';
 
 describe('EslintPluginSimpleImportSortPackage', () => {
-  const fixture = eslintPluginSimpleImportSort;
+  const fixture = new EslintPluginSimpleImportSortPackage();
 
   test('instance is created', () => {
     expect(fixture).toBeDefined();
