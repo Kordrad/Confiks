@@ -3,10 +3,10 @@ import { DependencyTypeEnum } from '../../../type/enums/dependency-type.enum.js'
 import { stringify } from '../../../utils/json.utils.js';
 import { BasePackage } from '../base.package.js';
 import IGNORE_CONTENT from './configs/eslintignore.constant.js';
-import { eslintPluginPrettier } from './eslint-plugin-prettier/eslint-plugin-prettier.package.js';
-import { eslintPluginSimpleImportSort } from './eslint-plugin-simple-import-sort/eslint-plugin-simple-import-sort.package.js';
-import { eslintPluginUnicorn } from './eslint-plugin-unicorn/eslint-plugin-unicorn.package.js';
-import { eslintPluginUnusedImports } from './eslint-plugin-unused-imports/eslint-plugin-unused-imports.package.js';
+import { EslintPluginPrettierPackage } from './eslint-plugin-prettier/eslint-plugin-prettier.package.js';
+import { EslintPluginSimpleImportSortPackage } from './eslint-plugin-simple-import-sort/eslint-plugin-simple-import-sort.package.js';
+import { EslintPluginUnicornPackage } from './eslint-plugin-unicorn/eslint-plugin-unicorn.package.js';
+import { EslintPluginUnusedImportsPackage } from './eslint-plugin-unused-imports/eslint-plugin-unused-imports.package.js';
 
 export class EslintPackage extends BasePackage {
   readonly title = 'ESLint';
@@ -15,10 +15,10 @@ export class EslintPackage extends BasePackage {
   readonly description =
     'is a tool for identifying and reporting on patterns found in ECMAScript/JavaScript code. (SUPPORTED: json)';
   readonly extensions = [
-    eslintPluginPrettier,
-    eslintPluginSimpleImportSort,
-    eslintPluginUnicorn,
-    eslintPluginUnusedImports,
+    new EslintPluginPrettierPackage(),
+    new EslintPluginSimpleImportSortPackage(),
+    new EslintPluginUnicornPackage(),
+    new EslintPluginUnusedImportsPackage(),
   ];
 
   readonly #eslintService = new EslintService();
@@ -37,7 +37,7 @@ export class EslintPackage extends BasePackage {
       './configs/eslintrc-confiks.constant.js'
     );
 
-    this.#eslintService.writeConfig(CONFIG_NAME, stringify(CONFIG));
+    this.#eslintService.writeConfig(CONFIG_NAME, stringify(CONFIG()));
   }
 
   #prepareRootConfig(): void {

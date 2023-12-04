@@ -1,76 +1,80 @@
 import type { EslintConfig } from '../../../../type/interfaces/eslint-config.interface.js';
 import { packageIsInstalled } from '../../../../utils/package-json.utils.js';
-import { eslintPluginPrettier } from '../eslint-plugin-prettier/eslint-plugin-prettier.package.js';
-import { eslintPluginSimpleImportSort } from '../eslint-plugin-simple-import-sort/eslint-plugin-simple-import-sort.package.js';
-import { eslintPluginUnicorn } from '../eslint-plugin-unicorn/eslint-plugin-unicorn.package.js';
-import { eslintPluginUnusedImports } from '../eslint-plugin-unused-imports/eslint-plugin-unused-imports.package.js';
+import { EslintPluginPrettierPackage } from '../eslint-plugin-prettier/eslint-plugin-prettier.package.js';
+import { EslintPluginSimpleImportSortPackage } from '../eslint-plugin-simple-import-sort/eslint-plugin-simple-import-sort.package.js';
+import { EslintPluginUnicornPackage } from '../eslint-plugin-unicorn/eslint-plugin-unicorn.package.js';
+import { EslintPluginUnusedImportsPackage } from '../eslint-plugin-unused-imports/eslint-plugin-unused-imports.package.js';
 
-const hasSimpleSort = packageIsInstalled(eslintPluginSimpleImportSort.package);
-const hasUnusedImports = packageIsInstalled(eslintPluginUnusedImports.package);
-const hasUnicorn = packageIsInstalled(eslintPluginUnicorn.package);
-const hasPrettier = packageIsInstalled(eslintPluginPrettier.package);
-
-const simpleSortConfig: EslintConfig = {
-  plugins: hasSimpleSort ? ['simple-import-sort'] : [],
-  rules: {
-    ...(hasSimpleSort && {
-      'simple-import-sort/imports': 'error',
-      'simple-import-sort/exports': 'error',
-    }),
-  },
-};
-
-const unusedImportsConfig: EslintConfig = {
-  plugins: hasUnusedImports ? ['unused-imports'] : [],
-  rules: {
-    ...(hasUnusedImports && {
-      'unused-imports/no-unused-imports': 'warn',
-    }),
-  },
-};
-
-const unicornConfig: EslintConfig = {
-  plugins: hasUnicorn ? ['unicorn'] : [],
+const dumbConfig = {
+  plugins: [],
   rules: {},
 };
-
-const prettierConfig: EslintConfig = {
-  plugins: hasPrettier ? ['prettier'] : [],
-  rules: {
-    ...(hasPrettier && {
-      'prettier/prettier': [
-        'error',
-        {
-          endOfLine: 'auto',
+const simpleSortConfig = (): EslintConfig =>
+  packageIsInstalled(new EslintPluginSimpleImportSortPackage().package)
+    ? {
+        plugins: ['simple-import-sort'],
+        rules: {
+          'simple-import-sort/imports': 'error',
+          'simple-import-sort/exports': 'error',
         },
-      ],
-    }),
-  },
-};
+      }
+    : dumbConfig;
+
+const unusedImportsConfig = (): EslintConfig =>
+  packageIsInstalled(new EslintPluginUnusedImportsPackage().package)
+    ? {
+        plugins: ['unused-imports'],
+        rules: {
+          'unused-imports/no-unused-imports': 'warn',
+        },
+      }
+    : dumbConfig;
+
+const unicornConfig = (): EslintConfig =>
+  packageIsInstalled(new EslintPluginUnicornPackage().package)
+    ? {
+        plugins: ['unicorn'],
+      }
+    : dumbConfig;
+
+const prettierConfig = (): EslintConfig =>
+  packageIsInstalled(new EslintPluginPrettierPackage().package)
+    ? {
+        plugins: ['prettier'],
+        rules: {
+          'prettier/prettier': [
+            'error',
+            {
+              endOfLine: 'auto',
+            },
+          ],
+        },
+      }
+    : dumbConfig;
 
 export const CONFIG_NAME = '.eslintrc.confiks.json';
-export const CONFIG = {
+export const CONFIG = () => ({
   ignorePatterns: ['**/*'],
   plugins: [
-    ...unusedImportsConfig.plugins,
-    ...simpleSortConfig.plugins,
-    ...prettierConfig.plugins,
-    ...unicornConfig.plugins,
+    ...unusedImportsConfig().plugins,
+    ...simpleSortConfig().plugins,
+    ...prettierConfig().plugins,
+    ...unicornConfig().plugins,
   ],
   overrides: [
     {
       files: ['*.ts', '*.tsx', '*.js', '*.jsx'],
       rules: {
-        ...simpleSortConfig.rules,
-        ...unusedImportsConfig.rules,
-        ...unicornConfig.rules,
+        ...simpleSortConfig().rules,
+        ...unusedImportsConfig().rules,
+        ...unicornConfig().rules,
       },
     },
     {
       files: ['*.ts', '*.tsx', '*.js', '*.jsx', '*.html'],
       rules: {
-        ...prettierConfig.rules,
+        ...prettierConfig().rules,
       },
     },
   ],
-};
+});

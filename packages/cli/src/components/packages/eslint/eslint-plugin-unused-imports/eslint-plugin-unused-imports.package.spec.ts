@@ -1,8 +1,8 @@
 import { eslint } from '../eslint.package';
-import { eslintPluginUnusedImports } from './eslint-plugin-unused-imports.package';
+import { EslintPluginUnusedImportsPackage } from './eslint-plugin-unused-imports.package';
 
 describe('EslintPluginUnusedImportsPackage', () => {
-  const fixture = eslintPluginUnusedImports;
+  const fixture = new EslintPluginUnusedImportsPackage();
 
   test('instance is created', () => {
     expect(fixture).toBeDefined();

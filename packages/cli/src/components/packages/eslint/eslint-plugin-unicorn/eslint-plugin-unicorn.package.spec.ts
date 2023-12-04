@@ -1,8 +1,8 @@
 import { eslint } from '../eslint.package';
-import { eslintPluginUnicorn } from './eslint-plugin-unicorn.package';
+import { EslintPluginUnicornPackage } from './eslint-plugin-unicorn.package';
 
 describe('EslintPluginUnicornPackage', () => {
-  const fixture = eslintPluginUnicorn;
+  const fixture = new EslintPluginUnicornPackage();
 
   test('instance is created', () => {
     expect(fixture).toBeDefined();
