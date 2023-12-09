@@ -24,6 +24,7 @@ Confiks was developed out of the necessity to streamline and optimize the often-
 #### Supports packages
 
 - [commit-lint][commit-lint]: Enforces commit message conventions.
+  - [config-conventional][config-conventional]: Shareable commit-lint config.
 - [eslint][eslint]: A pluggable linting utility for JavaScript and JSX.
   - [eslint-plugin-prettier][eslint-plugin-prettier]: Integrates Prettier with ESLint.
   - [eslint-plugin-simple-import-sort][eslint-plugin-simple-import-sort]: Enforces a consistent import order.
@@ -38,6 +39,7 @@ Confiks was developed out of the necessity to streamline and optimize the often-
 [confiksRepo]: https://github.com/Kordrad/Confiks
 [confiksDemo]: https://github.com/Kordrad/Confiks/blob/master/readme/demo.gif?raw=true
 [commit-lint]: https://commitlint.js.org/
+[config-conventional]: https://www.npmjs.com/package/@commitlint/config-conventional
 [eslint]: https://eslint.org/
 [eslint-plugin-prettier]: https://github.com/prettier/eslint-plugin-prettier
 [eslint-plugin-simple-import-sort]: https://github.com/lydell/eslint-plugin-simple-import-sort
