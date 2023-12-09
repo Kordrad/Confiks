@@ -6,7 +6,7 @@ class ConfigConventionalPackage extends BasePackage {
   readonly package = '@commitlint/config-conventional';
   readonly dependencyType = DependencyTypeEnum.devDependency;
   readonly description =
-    'Shareable commitlint config enforcing conventional commits.';
+    'Shareable commit-lint config enforcing conventional commits.';
 }
 
 export const configConventional = new ConfigConventionalPackage();
