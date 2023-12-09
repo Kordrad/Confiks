@@ -3,12 +3,22 @@
  * @see node_modules/enquirer/index.d.ts:22
  * */
 
-export interface Choice {
+export interface Choice<Value = unknown> {
   name: string;
   message?: string;
-  value?: unknown;
+  value?: Value;
   hint?: string;
-  role?: string;
+  role?: 'separator';
   enabled?: boolean;
   disabled?: boolean | string;
+  choices?: Choice[];
+  indent?: string;
+  onChoice?: (state: unknown, choice: Choice, index: number) => void;
+  indicator?: (state: unknown, choice: Choice, index: number) => void;
+  normalized?: boolean;
+  input?: string;
+  index?: number;
+  cursor?: number;
+  level?: number;
+  path?: string;
 }

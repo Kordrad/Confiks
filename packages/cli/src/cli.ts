@@ -8,71 +8,70 @@
 //
 
 import chalk from 'chalk';
-import enquirer from 'enquirer';
 import gradient from 'gradient-string';
 import ora from 'ora';
 
-import { PackageChoice } from './components/package-choice.component.js';
+import { PackageChoice } from './components/choices/package.choice.js';
 import { CommitLintPackage } from './components/packages/commit-lint/commit-lint.package.js';
 import { EslintPackage } from './components/packages/eslint/eslint.package.js';
 import { HuskyPackage } from './components/packages/husky/husky.package.js';
 import { LintStagedPackage } from './components/packages/lint-staged/lint-staged.package.js';
 import { PrettierPackage } from './components/packages/prettier/prettier.package.js';
 import { PrettyQuickPackage } from './components/packages/pretty-quick/pretty-quick.package.js';
-import { Separator } from './components/separator.component.js';
+import { MultiSelect } from './components/prompts/multiselect.prompt.js';
 import { InitializerService } from './services/initializer.service.js';
-import { type Choice } from './type/interfaces/choice.interface.js';
 import { type PackageInterface } from './type/interfaces/package.interface.js';
 import { getModifiedFiles, getUntrackedFiles } from './utils/git.utils.js';
 import { pathsLog, welcomeLog } from './utils/logs.utils.js';
 
-async function selectPackages(): Promise<PackageInterface[]> {
-  const { packages } = await enquirer.prompt<{
-    packages: PackageInterface[];
-  }>({
-    type: 'multiselect',
-    name: 'packages',
-    message: 'Pick packages to install',
-    choices: [
-      new PackageChoice(new PrettierPackage()),
+async function selectPackageGroup({
+  prefix,
+  message,
+  choices,
+}: {
+  prefix: string;
+  message: string;
+  choices: PackageChoice[];
+}): Promise<PackageInterface[]> {
+  const result = await MultiSelect<{ group: PackageInterface[] }>({
+    prefix,
+    message,
+    choices,
+    name: 'group',
+    result() {
+      return this.selected.map(({ value }) => value);
+    },
+  });
+  return result.group;
+}
 
-      new Separator('Automations:'),
+async function selectPackages(): Promise<PackageInterface[]> {
+  const codeStyle = await selectPackageGroup({
+    prefix: '🧼',
+    message: 'Pick code style packages to install',
+    choices: [new PackageChoice(new PrettierPackage())],
+  });
+
+  const automations = await selectPackageGroup({
+    prefix: '🤖',
+    message: 'Pick automation packages to install',
+    choices: [
       new PackageChoice(new HuskyPackage()),
       new PackageChoice(new PrettyQuickPackage()),
       new PackageChoice(new LintStagedPackage()),
+    ],
+  });
 
-      new Separator('Linters:'),
+  const linters = await selectPackageGroup({
+    prefix: '🧹',
+    message: 'Pick linter packages to install',
+    choices: [
       new PackageChoice(new EslintPackage()),
       new PackageChoice(new CommitLintPackage()),
-    ] satisfies Choice[],
-    prefix: '📦',
-    result() {
-      return this.selected.map(({ value }) => value);
-    },
+    ],
   });
-  return packages;
-}
 
-async function selectExtensions({
-  title,
-  extensions: choices,
-}: PackageInterface): Promise<PackageInterface[]> {
-  if (choices.length === 0) {
-    return [];
-  }
-  const { extensions } = await enquirer.prompt<{
-    extensions: PackageInterface[];
-  }>({
-    type: 'multiselect',
-    name: 'extensions',
-    message: `Pick extensions for ${title} to install`,
-    choices: choices.map(choice => new PackageChoice(choice)),
-    prefix: '🧰',
-    result() {
-      return this.selected.map(({ value }) => value);
-    },
-  });
-  return extensions;
+  return [...codeStyle, ...linters, ...automations];
 }
 
 function configureProject(packages: PackageInterface[]): Promise<void> {
@@ -133,14 +132,7 @@ Then you can have a beer. Cheers! 🍻
 
 //#cli
 welcomeLog(async () => {
-  const packages: PackageInterface[] = await selectPackages();
-  const extensions: PackageInterface[] = [];
-  for (const package_ of packages.filter(
-    ({ extensions }) => extensions?.length > 0
-  )) {
-    extensions.push(...(await selectExtensions(package_)));
-  }
-  await configureProject([...packages, ...extensions]);
+  await configureProject(await selectPackages());
   endScreen();
 });
 //#endcli
