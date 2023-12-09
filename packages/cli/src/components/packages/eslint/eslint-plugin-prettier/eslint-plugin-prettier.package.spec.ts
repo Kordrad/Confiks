@@ -1,4 +1,4 @@
-import { eslint } from '../eslint.package';
+import { EslintPackage } from '../eslint.package';
 import { EslintPluginPrettierPackage } from './eslint-plugin-prettier.package';
 
 describe('EslintPluginPrettierPackage', () => {
@@ -9,6 +9,6 @@ describe('EslintPluginPrettierPackage', () => {
   });
 
   test('should be included in parent package', () => {
-    expect(eslint.extensions).toContainEqual(fixture);
+    expect(new EslintPackage().extensions).toContainEqual(fixture);
   });
 });

@@ -1,14 +1,14 @@
-import { commitLint } from './commit-lint.package';
-import { configConventional } from './config-conventional.package';
+import { CommitLintPackage } from './commit-lint.package';
+import { ConfigConventionalPackage } from './config-conventional.package';
 
 describe('ConfigConventionalPackage', () => {
-  const fixture = configConventional;
+  const fixture = new ConfigConventionalPackage();
 
   test('instance is created', () => {
     expect(fixture).toBeDefined();
   });
 
   test('should be included in parent package', () => {
-    expect(commitLint.extensions).toContainEqual(fixture);
+    expect(new CommitLintPackage().extensions).toContainEqual(fixture);
   });
 });

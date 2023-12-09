@@ -1,12 +1,16 @@
-import { commitLint } from '../components/packages/commit-lint/commit-lint.package.js';
-import { husky } from '../components/packages/husky/husky.package.js';
-import { prettier } from '../components/packages/prettier/prettier.package.js';
+import { CommitLintPackage } from '../components/packages/commit-lint/commit-lint.package.js';
+import { HuskyPackage } from '../components/packages/husky/husky.package.js';
+import { PrettierPackage } from '../components/packages/prettier/prettier.package.js';
 import { InitializerService } from './initializer.service';
 import { packageManagerService } from './package-manager.service.js';
 
 describe('InitializerService', () => {
   let fixture: InitializerService;
-  const somePackages = [husky, prettier, commitLint];
+  const somePackages = [
+    new HuskyPackage(),
+    new PrettierPackage(),
+    new CommitLintPackage(),
+  ];
 
   beforeEach(() => {
     fixture = new InitializerService();

@@ -1,13 +1,13 @@
 import { packageIsInstalled } from '../../../utils/package-json.utils.js';
-import { eslint } from '../eslint/eslint.package.js';
-import { prettier } from '../prettier/prettier.package.js';
+import { EslintPackage } from '../eslint/eslint.package.js';
+import { PrettierPackage } from '../prettier/prettier.package.js';
 
 export const CONFIG_NAME = '.lintstagedrc';
 export const CONFIG = () => ({
-  ...(packageIsInstalled(prettier.package) && {
+  ...(packageIsInstalled(new PrettierPackage().package) && {
     '*.{json,js,ts,html}': ['prettier --write --ignore-unknown'],
   }),
-  ...(packageIsInstalled(eslint.package) && {
+  ...(packageIsInstalled(new EslintPackage().package) && {
     '*.{js,ts,jsx}': ['eslint --quiet --fix'],
   }),
 });

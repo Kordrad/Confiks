@@ -5,7 +5,7 @@ import { BasePackage } from '../base.package.js';
 /**
  * @see https://typicode.github.io/husky/
  * */
-class HuskyPackage extends BasePackage {
+export class HuskyPackage extends BasePackage {
   readonly title = 'Husky 🐶';
   readonly package = 'husky';
   readonly dependencyType = DependencyTypeEnum.devDependency;
@@ -16,5 +16,3 @@ class HuskyPackage extends BasePackage {
     childProcess.execSync('npm pkg set scripts.prepare="husky install"');
   }
 }
-
-export const husky = new HuskyPackage();
