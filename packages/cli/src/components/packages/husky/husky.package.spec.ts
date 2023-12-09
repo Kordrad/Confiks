@@ -1,8 +1,8 @@
 import { childProcess } from '../../../services/node/child-process.service.js';
-import { husky } from './husky.package.js';
+import { HuskyPackage } from './husky.package.js';
 
 describe('HuskyPackage', () => {
-  const fixture = husky;
+  const fixture = new HuskyPackage();
 
   test('instance is created', () => {
     expect(fixture).toBeDefined();

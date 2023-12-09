@@ -65,5 +65,3 @@ export class EslintPackage extends BasePackage {
     this.#eslintService.writeConfig(ROOT_CONFIG_NAME, stringify(ROOT_CONFIG));
   }
 }
-
-export const eslint = new EslintPackage();

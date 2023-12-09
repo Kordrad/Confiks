@@ -4,12 +4,12 @@ import { DependencyTypeEnum } from '../../../type/enums/dependency-type.enum.js'
 import { stringify } from '../../../utils/json.utils.js';
 import { packageIsInstalled } from '../../../utils/package-json.utils.js';
 import { BasePackage } from '../base.package.js';
-import { husky } from '../husky/husky.package.js';
+import { HuskyPackage } from '../husky/husky.package.js';
 
 /**
  * @see https://www.npmjs.com/package/lint-staged
  * */
-class LintStagedPackage extends BasePackage {
+export class LintStagedPackage extends BasePackage {
   readonly title = '🚫💩 lint-staged';
   readonly package = 'lint-staged';
   readonly dependencyType = DependencyTypeEnum.devDependency;
@@ -17,7 +17,7 @@ class LintStagedPackage extends BasePackage {
     "Run linters against staged git files and don't let 💩 slip into your code base!";
 
   configure(): void {
-    if (packageIsInstalled(husky.package)) {
+    if (packageIsInstalled(new HuskyPackage().package)) {
       huskyService.addHook('pre-commit', 'npx lint-staged');
     }
 
@@ -32,5 +32,3 @@ class LintStagedPackage extends BasePackage {
     fileSystem.writeFile(CONFIG_NAME, stringify(CONFIG()));
   }
 }
-
-export const lintStaged = new LintStagedPackage();

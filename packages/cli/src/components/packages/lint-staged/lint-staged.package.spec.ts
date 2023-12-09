@@ -1,13 +1,13 @@
 import { fileSystem } from '../../../services/node/file-system.service.js';
 import { huskyService } from '../../../services/packages/husky/husky.service.js';
 import * as PackageJsonUtils from '../../../utils/package-json.utils.js';
-import { lintStaged } from './lint-staged.package.js';
+import { LintStagedPackage } from './lint-staged.package.js';
 
 jest.mock('../../../services/node/file-system.service.js');
 jest.mock('../../../services/packages/husky/husky.service.js');
 
 describe('LintStagedPackage', () => {
-  const fixture = lintStaged;
+  const fixture = new LintStagedPackage();
 
   beforeEach(() => {
     jest

@@ -1,6 +1,6 @@
 import * as PackageJsonUtils from '../../../utils/package-json.utils.js';
-import { eslint } from '../eslint/eslint.package.js';
-import { prettier } from '../prettier/prettier.package.js';
+import { EslintPackage } from '../eslint/eslint.package.js';
+import { PrettierPackage } from '../prettier/prettier.package.js';
 import { CONFIG, CONFIG_NAME } from './lint-staged-config.constant.js';
 
 describe('lint-staged constant', () => {
@@ -26,7 +26,7 @@ describe('lint-staged constant', () => {
     const config = CONFIG();
     expect(PackageJsonUtils.packageIsInstalled).nthCalledWith(
       1,
-      prettier.package
+      new PrettierPackage().package
     );
     expect(JSON.stringify(config)).toMatch('prettier');
   });
@@ -36,7 +36,7 @@ describe('lint-staged constant', () => {
     const config = CONFIG();
     expect(PackageJsonUtils.packageIsInstalled).nthCalledWith(
       2,
-      eslint.package
+      new EslintPackage().package
     );
     expect(JSON.stringify(config)).toMatch('eslint');
   });

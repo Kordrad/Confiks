@@ -13,12 +13,12 @@ import gradient from 'gradient-string';
 import ora from 'ora';
 
 import { PackageChoice } from './components/package-choice.component.js';
-import { commitLint } from './components/packages/commit-lint/commit-lint.package.js';
-import { eslint } from './components/packages/eslint/eslint.package.js';
-import { husky } from './components/packages/husky/husky.package.js';
-import { lintStaged } from './components/packages/lint-staged/lint-staged.package.js';
-import { prettier } from './components/packages/prettier/prettier.package.js';
-import { prettyQuick } from './components/packages/pretty-quick/pretty-quick.package.js';
+import { CommitLintPackage } from './components/packages/commit-lint/commit-lint.package.js';
+import { EslintPackage } from './components/packages/eslint/eslint.package.js';
+import { HuskyPackage } from './components/packages/husky/husky.package.js';
+import { LintStagedPackage } from './components/packages/lint-staged/lint-staged.package.js';
+import { PrettierPackage } from './components/packages/prettier/prettier.package.js';
+import { PrettyQuickPackage } from './components/packages/pretty-quick/pretty-quick.package.js';
 import { Separator } from './components/separator.component.js';
 import { InitializerService } from './services/initializer.service.js';
 import { type Choice } from './type/interfaces/choice.interface.js';
@@ -34,16 +34,16 @@ async function selectPackages(): Promise<PackageInterface[]> {
     name: 'packages',
     message: 'Pick packages to install',
     choices: [
-      new PackageChoice(prettier),
+      new PackageChoice(new PrettierPackage()),
 
       new Separator('Automations:'),
-      new PackageChoice(husky),
-      new PackageChoice(prettyQuick),
-      new PackageChoice(lintStaged),
+      new PackageChoice(new HuskyPackage()),
+      new PackageChoice(new PrettyQuickPackage()),
+      new PackageChoice(new LintStagedPackage()),
 
       new Separator('Linters:'),
-      new PackageChoice(eslint),
-      new PackageChoice(commitLint),
+      new PackageChoice(new EslintPackage()),
+      new PackageChoice(new CommitLintPackage()),
     ] satisfies Choice[],
     prefix: '📦',
     result() {

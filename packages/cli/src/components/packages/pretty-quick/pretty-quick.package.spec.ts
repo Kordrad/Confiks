@@ -1,11 +1,11 @@
 import { huskyService } from '../../../services/packages/husky/husky.service.js';
 import * as PackageJsonUtils from '../../../utils/package-json.utils.js';
-import { prettyQuick } from './pretty-quick.package.js';
+import { PrettyQuickPackage } from './pretty-quick.package.js';
 
 jest.mock('../../../services/packages/husky/husky.service.js');
 
 describe('PrettyQuick', () => {
-  const fixture = prettyQuick;
+  const fixture = new PrettyQuickPackage();
 
   beforeEach(() => {
     jest

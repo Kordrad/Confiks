@@ -6,7 +6,7 @@ import { CONFIG, IGNORE } from './prettier.constants.js';
 /**
  * @see https://www.npmjs.com/package/prettier
  * */
-class PrettierPackage extends BasePackage {
+export class PrettierPackage extends BasePackage {
   readonly title = 'Prettier 🖌️';
   readonly dependencyType = DependencyTypeEnum.devDependency;
   readonly package = 'prettier';
@@ -17,5 +17,3 @@ class PrettierPackage extends BasePackage {
     fileSystem.writeFile('.prettierignore', IGNORE);
   }
 }
-
-export const prettier = new PrettierPackage();

@@ -1,11 +1,11 @@
 import { huskyService } from '../../../services/packages/husky/husky.service.js';
 import * as PackageJsonUtils from '../../../utils/package-json.utils.js';
-import { commitLint } from './commit-lint.package.js';
+import { CommitLintPackage } from './commit-lint.package.js';
 
 jest.mock('../../../services/packages/husky/husky.service.js');
 
 describe('CommitLintPackage', () => {
-  const fixture = commitLint;
+  const fixture = new CommitLintPackage();
 
   beforeEach(() => {
     jest
