@@ -23,7 +23,7 @@ dealing with configuration complexities.
 
 ## Features
 
-### Supports packages
+### Packages Support
 
 - [commit-lint][commit-lint]: Enforces commit message conventions.
   - [config-conventional][config-conventional]: Shareable commit-lint config.
@@ -40,6 +40,7 @@ dealing with configuration complexities.
 ### Package Managers Support
 
 - NPM
+- PNPM
 
 [//]: # 'Aliases:'
 [confiksNpm]: https://www.npmjs.com/package/confiks
