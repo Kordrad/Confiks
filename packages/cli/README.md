@@ -1,7 +1,7 @@
-# Confiks
+# `Confiks` Cli
 
-Confiks is a library designed to assist in the installation and configuration of frontend projects. Utilize this Command
-Line Interface (CLI) to swiftly install essential dependencies.
+`Confiks` is a CLI library designed to assist in the installation and configuration of frontend projects. This Command
+Line Interface (CLI) aids in swiftly installing essential dependencies.
 
 [![VERSION](https://img.shields.io/npm/v/confiks)][confiksNpm]
 [![LICENSE](https://img.shields.io/npm/l/confiks)](LICENSE)
@@ -17,11 +17,13 @@ npx confiks
 
 ### Why?
 
-Confiks was developed out of the necessity to streamline and optimize the often-tedious process of setting up and configuring various tools within a new project. The main aim is to save time and simplify the initial project setup by automating numerous configuration tasks, enabling developers to focus more on coding and less on configuration complexities.
+`Confiks` was developed to automate and optimize the process of setting up and configuring various tools for the
+projects. The ultimate goal is to save time on initial project setup and allow developers to focus on coding rather than
+dealing with configuration complexities.
 
 ## Features
 
-#### Supports packages
+### Supports packages
 
 - [commit-lint][commit-lint]: Enforces commit message conventions.
   - [config-conventional][config-conventional]: Shareable commit-lint config.
@@ -35,6 +37,11 @@ Confiks was developed out of the necessity to streamline and optimize the often-
 - [prettier][prettier]: A code formatter.
 - [pretty-quick][pretty-quick]: Runs Prettier on your changed files.
 
+### Package Managers Support
+
+- NPM
+
+[//]: # 'Aliases:'
 [confiksNpm]: https://www.npmjs.com/package/confiks
 [confiksRepo]: https://github.com/Kordrad/Confiks
 [confiksDemo]: https://github.com/Kordrad/Confiks/blob/master/readme/demo.gif?raw=true
