@@ -1,11 +1,11 @@
-import { DependencyTypeEnum } from '../type/enums/dependency-type.enum.js';
-import type { PackagesEnumKeys } from '../type/enums/packages.enum.js';
-import type { PackageManager } from '../type/interfaces/package-manager.interface.js';
-import { fileSystem } from './node/file-system.service.js';
-import { NpmManagerService } from './package-managers/npm-manager.service.js';
-import { PnpmManagerService } from './package-managers/pnpm-manager.service.js';
+import { DependencyTypeEnum } from '../../type/enums/dependency-type.enum.js';
+import type { PackagesEnumKeys } from '../../type/enums/packages.enum.js';
+import type { PackageManager } from '../../type/interfaces/package-manager.interface.js';
+import { fileSystem } from '../node/file-system.service.js';
+import { NpmManagerService } from './npm-manager.service.js';
+import { PnpmManagerService } from './pnpm-manager.service.js';
 
-class PackageManagerService {
+export class PackageManagerService {
   private readonly dependencies: PackagesEnumKeys[] = [];
   private readonly devDependencies: PackagesEnumKeys[] = [];
   private readonly global: PackagesEnumKeys[] = [];
@@ -41,5 +41,3 @@ class PackageManagerService {
     });
   }
 }
-
-export const packageManagerService = new PackageManagerService();

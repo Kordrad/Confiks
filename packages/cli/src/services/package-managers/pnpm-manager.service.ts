@@ -13,6 +13,7 @@ export class PnpmManagerService implements PackageManager {
     [DependencyTypeEnum.devDependency]: '-D',
     [DependencyTypeEnum.global]: '-g',
   };
+
   async install({
     dependency = [],
     devDependency = [],
@@ -20,12 +21,15 @@ export class PnpmManagerService implements PackageManager {
   }: {
     [Key in DependencyTypeEnumKeys]: [];
   }) {
-    await this.installPackages(dependency, DependencyTypeEnum.dependency);
-    await this.installPackages(devDependency, DependencyTypeEnum.devDependency);
-    await this.installPackages(global, DependencyTypeEnum.global);
+    await this.#installPackages(dependency, DependencyTypeEnum.dependency);
+    await this.#installPackages(
+      devDependency,
+      DependencyTypeEnum.devDependency
+    );
+    await this.#installPackages(global, DependencyTypeEnum.global);
   }
 
-  private async installPackages(
+  async #installPackages(
     packages: PackagesEnumKeys[],
     installationType: DependencyTypeEnum
   ): Promise<void> {
