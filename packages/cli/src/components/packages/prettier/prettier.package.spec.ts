@@ -1,39 +1,44 @@
 import { fileSystem } from '../../../services/node/file-system.service.js';
-import { PrettierPackage } from './prettier.package';
+import * as packageUtils from '../../../utils/package-json.utils.js';
+import { PrettierPackage } from './prettier.package.js';
 
 jest.mock('../../../services/node/file-system.service.js');
+jest.mock('../../../utils/package-json.utils.js');
 
-describe('Prettier', () => {
-  const fixture = new PrettierPackage();
+describe('PrettierPackage', () => {
+  let prettierPackage;
 
-  test('instance is created', () => {
-    expect(fixture).toBeDefined();
+  beforeEach(() => {
+    prettierPackage = new PrettierPackage();
   });
 
-  describe('prepare', () => {
-    let configureFunction: unknown;
+  afterEach(() => {
+    jest.clearAllMocks();
+  });
 
-    beforeEach(() => {
-      configureFunction = jest.spyOn(fixture, 'configure');
-      fixture.configure?.();
-    });
-    test('should has prepare method', () => {
-      expect(configureFunction).toBeCalled();
-    });
+  it('should create an instance of PrettierPackage', () => {
+    expect(prettierPackage).toBeInstanceOf(PrettierPackage);
+  });
 
-    test('should create files', () => {
-      expect(fileSystem.writeFile).toHaveBeenCalledTimes(2);
+  it('should have correct properties', () => {
+    expect(prettierPackage.title).toEqual('Prettier 🖌️');
+    expect(prettierPackage.package).toEqual('prettier');
+  });
 
-      for (const [id, fileName] of [
+  describe('configure', () => {
+    it('should configure correctly', () => {
+      jest.spyOn(packageUtils, 'packageIsInstalled').mockReturnValue(true);
+
+      prettierPackage.configure();
+
+      expect(fileSystem.writeFile).toHaveBeenCalledWith(
         '.prettierrc',
+        expect.any(String)
+      );
+      expect(fileSystem.writeFile).toHaveBeenCalledWith(
         '.prettierignore',
-      ].entries()) {
-        expect(fileSystem.writeFile).toHaveBeenNthCalledWith(
-          id + 1,
-          fileName,
-          expect.anything()
-        );
-      }
+        expect.any(String)
+      );
     });
   });
 });

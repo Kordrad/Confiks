@@ -9,6 +9,7 @@ export enum PackagesEnum {
   'husky',
   'lint-staged',
   'prettier',
+  'prettier-plugin-organize-attributes',
   'pretty-quick',
 }
 

@@ -33,6 +33,7 @@
     "husky",
     "lint-staged",
     "prettier",
+    "prettier-plugin-organize-attributes",
     "pretty-quick"
   ],
   "main": "./src/index.js",

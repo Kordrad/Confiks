@@ -35,6 +35,7 @@ dealing with configuration complexities.
 - [husky][husky]: Enables Git hooks.
 - [lint-stagged][lint-stagged]: Lints only the files that are staged in Git.
 - [prettier][prettier]: A code formatter.
+  - [prettier-plugin-organize-attributes][prettier-plugin-organize-attributes]: Organize your HTML attributes automatically with Prettier
 - [pretty-quick][pretty-quick]: Runs Prettier on your changed files.
 
 ### Package Managers Support
@@ -56,4 +57,5 @@ dealing with configuration complexities.
 [husky]: https://typicode.github.io/husky/
 [lint-stagged]: https://github.com/lint-staged/lint-staged
 [prettier]: https://prettier.io/
+[prettier-plugin-organize-attributes]: https://github.com/NiklasPor/prettier-plugin-organize-attributes
 [pretty-quick]: https://github.com/azz/pretty-quick
