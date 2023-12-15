@@ -12,7 +12,7 @@ Line Interface (CLI) aids in swiftly installing essential dependencies.
 ![usage example][confiksDemo]
 
 ```shell
-npx confiks
+npx confiks@latest
 ```
 
 ### Why?
