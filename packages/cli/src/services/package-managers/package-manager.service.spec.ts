@@ -16,18 +16,21 @@ describe('PackageManagerService', () => {
 
   describe('#addPackage', () => {
     it('should add a normal dependency', () => {
-      packageManager.addPackage('husky', DependencyTypeEnum.dependency);
-      expect(packageManager['dependencies']).toContain('husky');
+      packageManager.addPackage('husky@"1"', DependencyTypeEnum.dependency);
+      expect(packageManager['dependencies']).toContain('husky@"1"');
     });
 
     it('should add a dev dependency', () => {
-      packageManager.addPackage('husky', DependencyTypeEnum.devDependency);
-      expect(packageManager['devDependencies']).toContain('husky');
+      packageManager.addPackage(
+        'husky@"latest"',
+        DependencyTypeEnum.devDependency
+      );
+      expect(packageManager['devDependencies']).toContain('husky@"latest"');
     });
 
     it('should add a global dependency', () => {
-      packageManager.addPackage('husky', DependencyTypeEnum.global);
-      expect(packageManager['global']).toContain('husky');
+      packageManager.addPackage('husky@"1 - 2"', DependencyTypeEnum.global);
+      expect(packageManager['global']).toContain('husky@"1 - 2"');
     });
   });
 

@@ -1,19 +1,19 @@
 import { DependencyTypeEnum } from '../../type/enums/dependency-type.enum.js';
-import type { PackagesEnumKeys } from '../../type/enums/packages.enum.js';
 import type { PackageManager } from '../../type/interfaces/package-manager.interface.js';
+import type { Dependency } from '../../type/types/package-version.type.js';
 import { fileSystem } from '../node/file-system.service.js';
 import { NpmManagerService } from './npm-manager.service.js';
 import { PnpmManagerService } from './pnpm-manager.service.js';
 
 export class PackageManagerService {
-  private readonly dependencies: PackagesEnumKeys[] = [];
-  private readonly devDependencies: PackagesEnumKeys[] = [];
-  private readonly global: PackagesEnumKeys[] = [];
+  private readonly dependencies: Dependency[] = [];
+  private readonly devDependencies: Dependency[] = [];
+  private readonly global: Dependency[] = [];
 
   #packageManager: PackageManager = this.#selectPackageManager();
 
   addPackage(
-    packageDependency: PackagesEnumKeys,
+    packageDependency: Dependency,
     installationType: DependencyTypeEnum
   ): void {
     if (installationType === DependencyTypeEnum.dependency)

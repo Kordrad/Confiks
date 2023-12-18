@@ -11,6 +11,7 @@ import { EslintPluginUnusedImportsPackage } from './eslint-plugin-unused-imports
 export class EslintPackage extends BasePackage {
   readonly title = 'ESLint';
   readonly package = 'eslint';
+  readonly version = '8';
   readonly dependencyType = DependencyTypeEnum.devDependency;
   readonly description =
     'is a tool for identifying and reporting on patterns found in ECMAScript/JavaScript code. (SUPPORTED: json)';

@@ -8,10 +8,11 @@ import { HuskyPackage } from '../husky/husky.package.js';
  * @see https://github.com/azz/pretty-quick
  * */
 export class PrettyQuickPackage extends BasePackage {
-  readonly dependencyType = DependencyTypeEnum.devDependency;
   readonly title = 'pretty-quick';
   readonly package = 'pretty-quick';
+  readonly version = '3';
   readonly description = 'Runs Prettier on your changed files.';
+  readonly dependencyType = DependencyTypeEnum.devDependency;
 
   configure(): void {
     if (!packageIsInstalled(new HuskyPackage().package)) {
