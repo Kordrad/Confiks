@@ -12,6 +12,7 @@ import { ConfigConventionalPackage } from './config-conventional.package.js';
 export class CommitLintPackage extends BasePackage {
   readonly title = 'commitLint 📔';
   readonly package = '@commitlint/cli';
+  readonly version = '18';
   readonly extensions = [new ConfigConventionalPackage()];
   readonly dependencyType = DependencyTypeEnum.devDependency;
   readonly description = 'Helps your team adhere to a commit convention.';

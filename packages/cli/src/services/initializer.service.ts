@@ -12,7 +12,7 @@ export class InitializerService {
   async install(): Promise<void> {
     for (const package_ of this.packages) {
       this.#packageManagerService.addPackage(
-        package_.package,
+        package_.dependency,
         package_.dependencyType
       );
     }

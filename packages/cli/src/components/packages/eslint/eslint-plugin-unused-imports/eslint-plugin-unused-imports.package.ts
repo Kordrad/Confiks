@@ -4,6 +4,7 @@ import { BasePackage } from '../../base.package.js';
 export class EslintPluginUnusedImportsPackage extends BasePackage {
   readonly title = 'eslint-plugin-unused-imports 🚮';
   readonly package = 'eslint-plugin-unused-imports';
+  readonly version = '3';
   readonly dependencyType = DependencyTypeEnum.devDependency;
   readonly description = 'Find and remove unused es6 module imports.';
 }

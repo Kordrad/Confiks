@@ -12,6 +12,7 @@ import { HuskyPackage } from '../husky/husky.package.js';
 export class LintStagedPackage extends BasePackage {
   readonly title = '🚫💩 lint-staged';
   readonly package = 'lint-staged';
+  readonly version = '15';
   readonly dependencyType = DependencyTypeEnum.devDependency;
   readonly description =
     "Run linters against staged git files and don't let 💩 slip into your code base!";
