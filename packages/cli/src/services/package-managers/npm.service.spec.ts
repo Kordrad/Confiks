@@ -1,7 +1,7 @@
 import { DependencyTypeEnum } from '../../type/enums/dependency-type.enum.js';
 import { PackagesEnum } from '../../type/enums/packages.enum.js';
 import * as childProcess from '../node/child-process.service.js';
-import { PnpmManagerService } from './pnpm-manager.service.js';
+import { NpmService } from './npm.service';
 
 jest.mock('../node/child-process.service.js', () => ({
   childProcess: {
@@ -10,10 +10,10 @@ jest.mock('../node/child-process.service.js', () => ({
 }));
 
 describe('NpmManagerService', () => {
-  let service: PnpmManagerService;
+  let service: NpmService;
 
   beforeEach(() => {
-    service = new PnpmManagerService();
+    service = new NpmService();
     jest.clearAllMocks();
   });
 
@@ -29,17 +29,17 @@ describe('NpmManagerService', () => {
 
       expect(spy).toHaveBeenCalledTimes(3);
       expect(spy).toHaveBeenCalledWith(
-        `pnpm add ${
+        `npm i ${
           service.installationType[DependencyTypeEnum.dependency]
         } SomePackage`
       );
       expect(spy).toHaveBeenCalledWith(
-        `pnpm add ${
+        `npm i ${
           service.installationType[DependencyTypeEnum.devDependency]
         } AnotherPackage`
       );
       expect(spy).toHaveBeenCalledWith(
-        `pnpm add ${
+        `npm i ${
           service.installationType[DependencyTypeEnum.global]
         } ThirdPackage`
       );

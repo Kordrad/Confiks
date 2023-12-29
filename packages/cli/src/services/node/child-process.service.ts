@@ -5,11 +5,13 @@ export class ChildProcessService {
     return cp.execSync(command, { encoding: 'utf8', ...options }).toString();
   }
 
-  execAsync(command: string): Promise<string> {
+  execAsync(command: string, options?: { stderr: boolean }): Promise<string> {
+    const { stderr: stderrShow = true } = options || {};
+
     return new Promise((resolve, reject) => {
       cp.exec(command, (error, stdout, stderr) => {
         if (error) return reject(error);
-        if (stderr) return reject(stderr);
+        if (stderr && stderrShow) return reject(stderr);
         resolve(stdout);
       });
     });

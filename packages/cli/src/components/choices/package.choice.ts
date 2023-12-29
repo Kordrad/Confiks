@@ -54,10 +54,14 @@ export class PackageChoice extends BaseChoice implements Choice {
     this.message = packageModel.title;
     this.value = packageModel;
     if (options?.hint) this.hint = options.hint;
-    if (packageModel.description)
-      this.hint = `(v${packageModel.version}) ${
-        packageModel.description || ''
-      }`;
+    if (packageModel.description) {
+      const version = packageModel.version.startsWith('latest')
+        ? packageModel.version
+        : `v${packageModel.version}`;
+
+      this.hint = `(${version}) ${packageModel.description || ''}`;
+    }
+
     if (options?.indent) this.indent = options.indent;
     if (packageModel.extensions?.length)
       this.#makeChildrenChoices(packageModel.extensions);
