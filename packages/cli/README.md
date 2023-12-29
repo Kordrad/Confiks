@@ -25,19 +25,6 @@ dealing with configuration complexities.
 
 ### Packages Support
 
-###### Code style
-
-- [prettier][prettier]: A code formatter.
-  - [prettier-plugin-organize-attributes][prettier-plugin-organize-attributes]: Organize your HTML attributes automatically with Prettier
-
-###### Automation
-
-- [husky][husky]: Enables Git hooks.
-- [lint-stagged][lint-stagged]: Lints only the files that are staged in Git.
-- [pretty-quick][pretty-quick]: Runs Prettier on your changed files.
-
-###### Linters
-
 - [commit-lint][commit-lint]: Enforces commit message conventions.
   - [config-conventional][config-conventional]: Shareable commit-lint config.
 - [eslint][eslint]: A pluggable linting utility for JavaScript and JSX.
@@ -45,6 +32,11 @@ dealing with configuration complexities.
   - [eslint-plugin-simple-import-sort][eslint-plugin-simple-import-sort]: Enforces a consistent import order.
   - [eslint-plugin-unicorn][eslint-plugin-unicorn]: Adds various ESLint rules for unicorn projects.
   - [eslint-plugin-unused-imports][eslint-plugin-unused-imports]: Detects and removes unused imports.
+- [husky][husky]: Enables Git hooks.
+- [lint-stagged][lint-stagged]: Lints only the files that are staged in Git.
+- [prettier][prettier]: A code formatter.
+  - [prettier-plugin-organize-attributes][prettier-plugin-organize-attributes]: Organize your HTML attributes automatically with Prettier
+- [pretty-quick][pretty-quick]: Runs Prettier on your changed files.
 
 ### Package Managers Support
 
