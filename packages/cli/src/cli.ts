@@ -57,8 +57,8 @@ async function selectPackages(): Promise<PackageInterface[]> {
     message: 'Pick automation packages to install',
     choices: [
       new PackageChoice(new HuskyPackage()),
-      new PackageChoice(new PrettyQuickPackage()),
       new PackageChoice(new LintStagedPackage()),
+      new PackageChoice(new PrettyQuickPackage()),
     ],
   });
 
@@ -66,8 +66,8 @@ async function selectPackages(): Promise<PackageInterface[]> {
     prefix: '🧹',
     message: 'Pick linter packages to install',
     choices: [
-      new PackageChoice(new EslintPackage()),
       new PackageChoice(new CommitLintPackage()),
+      new PackageChoice(new EslintPackage()),
     ],
   });
 
