@@ -27,24 +27,24 @@ dealing with configuration complexities.
 
 ###### Code style
 
-- [prettier][prettier]: A code formatter.
-  - [prettier-plugin-organize-attributes][prettier-plugin-organize-attributes]: Organize your HTML attributes automatically with Prettier
+- [prettier v3][prettier]: A code formatter.
+  - [prettier-plugin-organize-attributes v1][prettier-plugin-organize-attributes]: Organize your HTML attributes automatically with Prettier
 
 ###### Automation
 
-- [husky][husky]: Enables Git hooks.
-- [lint-stagged][lint-stagged]: Lints only the files that are staged in Git.
-- [pretty-quick][pretty-quick]: Runs Prettier on your changed files.
+- [husky v8][husky]: Enables Git hooks.
+- [lint-stagged v15][lint-stagged]: Lints only the files that are staged in Git.
+- [pretty-quick v3][pretty-quick]: Runs Prettier on your changed files.
 
 ###### Linters
 
-- [commit-lint][commit-lint]: Enforces commit message conventions.
-  - [config-conventional][config-conventional]: Shareable commit-lint config.
-- [eslint][eslint]: A pluggable linting utility for JavaScript and JSX.
-  - [eslint-plugin-prettier][eslint-plugin-prettier]: Integrates Prettier with ESLint.
-  - [eslint-plugin-simple-import-sort][eslint-plugin-simple-import-sort]: Enforces a consistent import order.
-  - [eslint-plugin-unicorn][eslint-plugin-unicorn]: Adds various ESLint rules for unicorn projects.
-  - [eslint-plugin-unused-imports][eslint-plugin-unused-imports]: Detects and removes unused imports.
+- [commit-lint v18][commit-lint]: Enforces commit message conventions.
+  - [config-conventional v18][config-conventional]: Shareable commit-lint config.
+- [eslint v8][eslint]: A pluggable linting utility for JavaScript and JSX.
+  - [eslint-plugin-prettier v5][eslint-plugin-prettier]: Integrates Prettier with ESLint.
+  - [eslint-plugin-simple-import-sort v10][eslint-plugin-simple-import-sort]: Enforces a consistent import order.
+  - [eslint-plugin-unicorn v49][eslint-plugin-unicorn]: Adds various ESLint rules for unicorn projects.
+  - [eslint-plugin-unused-imports v3][eslint-plugin-unused-imports]: Detects and removes unused imports.
 
 ### Package Managers Support
 
