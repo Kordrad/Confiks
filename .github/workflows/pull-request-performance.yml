@@ -1,0 +1,22 @@
+name: Run Performance
+
+on:
+  pull_request:
+    branches: [master, develop]
+
+jobs:
+  performance:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v2
+        with:
+          node-version: 19
+      - run: npm ci
+      - run: npm run cli:performance
+      - uses: actions/upload-artifact@v3
+        if: always()
+        with:
+          name: performance-report
+          path: performance-report/
+          retention-days: 30
