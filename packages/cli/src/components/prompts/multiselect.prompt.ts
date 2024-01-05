@@ -11,7 +11,8 @@ function normalizeChoices(normalizeArray: Choice[]): Choice[] {
       rest,
       ...(choices?.length > 0 ? normalizeChoices(choices) : []),
     ];
-    return [...previous, ...nextValue];
+    previous.push(...nextValue);
+    return previous;
   }, []);
 }
 
