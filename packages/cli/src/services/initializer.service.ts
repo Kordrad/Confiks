@@ -1,4 +1,6 @@
+import { DependencyTypeEnum } from '../type/enums/dependency-type.enum.js';
 import type { PackageInterface } from '../type/interfaces/package.interface.js';
+import type { PackagesDependencyGroup } from '../type/types/packages-dependency-group.interface.js';
 import { PackageManagerService } from './package-managers/package-manager.service.js';
 
 export class InitializerService {
@@ -10,14 +12,36 @@ export class InitializerService {
   }
 
   async install(): Promise<void> {
+    const packagesToInstall: PackagesDependencyGroup = {
+      dependency: [],
+      devDependency: [],
+      global: [],
+    };
+    const packagesToInit = [];
+
     for (const package_ of this.packages) {
-      this.#packageManagerService.addPackage(
-        package_.dependency,
-        package_.dependencyType
-      );
+      switch (package_.dependencyType) {
+        case DependencyTypeEnum.dependency: {
+          packagesToInstall.dependency.push(package_.dependency);
+          break;
+        }
+        case DependencyTypeEnum.devDependency: {
+          packagesToInstall.devDependency.push(package_.dependency);
+          break;
+        }
+        case DependencyTypeEnum.global: {
+          packagesToInstall.global.push(package_.dependency);
+          break;
+        }
+        case DependencyTypeEnum.none: {
+          packagesToInit.push(package_.package);
+          break;
+        }
+      }
     }
 
-    await this.#packageManagerService.install();
+    await this.#packageManagerService.install(packagesToInstall);
+    await this.#packageManagerService.create(packagesToInit);
   }
 
   configure(): Promise<void> {

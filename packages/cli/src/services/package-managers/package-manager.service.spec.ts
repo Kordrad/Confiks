@@ -1,7 +1,7 @@
-import { DependencyTypeEnum } from '../../type/enums/dependency-type.enum';
 import { PackageManagerService } from './package-manager.service';
 
 jest.mock('../node/file-system.service');
+jest.mock('../node/child-process.service.js');
 
 describe('PackageManagerService', () => {
   let packageManager: PackageManagerService;
@@ -14,33 +14,26 @@ describe('PackageManagerService', () => {
     jest.resetAllMocks();
   });
 
-  describe('#addPackage', () => {
-    it('should add a normal dependency', () => {
-      packageManager.addPackage('husky@"1"', DependencyTypeEnum.dependency);
-      expect(packageManager['dependencies']).toContain('husky@"1"');
-    });
+  describe('install', () => {
+    it('should call install method in PackageManager', async () => {
+      const installSpy = jest.spyOn(packageManager, 'install');
 
-    it('should add a dev dependency', () => {
-      packageManager.addPackage(
-        'husky@"latest"',
-        DependencyTypeEnum.devDependency
-      );
-      expect(packageManager['devDependencies']).toContain('husky@"latest"');
-    });
+      await packageManager.install({
+        dependency: [],
+        devDependency: [],
+        global: [],
+      });
 
-    it('should add a global dependency', () => {
-      packageManager.addPackage('husky@"1 - 2"', DependencyTypeEnum.global);
-      expect(packageManager['global']).toContain('husky@"1 - 2"');
+      expect(installSpy).toBeCalled();
     });
   });
 
-  describe('install', () => {
-    it('should call .install method in PackageManager', async () => {
-      const installSpy = jest.spyOn(packageManager, 'install');
+  describe('create', () => {
+    it('should call install method in PackageManager', async () => {
+      const createSpy = jest.spyOn(packageManager, 'create');
+      await packageManager.create(['123'] as never);
 
-      await packageManager.install();
-
-      expect(installSpy).toBeCalled();
+      expect(createSpy).toBeCalled();
     });
   });
 });

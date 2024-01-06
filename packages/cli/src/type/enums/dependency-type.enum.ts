@@ -4,9 +4,11 @@
  * */
 
 export const enum DependencyTypeEnum {
+  none,
   dependency,
   devDependency,
   global,
 }
 
 export type DependencyTypeEnumKeys = keyof typeof DependencyTypeEnum;
+export type DependencyTypeToInstall = Exclude<DependencyTypeEnumKeys, 'none'>;

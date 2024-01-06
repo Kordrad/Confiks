@@ -1,25 +1,34 @@
 /* eslint-disable unicorn/prevent-abbreviations */
-import {
-  DependencyTypeEnum,
-  type DependencyTypeEnumKeys,
-} from '../../type/enums/dependency-type.enum.js';
+import { DependencyTypeEnum } from '../../type/enums/dependency-type.enum.js';
 import type { PackagesEnumKeys } from '../../type/enums/packages.enum.js';
 import type { PackageManager } from '../../type/interfaces/package-manager.interface.js';
+import type { Dependency } from '../../type/types/package-version.type.js';
+import type { PackagesDependencyGroup } from '../../type/types/packages-dependency-group.interface.js';
 import { childProcess } from '../node/child-process.service.js';
 
-export class NpmManagerService implements PackageManager {
+export class NpmService implements PackageManager {
   readonly installationType = {
     [DependencyTypeEnum.dependency]: '--save',
     [DependencyTypeEnum.devDependency]: '--save-dev',
     [DependencyTypeEnum.global]: '--global',
   };
+
+  async create(packages: PackagesEnumKeys[]): Promise<void> {
+    for (const _package of packages)
+      try {
+        await childProcess.execAsync(`npm create ${_package}`, {
+          stderr: false,
+        });
+      } catch (error) {
+        console.error(error);
+      }
+  }
+
   async install({
     dependency = [],
     devDependency = [],
     global = [],
-  }: {
-    [Key in DependencyTypeEnumKeys]: [];
-  }) {
+  }: PackagesDependencyGroup) {
     await this.#installPackages(dependency, DependencyTypeEnum.dependency);
     await this.#installPackages(
       devDependency,
@@ -29,7 +38,7 @@ export class NpmManagerService implements PackageManager {
   }
 
   async #installPackages(
-    packages: PackagesEnumKeys[],
+    packages: Dependency[],
     installationType: DependencyTypeEnum
   ): Promise<void> {
     if (packages.length === 0) {

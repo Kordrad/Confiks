@@ -34,7 +34,8 @@
     "lint-staged",
     "prettier",
     "prettier-plugin-organize-attributes",
-    "pretty-quick"
+    "pretty-quick",
+    "stylelint"
   ],
   "main": "./src/index.js",
   "bin": {
