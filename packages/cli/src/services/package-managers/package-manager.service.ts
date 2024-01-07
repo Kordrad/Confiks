@@ -16,6 +16,10 @@ export class PackageManagerService {
     await this.#packageManager.create(packages);
   }
 
+  async uninstall(packages: string[]): Promise<void> {
+    await this.#packageManager.uninstall(packages);
+  }
+
   #selectPackageManager(): PackageManager {
     if (fileSystem.queryFileName('pnpm-lock.yaml')) return new PnpmService();
 

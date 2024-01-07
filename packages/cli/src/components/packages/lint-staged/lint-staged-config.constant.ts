@@ -2,6 +2,7 @@ import { packageIsInstalled } from '../../../utils/package-json.utils.js';
 import { EslintPackage } from '../eslint/eslint.package.js';
 import { PrettierPackage } from '../prettier/prettier.package.js';
 import { StylelintPackage } from '../stylelint/stylelint.package.js';
+import { StylelintConfigStandardScssPackage } from '../stylelint/stylelint-config-standard-scss/stylelint-config-standard-scss.package.js';
 
 export const CONFIG_NAME = '.lintstagedrc';
 export const CONFIG = () => ({
@@ -12,6 +13,8 @@ export const CONFIG = () => ({
     '*.{js,ts,jsx}': ['eslint --quiet --fix'],
   }),
   ...(packageIsInstalled(new StylelintPackage().package) && {
-    '*.{css}': ['npx stylelint'],
+    [packageIsInstalled(new StylelintConfigStandardScssPackage().package)
+      ? '*.{css,scss}'
+      : '*.{css}']: ['npx stylelint'],
   }),
 });

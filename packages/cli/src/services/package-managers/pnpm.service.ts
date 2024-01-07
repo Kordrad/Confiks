@@ -24,6 +24,11 @@ export class PnpmService implements PackageManager {
       }
   }
 
+  async uninstall(packages: string[]): Promise<void> {
+    const dependencies = packages.join(' ');
+    await childProcess.execAsync(`pnpm remove ${dependencies}`);
+  }
+
   async install({
     dependency = [],
     devDependency = [],

@@ -9,5 +9,6 @@ export interface PackageManager {
     [DependencyTypeEnum.global]: string;
   };
   install(packages: PackagesDependencyGroup): Promise<void>;
+  uninstall(packages: string[]): Promise<void>;
   create(packages: PackagesEnumKeys[]): Promise<void>;
 }
