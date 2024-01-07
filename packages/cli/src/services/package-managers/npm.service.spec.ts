@@ -59,16 +59,28 @@ describe('NpmManagerService', () => {
   });
 
   describe('create', () => {
-    it('should call execAsync create auto config', async () => {
-      const mockPackageName = 'test';
+    it('should call execAsync to create automatically config', async () => {
+      const mockPackageNameS = ['test'] as never;
       const spy = jest.spyOn(childProcess.childProcess, 'execAsync');
 
-      await service.create([mockPackageName] as never);
+      await service.create(mockPackageNameS);
 
       expect(spy).toHaveBeenCalledTimes(1);
-      expect(spy).toHaveBeenCalledWith(`npm create ${mockPackageName}`, {
+      expect(spy).toHaveBeenCalledWith(`npm create test`, {
         stderr: false,
       });
+    });
+  });
+
+  describe('uninstall', () => {
+    it('should call execAsync', async () => {
+      const mockPackageNameS = ['test', '123'] as never;
+      const spy = jest.spyOn(childProcess.childProcess, 'execAsync');
+
+      await service.uninstall(mockPackageNameS);
+
+      expect(spy).toHaveBeenCalledTimes(1);
+      expect(spy).toHaveBeenCalledWith(`npm uninstall test 123`);
     });
   });
 });

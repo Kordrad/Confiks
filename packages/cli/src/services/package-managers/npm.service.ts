@@ -24,6 +24,11 @@ export class NpmService implements PackageManager {
       }
   }
 
+  async uninstall(packages: string[]): Promise<void> {
+    const dependencies = packages.join(' ');
+    await childProcess.execAsync(`npm uninstall ${dependencies}`);
+  }
+
   async install({
     dependency = [],
     devDependency = [],

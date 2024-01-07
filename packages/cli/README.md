@@ -46,6 +46,7 @@ dealing with configuration complexities.
   - [eslint-plugin-unicorn v49][eslint-plugin-unicorn]: Adds various ESLint rules for unicorn projects.
   - [eslint-plugin-unused-imports v3][eslint-plugin-unused-imports]: Detects and removes unused imports.
 - [stylelint latest][stylelint]: A mighty CSS linter.
+  - [stylelint-config-standard-scss v13][stylelint-config-standard-scss]: The standard shareable SCSS config for Stylelint.
 
 ### Package Managers Support
 
@@ -69,3 +70,4 @@ dealing with configuration complexities.
 [prettier-plugin-organize-attributes]: https://github.com/NiklasPor/prettier-plugin-organize-attributes
 [pretty-quick]: https://github.com/azz/pretty-quick
 [stylelint]: https://stylelint.io/
+[stylelint-config-standard-scss]: https://www.npmjs.com/package/stylelint-config-standard-scss

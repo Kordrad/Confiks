@@ -20,7 +20,7 @@ describe('LintStagedPackage', () => {
     expect(fixture).toBeDefined();
   });
 
-  describe('prepare', () => {
+  describe('configure', () => {
     test('should has prepare method', () => {
       const function_ = jest.spyOn(fixture, 'configure');
       fixture.configure?.();

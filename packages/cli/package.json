@@ -35,7 +35,8 @@
     "prettier",
     "prettier-plugin-organize-attributes",
     "pretty-quick",
-    "stylelint"
+    "stylelint",
+    "stylelint-config-standard-scss"
   ],
   "main": "./src/index.js",
   "bin": {

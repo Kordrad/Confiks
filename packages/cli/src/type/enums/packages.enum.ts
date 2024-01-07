@@ -12,6 +12,7 @@ export enum PackagesEnum {
   'prettier-plugin-organize-attributes',
   'pretty-quick',
   'stylelint',
+  'stylelint-config-standard-scss',
 }
 
 export type PackagesEnumKeys = keyof typeof PackagesEnum;

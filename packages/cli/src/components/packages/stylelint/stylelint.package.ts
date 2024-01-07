@@ -1,5 +1,6 @@
 import { DependencyTypeEnum } from '../../../type/enums/dependency-type.enum.js';
 import { BasePackage } from '../base.package.js';
+import { StylelintConfigStandardScssPackage } from './stylelint-config-standard-scss/stylelint-config-standard-scss.package.js';
 
 /**
  * A class representing the StylelintPackage.
@@ -14,4 +15,5 @@ export class StylelintPackage extends BasePackage {
   readonly package = 'stylelint';
   readonly title = 'Stylelint';
   readonly version = 'latest';
+  readonly extensions = [new StylelintConfigStandardScssPackage()];
 }
