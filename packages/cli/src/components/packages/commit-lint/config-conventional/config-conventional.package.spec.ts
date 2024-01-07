@@ -1,4 +1,4 @@
-import { CommitLintPackage } from './commit-lint.package';
+import { CommitLintPackage } from '../commit-lint.package';
 import { ConfigConventionalPackage } from './config-conventional.package';
 
 describe('ConfigConventionalPackage', () => {
