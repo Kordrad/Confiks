@@ -57,4 +57,18 @@ describe('NpmManagerService', () => {
       expect(spy).not.toHaveBeenCalled();
     });
   });
+
+  describe('create', () => {
+    it('should call execAsync create auto config', async () => {
+      const mockPackageName = 'test';
+      const spy = jest.spyOn(childProcess.childProcess, 'execAsync');
+
+      await service.create([mockPackageName] as never);
+
+      expect(spy).toHaveBeenCalledTimes(1);
+      expect(spy).toHaveBeenCalledWith(`npm create ${mockPackageName}`, {
+        stderr: false,
+      });
+    });
+  });
 });
