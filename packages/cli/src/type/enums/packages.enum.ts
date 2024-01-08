@@ -10,7 +10,6 @@ export enum PackagesEnum {
   'lint-staged',
   'prettier',
   'prettier-plugin-organize-attributes',
-  'pretty-quick',
   'stylelint',
   'stylelint-config-standard-scss',
 }

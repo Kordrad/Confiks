@@ -34,7 +34,6 @@ dealing with configuration complexities.
 
 - [husky v8][husky]: Enables Git hooks.
 - [lint-stagged v15][lint-stagged]: Lints only the files that are staged in Git.
-- [pretty-quick v3][pretty-quick]: Runs Prettier on your changed files.
 
 ###### Linters
 
@@ -68,6 +67,5 @@ dealing with configuration complexities.
 [lint-stagged]: https://github.com/lint-staged/lint-staged
 [prettier]: https://prettier.io/
 [prettier-plugin-organize-attributes]: https://github.com/NiklasPor/prettier-plugin-organize-attributes
-[pretty-quick]: https://github.com/azz/pretty-quick
 [stylelint]: https://stylelint.io/
 [stylelint-config-standard-scss]: https://www.npmjs.com/package/stylelint-config-standard-scss

@@ -17,11 +17,10 @@ import { EslintPackage } from './components/packages/eslint/eslint.package.js';
 import { HuskyPackage } from './components/packages/husky/husky.package.js';
 import { LintStagedPackage } from './components/packages/lint-staged/lint-staged.package.js';
 import { PrettierPackage } from './components/packages/prettier/prettier.package.js';
-import { PrettyQuickPackage } from './components/packages/pretty-quick/pretty-quick.package.js';
 import { StylelintPackage } from './components/packages/stylelint/stylelint.package.js';
 import { MultiSelect } from './components/prompts/multiselect.prompt.js';
 import { InitializerService } from './services/initializer.service.js';
-import { type PackageInterface } from './type/interfaces/package.interface.js';
+import type { PackageInterface } from './type/interfaces/package.interface.js';
 import { getModifiedFiles, getUntrackedFiles } from './utils/git.utils.js';
 import { pathsLog, welcomeLog } from './utils/logs.utils.js';
 
@@ -59,7 +58,6 @@ async function selectPackages(): Promise<PackageInterface[]> {
     choices: [
       new PackageChoice(new HuskyPackage()),
       new PackageChoice(new LintStagedPackage()),
-      new PackageChoice(new PrettyQuickPackage()),
     ],
   });
 
