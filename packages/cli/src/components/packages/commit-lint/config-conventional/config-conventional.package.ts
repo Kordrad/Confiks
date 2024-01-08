@@ -1,5 +1,5 @@
-import { DependencyTypeEnum } from '../../../type/enums/dependency-type.enum.js';
-import { BasePackage } from '../base.package.js';
+import { DependencyTypeEnum } from '../../../../type/enums/dependency-type.enum.js';
+import { BasePackage } from '../../base.package.js';
 
 export class ConfigConventionalPackage extends BasePackage {
   readonly title = 'config-conventional';
