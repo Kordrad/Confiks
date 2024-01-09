@@ -1,5 +1,5 @@
 import { fileSystem } from '../../../../services/node/file-system.service.js';
-import { PackageManagerService } from '../../../../services/package-managers/package-manager.service.js';
+import { PackageManagerService } from '../../../../services/package-manager/package-manager.service.js';
 import { DependencyTypeEnum } from '../../../../type/enums/dependency-type.enum.js';
 import type { PackagesEnumKeys } from '../../../../type/enums/packages.enum.js';
 import { BasePackage } from '../../base.package.js';
