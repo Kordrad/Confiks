@@ -1,5 +1,7 @@
-import { childProcess } from '../../../services/node/child-process.service.js';
+import { huskyService } from '../../../services/packages/husky/husky.service.js';
 import { HuskyPackage } from './husky.package.js';
+
+jest.mock('../../../services/packages/husky/husky.service.js');
 
 describe('HuskyPackage', () => {
   const fixture = new HuskyPackage();
@@ -9,22 +11,16 @@ describe('HuskyPackage', () => {
   });
 
   describe('prepare', () => {
-    beforeEach(() => {
-      jest
-        .spyOn(childProcess, 'execSync')
-        .mockImplementation(jest.fn())
-        .mockClear();
-    });
-
     test('should has prepare method', () => {
       const function_ = jest.spyOn(fixture, 'configure');
       fixture.configure?.();
       expect(function_).toBeCalled();
     });
 
-    test('should prepare via execSync', () => {
+    test('should prepare via huskyService', () => {
+      expect(huskyService.prepare).toHaveBeenCalledTimes(0);
       fixture.configure();
-      expect(childProcess.execSync).toHaveBeenCalledTimes(2);
+      expect(huskyService.prepare).toHaveBeenCalledTimes(1);
     });
   });
 });

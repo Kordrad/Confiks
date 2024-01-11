@@ -1,4 +1,4 @@
-import { childProcess } from '../../../services/node/child-process.service.js';
+import { huskyService } from '../../../services/packages/husky/husky.service.js';
 import { DependencyTypeEnum } from '../../../type/enums/dependency-type.enum.js';
 import { BasePackage } from '../base.package.js';
 
@@ -13,7 +13,6 @@ export class HuskyPackage extends BasePackage {
   readonly description = 'Husky improves your commits and more woof!';
 
   configure(): void {
-    childProcess.execSync('npx husky install');
-    childProcess.execSync('npm pkg set scripts.prepare="husky install"');
+    huskyService.prepare();
   }
 }
