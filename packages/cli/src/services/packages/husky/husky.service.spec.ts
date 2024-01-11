@@ -1,10 +1,19 @@
 import { childProcess } from '../../node/child-process.service.js';
-import { huskyService } from './husky.service';
+import { HuskyService } from './husky.service.js';
 
 jest.mock('../../node/child-process.service.js');
 
 describe('HuskyService', () => {
-  const fixture = huskyService;
+  let fixture: HuskyService;
+
+  beforeEach(() => {
+    fixture = new HuskyService();
+  });
+
+  afterEach(() => {
+    jest.resetAllMocks();
+  });
+
   test('instance is created', () => {
     expect(fixture).toBeDefined();
   });
@@ -12,7 +21,9 @@ describe('HuskyService', () => {
   describe('addHook', () => {
     test('should call execSync', () => {
       fixture.addHook('commit-msg', '');
-      expect(childProcess.execSync).toHaveBeenCalledTimes(1);
+      expect(childProcess.execSync).toHaveBeenLastCalledWith(
+        `npx husky add .husky/commit-msg ""`
+      );
     });
 
     test('should exec husky command', () => {

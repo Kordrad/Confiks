@@ -5,6 +5,8 @@ class FileSystemService implements FileSystemServiceRoot {
   queryFileName = jest.fn();
   readFileSync = jest.fn();
   writeFile = jest.fn();
+  hasDirectory = jest.fn();
+  readdirSync = jest.fn();
 }
 
 export const fileSystem = new FileSystemService();

@@ -1,4 +1,5 @@
 import * as fs from 'node:fs';
+import { Dirent } from 'node:fs';
 
 export class FileSystemService {
   readFileSync(
@@ -28,6 +29,16 @@ export class FileSystemService {
   queryFileName(fileName: string): string | undefined {
     const filesList = fs.readdirSync('./');
     return filesList.find(fileList => fileList.includes(fileName));
+  }
+
+  hasDirectory(directory: string, source: string = './'): boolean {
+    return this.readdirSync(source).some(
+      dirent => dirent.isDirectory() && dirent.name === directory
+    );
+  }
+
+  readdirSync(source: string): Dirent[] {
+    return fs.readdirSync(source, { withFileTypes: true });
   }
 }
 
