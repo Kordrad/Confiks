@@ -1,5 +1,6 @@
 import type { PackagesEnumKeys } from '../../type/enums/packages.enum.js';
 import type { Choice } from '../../type/interfaces/choice.interface.js';
+import type { ChoiceState } from '../../type/interfaces/choice-state.interface.js';
 import type { PackageInterface } from '../../type/interfaces/package.interface.js';
 import { BaseChoice } from './base.choice.js';
 
@@ -11,13 +12,16 @@ import { BaseChoice } from './base.choice.js';
  * @implements Choice
  */
 
-export class PackageChoice extends BaseChoice implements Choice {
-  message: string;
-  name: PackagesEnumKeys;
-  value: unknown;
+export class PackageChoice
+  extends BaseChoice<PackageInterface>
+  implements Choice<PackageInterface>
+{
+  message!: string;
+  name!: PackagesEnumKeys;
+  value!: PackageInterface;
 
   hint: string = '';
-  choices: Choice[] = [];
+  choices: Choice<PackageInterface>[] = [];
   indent = ' ';
 
   #childIndent = this.indent + '  ';
@@ -35,13 +39,20 @@ export class PackageChoice extends BaseChoice implements Choice {
     this.indicator = this.indicator.bind(this);
   }
 
-  indicator(state, choice: Choice<PackageInterface>): string | null {
+  indicator(
+    state: ChoiceState<PackageInterface>,
+    choice: Choice<PackageInterface>
+  ): string {
     return this.#hasEnabledChoice(state, choice)
       ? this.#parentIndicator
-      : undefined;
+      : state.symbols.indicator;
   }
 
-  onChoice(state, choice: Choice<PackageInterface>, index: number) {
+  onChoice(
+    state: ChoiceState<PackageInterface>,
+    choice: Choice<PackageInterface>,
+    index: number
+  ) {
     this.#enableParent(state, choice, index);
     this.#saveEnabledState(state, choice, index);
   }
@@ -77,24 +88,30 @@ export class PackageChoice extends BaseChoice implements Choice {
   }
 
   #saveEnabledState(
-    state,
+    state: ChoiceState<PackageInterface>,
     choice: Choice<PackageInterface>,
     index: number
   ): void {
-    if (state.keypress?.name === 'a')
+    if (state.keypress?.name === 'a' && state.choices?.length)
       this.#enabled = !state.choices.some(({ enabled }) => enabled === false);
+
     if (
       !(
         state.keypress?.name === 'space' &&
         state.index === index &&
         !this.#hasEnabledChoice(state, choice)
       )
-    )
+    ) {
       return;
-    this.#enabled = choice.enabled;
+    }
+    this.#enabled = Boolean(choice.enabled);
   }
 
-  #enableParent(state, choice: Choice<PackageInterface>, index: number): void {
+  #enableParent(
+    state: ChoiceState<PackageInterface>,
+    choice: Choice<PackageInterface>,
+    index: number
+  ): void {
     if (this.#hasEnabledChoice(state, choice)) {
       choice.enabled = true;
     } else if (state.keypress?.name !== 'a' && state.index !== index) {
@@ -102,13 +119,16 @@ export class PackageChoice extends BaseChoice implements Choice {
     }
   }
 
-  #hasEnabledChoice(state, choice: Choice<PackageInterface>): boolean {
-    const depends = choice.value.extensions || [];
-    const sameChoices = state.choices.filter(choice =>
+  #hasEnabledChoice(
+    state: ChoiceState<PackageInterface>,
+    choice: Choice<PackageInterface>
+  ): boolean {
+    const depends = choice.value?.extensions || [];
+    const sameChoices = state.choices?.filter(choice =>
       depends.find(
         (extension: PackageInterface) => choice.name === extension.package
       )
     );
-    return sameChoices.some(({ enabled }) => enabled);
+    return sameChoices?.some(({ enabled }) => enabled) || false;
   }
 }

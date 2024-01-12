@@ -33,12 +33,17 @@ async function selectPackageGroup({
   message: string;
   choices: PackageChoice[];
 }): Promise<PackageInterface[]> {
-  const result = await MultiSelect<{ group: PackageInterface[] }>({
+  const result = await MultiSelect<
+    { group: PackageInterface[] },
+    PackageInterface
+  >({
     prefix,
     message,
     choices,
     name: 'group',
     result() {
+      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+      // @ts-ignore workaround, selected is "private" member of enquirer
       return this.selected.map(({ value }) => value);
     },
   });

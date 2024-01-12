@@ -14,13 +14,15 @@ describe('FileSystemService', () => {
       .spyOn(fs, 'readdirSync')
       .mockReturnValue(['abc', 'eslintrc', 'eslintrc.json', 'test'] as never[]);
 
-    for (const [argument, expected] of [
+    const cases: [string, string | undefined][] = [
       ['es', 'eslintrc'],
       ['lintrc.', 'eslintrc.json'],
       ['lintrc', 'eslintrc'],
       ['eslintrc.json', 'eslintrc.json'],
       ['wrongFileName', undefined],
-    ]) {
+    ];
+
+    for (const [argument, expected] of cases) {
       expect(fixture.queryFileName(argument)).toEqual(expected);
     }
   });

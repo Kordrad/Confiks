@@ -26,8 +26,10 @@ export class EslintService {
 
   get #localFileExtension(): undefined | EslintConfigExtensions | '' {
     if (!this.hasLocalFile) return undefined;
-    if (this.localFileName.split('.').length === 0) return '';
-    return this.localFileName.split('.').reverse()[0] as EslintConfigExtensions;
+    if (this.localFileName?.split('.').length === 0) return '';
+    return this.localFileName
+      ?.split('.')
+      .reverse()[0] as EslintConfigExtensions;
   }
 
   get #configServiceFactory(): ConfigManagement {

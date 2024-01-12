@@ -53,9 +53,11 @@ export class EslintPackage extends BasePackage {
     const { CONFIG_NAME } = await import(
       './configs/eslintrc-confiks.constant.js'
     );
-    this.#eslintService.addExtensions(this.#eslintService.localFileName, [
-      `./${CONFIG_NAME}`,
-    ]);
+    if (this.#eslintService.localFileName) {
+      this.#eslintService.addExtensions(this.#eslintService.localFileName, [
+        `./${CONFIG_NAME}`,
+      ]);
+    }
   }
 
   async #createRootConfig(): Promise<void> {
