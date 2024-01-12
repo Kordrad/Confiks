@@ -14,7 +14,7 @@ export interface Choice<Value = unknown> {
   choices?: Choice[];
   indent?: string;
   onChoice?: (state: unknown, choice: Choice, index: number) => void;
-  indicator?: (state: unknown, choice: Choice, index: number) => void;
+  indicator?: (state: unknown, choice: Choice, index: number) => string;
   normalized?: boolean;
   input?: string;
   index?: number;

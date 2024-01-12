@@ -11,10 +11,13 @@ import { BaseChoice } from './base.choice.js';
  * @implements Choice
  */
 
-export class PackageChoice extends BaseChoice implements Choice {
-  message: string;
-  name: PackagesEnumKeys;
-  value: unknown;
+export class PackageChoice
+  extends BaseChoice
+  implements Choice<PackageInterface>
+{
+  message!: string;
+  name!: PackagesEnumKeys;
+  value!: PackageInterface;
 
   hint: string = '';
   choices: Choice[] = [];
@@ -35,10 +38,10 @@ export class PackageChoice extends BaseChoice implements Choice {
     this.indicator = this.indicator.bind(this);
   }
 
-  indicator(state, choice: Choice<PackageInterface>): string | null {
+  indicator(state, choice: Choice<PackageInterface>): string {
     return this.#hasEnabledChoice(state, choice)
       ? this.#parentIndicator
-      : undefined;
+      : state.indicator;
   }
 
   onChoice(state, choice: Choice<PackageInterface>, index: number) {
@@ -91,10 +94,10 @@ export class PackageChoice extends BaseChoice implements Choice {
       )
     )
       return;
-    this.#enabled = choice.enabled;
+    this.#enabled = Boolean(choice.enabled);
   }
 
-  #enableParent(state, choice: Choice<PackageInterface>, index: number): void {
+  #enableParent(stagit statute, choice: Choice<PackageInterface>, index: number): void {
     if (this.#hasEnabledChoice(state, choice)) {
       choice.enabled = true;
     } else if (state.keypress?.name !== 'a' && state.index !== index) {
