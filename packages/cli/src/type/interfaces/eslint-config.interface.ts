@@ -1,7 +1,11 @@
-type Rule = boolean | string | [string, { [key: string]: boolean | string }];
+type RuleOptions = boolean | 'warn' | 'error' | 'off' | 'on';
+
+type Rule = RuleOptions | [RuleOptions, { [key: string]: boolean | string }];
+
 type Rules = {
   [key in string]: Rule;
 };
+
 export interface EslintConfig {
   root?: boolean;
   extends?: string[];
