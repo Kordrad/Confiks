@@ -6,7 +6,7 @@ jest.mock('../../../services/node/file-system.service.js');
 jest.mock('../../../utils/package-json.utils.js');
 
 describe('PrettierPackage', () => {
-  let prettierPackage;
+  let prettierPackage: PrettierPackage;
 
   beforeEach(() => {
     prettierPackage = new PrettierPackage();

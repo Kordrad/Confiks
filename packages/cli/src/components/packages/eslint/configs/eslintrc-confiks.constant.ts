@@ -1,15 +1,19 @@
 import type { EslintConfig } from '../../../../type/interfaces/eslint-config.interface.js';
+import type { Required } from '../../../../type/utils/required.type-util.js';
 import { packageIsInstalled } from '../../../../utils/package-json.utils.js';
 import { EslintPluginPrettierPackage } from '../eslint-plugin-prettier/eslint-plugin-prettier.package.js';
 import { EslintPluginSimpleImportSortPackage } from '../eslint-plugin-simple-import-sort/eslint-plugin-simple-import-sort.package.js';
 import { EslintPluginUnicornPackage } from '../eslint-plugin-unicorn/eslint-plugin-unicorn.package.js';
 import { EslintPluginUnusedImportsPackage } from '../eslint-plugin-unused-imports/eslint-plugin-unused-imports.package.js';
 
-const dumbConfig = {
+type EslintConfigPlugin = Required<EslintConfig, 'plugins'>;
+
+const dumbConfig: EslintConfigPlugin = {
   plugins: [],
   rules: {},
 };
-const simpleSortConfig = (): EslintConfig =>
+
+const simpleSortConfig = (): EslintConfigPlugin =>
   packageIsInstalled(new EslintPluginSimpleImportSortPackage().package)
     ? {
         plugins: ['simple-import-sort'],
@@ -20,7 +24,7 @@ const simpleSortConfig = (): EslintConfig =>
       }
     : dumbConfig;
 
-const unusedImportsConfig = (): EslintConfig =>
+const unusedImportsConfig = (): EslintConfigPlugin =>
   packageIsInstalled(new EslintPluginUnusedImportsPackage().package)
     ? {
         plugins: ['unused-imports'],
@@ -30,14 +34,14 @@ const unusedImportsConfig = (): EslintConfig =>
       }
     : dumbConfig;
 
-const unicornConfig = (): EslintConfig =>
+const unicornConfig = (): EslintConfigPlugin =>
   packageIsInstalled(new EslintPluginUnicornPackage().package)
     ? {
         plugins: ['unicorn'],
       }
     : dumbConfig;
 
-const prettierConfig = (): EslintConfig =>
+const prettierConfig = (): EslintConfigPlugin =>
   packageIsInstalled(new EslintPluginPrettierPackage().package)
     ? {
         plugins: ['prettier'],
@@ -53,7 +57,7 @@ const prettierConfig = (): EslintConfig =>
     : dumbConfig;
 
 export const CONFIG_NAME = '.eslintrc.confiks.json';
-export const CONFIG = () => ({
+export const CONFIG = (): EslintConfigPlugin => ({
   ignorePatterns: ['**/*'],
   plugins: [
     ...unusedImportsConfig().plugins,
