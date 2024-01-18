@@ -1,5 +1,5 @@
 import { DependencyTypeEnum } from '../type/enums/dependency-type.enum.js';
-import type { PackagesEnumKeys } from '../type/enums/packages.enum.js';
+import type { PackagesKeys } from '../type/enums/packages.enum.js';
 import type { PackageInterface } from '../type/interfaces/package.interface.js';
 import type { PackagesDependencyGroup } from '../type/types/packages-dependency-group.interface.js';
 import { PackageManagerService } from './package-manager/package-manager.service.js';
@@ -18,7 +18,7 @@ export class InitializerService {
       devDependency: [],
       global: [],
     };
-    const packagesToInit: PackagesEnumKeys[] = [];
+    const packagesToInit: PackagesKeys[] = [];
 
     for (const package_ of this.packages) {
       switch (package_.dependencyType) {

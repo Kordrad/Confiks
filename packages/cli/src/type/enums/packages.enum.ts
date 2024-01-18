@@ -1,4 +1,4 @@
-export enum PackagesEnum {
+type Packages = [
   '@commitlint/cli',
   '@commitlint/config-conventional',
   'eslint',
@@ -12,6 +12,6 @@ export enum PackagesEnum {
   'prettier-plugin-organize-attributes',
   'stylelint',
   'stylelint-config-standard-scss',
-}
+];
 
-export type PackagesEnumKeys = keyof typeof PackagesEnum;
+export type PackagesKeys = Packages[number];

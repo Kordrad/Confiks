@@ -1,5 +1,5 @@
 import type { DependencyTypeEnum } from '../../type/enums/dependency-type.enum.js';
-import type { PackagesEnumKeys } from '../../type/enums/packages.enum.js';
+import type { PackagesKeys } from '../../type/enums/packages.enum.js';
 import type { PackageInterface } from '../../type/interfaces/package.interface.js';
 import type {
   Dependency,
@@ -15,7 +15,7 @@ import type {
  * */
 export abstract class BasePackage implements PackageInterface {
   abstract readonly title: string;
-  abstract readonly package: PackagesEnumKeys;
+  abstract readonly package: PackagesKeys;
   abstract readonly version: VersionRange;
   abstract readonly dependencyType: DependencyTypeEnum;
 

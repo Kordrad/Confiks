@@ -1,5 +1,5 @@
 import { InstallationType } from '../../type/enums/installation-type.enum';
-import { PackagesEnum } from '../../type/enums/packages.enum.js';
+import { PackagesKeys } from '../../type/enums/packages.enum.js';
 import * as childProcess from '../node/child-process.service.js';
 import * as fileSystem from '../node/file-system.service.js';
 import { PackageManagerService } from './package-manager.service.js';
@@ -35,9 +35,9 @@ describe('PackageManagerService', () => {
           const spy = jest.spyOn(childProcess.childProcess, 'execAsync');
 
           await fixture.install({
-            dependency: ['SomePackage'] as unknown as PackagesEnum[],
-            devDependency: ['AnotherPackage'] as unknown as PackagesEnum[],
-            global: ['ThirdPackage'] as unknown as PackagesEnum[],
+            dependency: ['SomePackage'] as unknown as PackagesKeys[],
+            devDependency: ['AnotherPackage'] as unknown as PackagesKeys[],
+            global: ['ThirdPackage'] as unknown as PackagesKeys[],
           } as never);
 
           const resultsExpected = [
