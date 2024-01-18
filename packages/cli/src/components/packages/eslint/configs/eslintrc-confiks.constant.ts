@@ -18,8 +18,8 @@ const simpleSortConfig = (): EslintConfigPlugin =>
     ? {
         plugins: ['simple-import-sort'],
         rules: {
-          'simple-import-sort/imports': 'error',
-          'simple-import-sort/exports': 'error',
+          'simple-import-sort/imports': 'warn',
+          'simple-import-sort/exports': 'warn',
         },
       }
     : dumbConfig;
@@ -47,7 +47,7 @@ const prettierConfig = (): EslintConfigPlugin =>
         plugins: ['prettier'],
         rules: {
           'prettier/prettier': [
-            'error',
+            'warn',
             {
               endOfLine: 'auto',
             },
