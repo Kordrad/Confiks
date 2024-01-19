@@ -1,4 +1,4 @@
-import { DependencyTypeEnum } from '../../../type/enums/dependency-type.enum.js';
+import type { DependencyType } from '../../../type/types/dependency-type.type.js';
 import { BasePackage } from '../base.package.js';
 import { StylelintConfigStandardScssPackage } from './stylelint-config-standard-scss/stylelint-config-standard-scss.package.js';
 
@@ -9,7 +9,7 @@ import { StylelintConfigStandardScssPackage } from './stylelint-config-standard-
  * @see auto init https://stylelint.io/user-guide/get-started#linting-css
  */
 export class StylelintPackage extends BasePackage {
-  readonly dependencyType = DependencyTypeEnum.none;
+  readonly dependencyType: DependencyType = 'none';
   readonly description =
     'A mighty CSS linter that helps you avoid errors and enforce conventions.';
   readonly package = 'stylelint';

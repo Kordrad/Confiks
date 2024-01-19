@@ -1,10 +1,10 @@
-import { DependencyTypeEnum } from '../../../../type/enums/dependency-type.enum.js';
+import type { DependencyType } from '../../../../type/types/dependency-type.type.js';
 import { BasePackage } from '../../base.package.js';
 
 export class EslintPluginUnicornPackage extends BasePackage {
   readonly title = 'eslint-plugin-unicorn 🦄';
   readonly package = 'eslint-plugin-unicorn';
   readonly version = '49';
-  readonly dependencyType = DependencyTypeEnum.devDependency;
+  readonly dependencyType: DependencyType = 'devDependency';
   readonly description = 'More than 100 powerful ESLint rules';
 }

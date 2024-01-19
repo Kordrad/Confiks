@@ -1,6 +1,6 @@
 import { fileSystem } from '../../../services/node/file-system.service.js';
 import { huskyService } from '../../../services/packages/husky/husky.service.js';
-import { DependencyTypeEnum } from '../../../type/enums/dependency-type.enum.js';
+import type { DependencyType } from '../../../type/types/dependency-type.type.js';
 import { packageIsInstalled } from '../../../utils/package-json.utils.js';
 import { BasePackage } from '../base.package.js';
 import { HuskyPackage } from '../husky/husky.package.js';
@@ -16,7 +16,7 @@ export class CommitLintPackage extends BasePackage {
   readonly package = '@commitlint/cli';
   readonly version = '18';
   readonly extensions = [new ConfigConventionalPackage()];
-  readonly dependencyType = DependencyTypeEnum.devDependency;
+  readonly dependencyType: DependencyType = 'devDependency';
   readonly description = 'Helps your team adhere to a commit convention.';
 
   configure(): void {

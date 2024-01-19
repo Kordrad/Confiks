@@ -1,5 +1,5 @@
 import { EslintService } from '../../../services/packages/eslint/eslint.service.js';
-import { DependencyTypeEnum } from '../../../type/enums/dependency-type.enum.js';
+import type { DependencyType } from '../../../type/types/dependency-type.type.js';
 import { stringify } from '../../../utils/json.utils.js';
 import { BasePackage } from '../base.package.js';
 import IGNORE_CONTENT from './configs/eslintignore.constant.js';
@@ -12,7 +12,7 @@ export class EslintPackage extends BasePackage {
   readonly title = 'ESLint';
   readonly package = 'eslint';
   readonly version = '8';
-  readonly dependencyType = DependencyTypeEnum.devDependency;
+  readonly dependencyType: DependencyType = 'devDependency';
   readonly description =
     'is a tool for identifying and reporting on patterns found in ECMAScript/JavaScript code. (SUPPORTED: json)';
   readonly extensions = [
