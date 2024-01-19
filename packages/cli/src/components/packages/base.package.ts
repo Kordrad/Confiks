@@ -1,10 +1,10 @@
 import type { DependencyTypeEnum } from '../../type/enums/dependency-type.enum.js';
-import type { PackagesEnumKeys } from '../../type/enums/packages.enum.js';
 import type { PackageInterface } from '../../type/interfaces/package.interface.js';
 import type {
   Dependency,
   VersionRange,
 } from '../../type/types/package-version.type.js';
+import type { Package } from '../../type/types/packages.type.js';
 
 /**
  * This is base abstract class to create new packages that you can install in your project
@@ -15,7 +15,7 @@ import type {
  * */
 export abstract class BasePackage implements PackageInterface {
   abstract readonly title: string;
-  abstract readonly package: PackagesEnumKeys;
+  abstract readonly package: Package;
   abstract readonly version: VersionRange;
   abstract readonly dependencyType: DependencyTypeEnum;
 

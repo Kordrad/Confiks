@@ -1,4 +1,4 @@
-import type { PackagesEnumKeys } from '../enums/packages.enum.js';
+import type { Package } from '../types/packages.type.js';
 
 type Tag =
   | `${number}`
@@ -10,4 +10,4 @@ type Tag =
  * @see https://docs.npmjs.com/cli/v8/commands/npm-install
  * */
 export type VersionRange = Tag | `${Tag} - ${Tag}`;
-export type Dependency = `${PackagesEnumKeys}@"${VersionRange}"`;
+export type Dependency = `${Package}@"${VersionRange}"`;
