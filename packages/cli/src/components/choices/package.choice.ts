@@ -1,7 +1,7 @@
-import type { PackagesKeys } from '../../type/enums/packages.enum.js';
 import type { Choice } from '../../type/interfaces/choice.interface.js';
 import type { ChoiceState } from '../../type/interfaces/choice-state.interface.js';
 import type { PackageInterface } from '../../type/interfaces/package.interface.js';
+import type { Package } from '../../type/types/packages.type.js';
 import { BaseChoice } from './base.choice.js';
 
 /**
@@ -17,7 +17,7 @@ export class PackageChoice
   implements Choice<PackageInterface>
 {
   message!: string;
-  name!: PackagesKeys;
+  name!: Package;
   value!: PackageInterface;
 
   hint: string = '';

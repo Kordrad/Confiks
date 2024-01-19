@@ -1,7 +1,7 @@
 import { fileSystem } from '../../../../services/node/file-system.service.js';
 import { PackageManagerService } from '../../../../services/package-manager/package-manager.service.js';
 import { DependencyTypeEnum } from '../../../../type/enums/dependency-type.enum.js';
-import type { PackagesKeys } from '../../../../type/enums/packages.enum.js';
+import type { Package } from '../../../../type/types/packages.type.js';
 import { BasePackage } from '../../base.package.js';
 import {
   CONFIG_NAME,
@@ -10,7 +10,7 @@ import {
 
 export class StylelintConfigStandardScssPackage extends BasePackage {
   readonly title = 'stylelint-config-standard-scss';
-  readonly package: PackagesKeys = 'stylelint-config-standard-scss';
+  readonly package: Package = 'stylelint-config-standard-scss';
   readonly version = '13';
   readonly dependencyType = DependencyTypeEnum.devDependency;
   readonly description = 'The standard shareable SCSS config for Stylelint.';

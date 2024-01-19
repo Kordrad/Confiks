@@ -1,7 +1,7 @@
 /* eslint-disable unicorn/prevent-abbreviations */
 import { InstallationType } from '../../type/enums/installation-type.enum.js';
-import type { PackagesKeys } from '../../type/enums/packages.enum.js';
 import type { Dependency } from '../../type/types/package-version.type.js';
+import type { Package } from '../../type/types/packages.type.js';
 import type { PackagesDependencyGroup } from '../../type/types/packages-dependency-group.interface.js';
 import { childProcess } from '../node/child-process.service.js';
 import { fileSystem } from '../node/file-system.service.js';
@@ -25,7 +25,7 @@ export class PackageManagerService {
     await this.#installPackages(global, InstallationType.global);
   }
 
-  async create(packages: PackagesKeys[]): Promise<void> {
+  async create(packages: Package[]): Promise<void> {
     for (const _package of packages)
       try {
         await childProcess.execAsync(

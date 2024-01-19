@@ -1,12 +1,12 @@
 import { BasePackage } from '../components/packages/base.package';
-import { PackagesKeys } from '../type/enums/packages.enum';
 import { VersionRange } from '../type/types/package-version.type';
-import { InitializerService } from './initializer.service';
+import type { Package } from '../type/types/packages.type.js';
+import { InitializerService } from './initializer.service.js';
 
 const configureMock = jest.fn();
 class MockPackage extends BasePackage {
   readonly dependencyType = 0;
-  readonly package = 'string' as PackagesKeys;
+  readonly package = 'string' as Package;
   readonly title = 'string';
   configure = configureMock;
   readonly version: VersionRange = '1.2.3';
