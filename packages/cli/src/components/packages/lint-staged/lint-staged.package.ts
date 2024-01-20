@@ -1,6 +1,6 @@
 import { fileSystem } from '../../../services/node/file-system.service.js';
 import { huskyService } from '../../../services/packages/husky/husky.service.js';
-import { DependencyTypeEnum } from '../../../type/enums/dependency-type.enum.js';
+import type { DependencyType } from '../../../type/types/dependency-type.type.js';
 import { stringify } from '../../../utils/json.utils.js';
 import { packageIsInstalled } from '../../../utils/package-json.utils.js';
 import { BasePackage } from '../base.package.js';
@@ -13,7 +13,7 @@ export class LintStagedPackage extends BasePackage {
   readonly title = '🚫💩 lint-staged';
   readonly package = 'lint-staged';
   readonly version = '15';
-  readonly dependencyType = DependencyTypeEnum.devDependency;
+  readonly dependencyType: DependencyType = 'devDependency';
   readonly description =
     "Run linters against staged git files and don't let 💩 slip into your code base!";
 

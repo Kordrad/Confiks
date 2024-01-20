@@ -1,11 +1,12 @@
 import { BasePackage } from '../components/packages/base.package';
+import { DependencyType } from '../type/types/dependency-type.type';
 import { VersionRange } from '../type/types/package-version.type';
 import type { Package } from '../type/types/packages.type.js';
 import { InitializerService } from './initializer.service.js';
 
 const configureMock = jest.fn();
 class MockPackage extends BasePackage {
-  readonly dependencyType = 0;
+  readonly dependencyType: DependencyType = 'none';
   readonly package = 'string' as Package;
   readonly title = 'string';
   configure = configureMock;

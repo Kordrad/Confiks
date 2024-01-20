@@ -1,4 +1,3 @@
-import { DependencyTypeEnum } from '../type/enums/dependency-type.enum.js';
 import type { PackageInterface } from '../type/interfaces/package.interface.js';
 import type { Package } from '../type/types/packages.type.js';
 import type { PackagesDependencyGroup } from '../type/types/packages-dependency-group.interface.js';
@@ -22,19 +21,19 @@ export class InitializerService {
 
     for (const package_ of this.packages) {
       switch (package_.dependencyType) {
-        case DependencyTypeEnum.dependency: {
+        case 'dependency': {
           packagesToInstall.dependency.push(package_.dependency);
           break;
         }
-        case DependencyTypeEnum.devDependency: {
+        case 'devDependency': {
           packagesToInstall.devDependency.push(package_.dependency);
           break;
         }
-        case DependencyTypeEnum.global: {
+        case 'global': {
           packagesToInstall.global.push(package_.dependency);
           break;
         }
-        case DependencyTypeEnum.none: {
+        case 'none': {
           packagesToInit.push(package_.package);
           break;
         }

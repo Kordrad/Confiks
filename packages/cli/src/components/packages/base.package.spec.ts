@@ -1,10 +1,10 @@
 /* eslint-disable @typescript-eslint/ban-ts-comment */
-import { DependencyTypeEnum } from '../../type/enums/dependency-type.enum.js';
+import type { DependencyType } from '../../type/types/dependency-type.type';
 import { VersionRange } from '../../type/types/package-version.type';
 import { BasePackage } from './base.package.js';
 
 class Mock extends BasePackage {
-  readonly dependencyType = DependencyTypeEnum.dependency;
+  readonly dependencyType: DependencyType = 'dependency';
   readonly title = 'Mock';
   readonly package = 'husky';
   readonly version: VersionRange = '1.0.0';
