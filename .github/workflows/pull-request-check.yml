@@ -8,51 +8,45 @@ env:
   NODE_VERSION: 18
 
 jobs:
-  lint:
+  common-setup:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
-      - uses: actions/setup-node@v2
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
         with:
           node-version: ${{env.NODE_VERSION}}
       - run: npm ci
+
+  lint:
+    needs: common-setup
+    runs-on: ubuntu-latest
+    steps:
       - run: npm run cli:lint
       - uses: actions/upload-artifact@v3
-        if: always()
         with:
-          name: lint-report
+          name: report-lint
           path: lint-report/
           retention-days: 30
 
   performance:
+    needs: common-setup
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
-      - uses: actions/setup-node@v2
-        with:
-          node-version: ${{env.NODE_VERSION}}
-      - run: npm ci
       - run: npm run cli:performance
       - uses: actions/upload-artifact@v3
-        if: always()
         with:
-          name: performance-report
+          name: report-performance
           path: performance-report/
           retention-days: 30
 
   test:
+    needs: common-setup
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
-      - uses: actions/setup-node@v2
-        with:
-          node-version: ${{env.NODE_VERSION}}
-      - run: npm ci
       - run: npm run cli:test
       - uses: actions/upload-artifact@v3
-        if: always()
         with:
-          name: test-report
+          name: report-test
           path: test-report/
           retention-days: 30
 
@@ -60,16 +54,9 @@ jobs:
     needs: [lint, performance, test]
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
-      - uses: actions/setup-node@v2
-        with:
-          node-version: ${{env.NODE_VERSION}}
-      - run: npm ci
       - run: npm run cli:build
       - uses: actions/upload-artifact@v3
-        if: always()
         with:
-          name: build-report
+          name: report-build
           path: build-report/
           retention-days: 30
-
