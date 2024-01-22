@@ -21,6 +21,7 @@ jobs:
     needs: common-setup
     runs-on: ubuntu-latest
     steps:
+      - uses: common-setup
       - run: npm run cli:lint
       - uses: actions/upload-artifact@v3
         with:
