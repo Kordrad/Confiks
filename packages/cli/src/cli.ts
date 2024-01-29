@@ -12,12 +12,14 @@ import gradient from 'gradient-string';
 import ora from 'ora';
 
 import { PackageChoice } from './components/choices/package.choice.js';
-import { CommitLintPackage } from './components/packages/commit-lint/commit-lint.package.js';
-import { EslintPackage } from './components/packages/eslint/eslint.package.js';
-import { HuskyPackage } from './components/packages/husky/husky.package.js';
-import { LintStagedPackage } from './components/packages/lint-staged/lint-staged.package.js';
-import { PrettierPackage } from './components/packages/prettier/prettier.package.js';
-import { StylelintPackage } from './components/packages/stylelint/stylelint.package.js';
+import {
+  CommitLintPackage,
+  EslintPackage,
+  HuskyPackage,
+  LintStagedPackage,
+  PrettierPackage,
+  StylelintPackage,
+} from './components/packages/index.js';
 import { MultiSelect } from './components/prompts/multiselect.prompt.js';
 import { InitializerService } from './services/initializer.service.js';
 import type { PackageInterface } from './type/interfaces/package.interface.js';

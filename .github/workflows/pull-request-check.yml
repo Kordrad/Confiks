@@ -6,6 +6,7 @@ on:
 
 env:
   NODE_VERSION: 18
+  RETENTION_DAYS: 30
 
 jobs:
   lint:
@@ -22,7 +23,7 @@ jobs:
         with:
           name: lint-report
           path: lint-report/
-          retention-days: 30
+          retention-days: ${{env.RETENTION_DAYS}}
 
   performance:
     runs-on: ubuntu-latest
@@ -38,7 +39,7 @@ jobs:
         with:
           name: performance-report
           path: performance-report/
-          retention-days: 30
+          retention-days: ${{env.RETENTION_DAYS}}
 
   test:
     runs-on: ubuntu-latest
@@ -54,7 +55,7 @@ jobs:
         with:
           name: test-report
           path: test-report/
-          retention-days: 30
+          retention-days: ${{env.RETENTION_DAYS}}
 
   build:
     needs: [lint, performance, test]
@@ -71,5 +72,5 @@ jobs:
         with:
           name: build-report
           path: build-report/
-          retention-days: 30
+          retention-days: ${{env.RETENTION_DAYS}}
 
