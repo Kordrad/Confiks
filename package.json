@@ -4,6 +4,7 @@
   "license": "MIT",
   "scripts": {
     "cli": "node dist/packages/cli/src/cli",
+    "cli:start": "cd apps/demo && npm run start",
     "cli:build": "nx run cli:build",
     "cli:build:watch": "nx run cli:build --watch",
     "cli:lint": "nx lint cli",

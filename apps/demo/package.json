@@ -2,6 +2,8 @@
   "name": "demo",
   "version": "0.0.1",
   "scripts": {
+    "prestart": "cd ../.. && husky install apps/demo/.husky",
     "start": "node ../../dist/packages/cli/src"
-  }
+  },
+  "devDependencies": {}
 }
