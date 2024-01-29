@@ -4,7 +4,7 @@
   "license": "MIT",
   "scripts": {
     "cli": "node dist/packages/cli/src/cli",
-    "precli:start": "git restore apps/demo && git clean -fdx apps/demo",
+    "precli:start": "npm run demo:cleanup",
     "cli:start": "cd apps/demo && npm run start",
     "cli:build": "nx run cli:build",
     "cli:build:watch": "nx run cli:build --watch",
@@ -13,6 +13,7 @@
     "cli:test:watch": "nx test cli --watch",
     "cli:performance": "npx oxlint -D correctness -D perf --deny-warnings ./packages/cli/src",
     "cli:dependency-check": "cd apps/check-updates && npm run dependency-check",
+    "demo:cleanup": "git restore apps/demo && git clean -fdx apps/demo && git reset HEAD -- apps/demo",
     "ls:performance": "npx oxlint -D correctness -D perf --deny-warnings --fix",
     "ls:prettier": "prettier --write --ignore-unknown",
     "ls:eslint": "eslint --quiet --fix",

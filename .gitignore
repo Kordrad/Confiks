@@ -5,6 +5,9 @@ dist
 tmp
 /out-tsc
 
+# demo
+apps/demo/*
+
 # dependencies
 node_modules
 
