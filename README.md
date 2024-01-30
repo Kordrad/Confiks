@@ -13,7 +13,7 @@ The following section contains technical documentation only.
 
 1. Clone the project
 
-```shell
+```bash
 git clone https://github.com/Kordrad/Confiks
 cd .\Confiks
 npm i
@@ -21,45 +21,50 @@ npm i
 
 2. Create build
 
-```shell
-npm run cli:build #or cli:build:watch
+```bash
+npm run cli:build
 ```
 
-3. Create new empty project
+or watch build
 
-```shell
-cd ..
-mkdir test-project
-cd test-project
-npm init
-git init
+```bash
+npm run cli:build:watch
 ```
 
-#### Manual Start (Recommended)
+### Run demo 
+
+> Remember! Build is required!
+
+```bash
+npm run cli:start
+```
+
+### Manual start for other projects
 
 Execute the following command:
 
-```shell
+```bash
+# Provide a right path
 node ..\Confiks\dist\packages\cli\src
 ```
 
-#### Via NPM
+#### Via NPM 
 
 1. Open the path of the Confiks project
 
-```shell
+```bash
 cd .\dist\packages\cli\
 ```
 
 2. Install globally
 
-```shell
+```bash
 npm i -g .
 ```
 
 3. Run in the test project
 
-```shell
+```bash
 confiks
 # or
 npx confiks
