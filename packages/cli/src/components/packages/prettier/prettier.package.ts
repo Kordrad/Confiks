@@ -10,7 +10,7 @@ import { PrettierPluginOrganizeAttributesPackage } from './prettier-plugin-organ
 export class PrettierPackage extends BasePackage {
   readonly title = 'Prettier 🖌️';
   readonly package = 'prettier';
-  readonly version = '2 - 3';
+  readonly version = '3';
   readonly dependencyType: DependencyType = 'devDependency';
   readonly description = 'An opinionated code formatter.';
   readonly extensions = [new PrettierPluginOrganizeAttributesPackage()];
