@@ -31,7 +31,7 @@ export class FileSystemService {
     return filesList.find(fileList => fileList.includes(fileName));
   }
 
-  hasDirectory(directory: string, source: string = './'): boolean {
+  hasDirectory(directory: string, source = './'): boolean {
     return this.readdirSync(source).some(
       dirent => dirent.isDirectory() && dirent.name === directory
     );

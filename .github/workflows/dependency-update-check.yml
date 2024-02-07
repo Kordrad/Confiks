@@ -1,4 +1,4 @@
-name: Weekly Dependency Update Check
+name: Dependency Update Check
 
 on:
   schedule:

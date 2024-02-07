@@ -20,7 +20,7 @@ export class PackageChoice
   name!: Package;
   value!: PackageInterface;
 
-  hint: string = '';
+  hint = '';
   choices: Choice<PackageInterface>[] = [];
   indent = ' ';
 

@@ -10,15 +10,6 @@
     "defaultBase": "master"
   },
   "targetDefaults": {
-    "lint": {
-      "inputs": [
-        "default",
-        "{workspaceRoot}/.eslintrc.json",
-        "{workspaceRoot}/.eslintignore",
-        "{workspaceRoot}/eslint.config.js"
-      ],
-      "cache": true
-    },
     "build": {
       "cache": true
     },
@@ -34,6 +25,15 @@
           "codeCoverage": true
         }
       }
+    },
+    "@nx/eslint:lint": {
+      "inputs": [
+        "default",
+        "{workspaceRoot}/.eslintrc.json",
+        "{workspaceRoot}/.eslintignore",
+        "{workspaceRoot}/eslint.config.js"
+      ],
+      "cache": true
     }
   },
   "nxCloudAccessToken": "NzBkZDMxYzctNDJjOC00NjM5LWJlOGUtOTJkNmNlMWIzZTRhfHJlYWQtd3JpdGU="
