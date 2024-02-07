@@ -14,5 +14,7 @@ export interface PackageInterface {
   readonly extensions?: PackageInterface[];
   readonly dependency: Dependency;
 
+  preconfigure?: () => void;
   configure?: () => void;
+  postconfigure?: () => void;
 }

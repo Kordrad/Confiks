@@ -19,7 +19,7 @@
     "ls:prettier": "prettier --write --ignore-unknown",
     "ls:eslint": "eslint --quiet --fix",
     "ci:dependency-check": "npx --yes npm-check-updates -e 2 --target minor",
-    "prepare": "husky install"
+    "prepare": "husky"
   },
   "author": {
     "name": "Konrad Stępień",
@@ -49,7 +49,7 @@
     "eslint-plugin-simple-import-sort": "^10.0.0",
     "eslint-plugin-unicorn": "^50.0.1",
     "eslint-plugin-unused-imports": "^3.0.0",
-    "husky": "^8.0.3",
+    "husky": "^9.0.10",
     "jest": "^29.4.1",
     "jest-environment-node": "^29.4.1",
     "lint-staged": "^15.2.0",

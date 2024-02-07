@@ -46,9 +46,21 @@ export class InitializerService {
 
   configure(): Promise<void> {
     return new Promise<void>(resolve => {
+      const preconfigure: PackageInterface[] = [];
+      const configure: PackageInterface[] = [];
+      const postconfigure: PackageInterface[] = [];
       for (const package_ of this.packages) {
-        package_.configure?.();
+        if (typeof package_.preconfigure === 'function')
+          preconfigure.push(package_);
+        if (typeof package_.configure === 'function') configure.push(package_);
+        if (typeof package_.postconfigure === 'function')
+          postconfigure.push(package_);
       }
+
+      for (const package_ of preconfigure) package_.preconfigure?.();
+      for (const package_ of configure) package_.configure?.();
+      for (const package_ of postconfigure) package_.postconfigure?.();
+
       resolve();
     });
   }

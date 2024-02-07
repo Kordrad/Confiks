@@ -8,11 +8,11 @@ import { BasePackage } from '../base.package.js';
 export class HuskyPackage extends BasePackage {
   readonly title = 'Husky 🐶';
   readonly package = 'husky';
-  readonly version = '8';
+  readonly version = '9';
   readonly dependencyType: DependencyType = 'devDependency';
-  readonly description = 'Husky improves your commits and more woof!';
+  readonly description = 'Husky enhances your commits and more 🐶 woof!';
 
-  configure(): void {
-    huskyService.prepare();
+  preconfigure(): void {
+    huskyService.init();
   }
 }
