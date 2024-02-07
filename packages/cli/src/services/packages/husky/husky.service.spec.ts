@@ -20,16 +20,9 @@ describe('HuskyService', () => {
 
   describe('addHook', () => {
     test('should call execSync', () => {
-      fixture.addHook('commit-msg', '');
+      fixture.addHook('commit-msg', 'script test 123');
       expect(childProcess.execSync).toHaveBeenLastCalledWith(
-        `npx husky add .husky/commit-msg ""`
-      );
-    });
-
-    test('should exec husky command', () => {
-      fixture.addHook('commit-msg', '');
-      expect(childProcess.execSync).toHaveBeenCalledWith(
-        expect.stringContaining('npx husky add')
+        'echo script test 123 > .husky/commit-msg'
       );
     });
 
@@ -43,6 +36,13 @@ describe('HuskyService', () => {
       expect(childProcess.execSync).toHaveBeenCalledWith(
         expect.stringContaining('.custom/folder/pre-commit')
       );
+    });
+  });
+
+  describe('init', () => {
+    test('should call husky init', () => {
+      fixture.init();
+      expect(childProcess.execSync).toHaveBeenLastCalledWith('npx husky init');
     });
   });
 });

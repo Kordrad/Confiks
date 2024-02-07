@@ -11,16 +11,16 @@ describe('HuskyPackage', () => {
   });
 
   describe('prepare', () => {
-    test('should has prepare method', () => {
-      const function_ = jest.spyOn(fixture, 'configure');
-      fixture.configure?.();
+    test('should has preconfigure method', () => {
+      const function_ = jest.spyOn(fixture, 'preconfigure');
+      fixture.preconfigure?.();
       expect(function_).toBeCalled();
     });
 
     test('should prepare via huskyService', () => {
-      expect(huskyService.prepare).toHaveBeenCalledTimes(0);
-      fixture.configure();
-      expect(huskyService.prepare).toHaveBeenCalledTimes(1);
+      expect(huskyService.init).toHaveBeenCalledTimes(0);
+      fixture.preconfigure();
+      expect(huskyService.init).toHaveBeenCalledTimes(1);
     });
   });
 });
