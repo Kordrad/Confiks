@@ -7,7 +7,7 @@
     "types": ["node"],
     "allowSyntheticDefaultImports": true,
     "verbatimModuleSyntax": true,
-    "moduleResolution": "nodenext"
+    "moduleResolution": "node"
   },
   "exclude": [
     "jest.config.ts",
