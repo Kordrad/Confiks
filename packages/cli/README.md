@@ -41,7 +41,7 @@ dealing with configuration complexities.
   - [config-conventional v18][config-conventional]: Shareable commit-lint config.
 - [eslint v8][eslint]: A pluggable linting utility for JavaScript and JSX.
   - [eslint-plugin-prettier v5][eslint-plugin-prettier]: Integrates Prettier with ESLint.
-  - [eslint-plugin-simple-import-sort v10][eslint-plugin-simple-import-sort]: Enforces a consistent import order.
+  - [eslint-plugin-simple-import-sort v12][eslint-plugin-simple-import-sort]: Enforces a consistent import order.
   - [eslint-plugin-unicorn v51][eslint-plugin-unicorn]: Adds various ESLint rules for unicorn projects.
   - [eslint-plugin-unused-imports v3][eslint-plugin-unused-imports]: Detects and removes unused imports.
 - [stylelint latest][stylelint]: A mighty CSS linter.
