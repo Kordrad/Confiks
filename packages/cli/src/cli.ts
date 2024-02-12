@@ -84,24 +84,22 @@ async function selectPackages(): Promise<PackageInterface[]> {
 function configureProject(packages: PackageInterface[]): Promise<void> {
   return new Promise(resolve =>
     welcomeLog(() => {
-      const spinners = {
-        install: ora(`📦 ${chalk.yellow('Packages')} installation`),
-        configure: ora(`⚙️ ${chalk.yellow('Packages')} configuration`),
-      };
+      const install = ora(`📦 ${chalk.yellow('Packages')} installation`);
+      const configure = ora(`⚙️ ${chalk.yellow('Packages')} configuration`);
 
       console.log(chalk.bold(gradient.vice('Configuration project')));
       const initializerService = new InitializerService();
-      spinners.install.start();
+      install.start();
       initializerService.addPackages(packages);
       initializerService
         .install()
         .then(() => {
-          spinners.install.succeed();
-          spinners.configure.start();
+          install.succeed();
+          configure.start();
           return initializerService.configure();
         })
         .then(() => {
-          spinners.configure.succeed();
+          configure.succeed();
           resolve();
         });
     })
