@@ -32,7 +32,7 @@ dealing with configuration complexities.
 
 ###### Automation
 
-- [husky v8][husky]: Enables Git hooks.
+- [husky v9][husky]: Enables Git hooks.
 - [lint-stagged v15][lint-stagged]: Lints only the files that are staged in Git.
 
 ###### Linters
