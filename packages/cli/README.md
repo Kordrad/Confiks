@@ -37,8 +37,8 @@ dealing with configuration complexities.
 
 ###### Linters
 
-- [commit-lint v18][commit-lint]: Enforces commit message conventions.
-  - [config-conventional v18][config-conventional]: Shareable commit-lint config.
+- [commit-lint v19][commit-lint]: Enforces commit message conventions.
+  - [config-conventional v19][config-conventional]: Shareable commit-lint config.
 - [eslint v8][eslint]: A pluggable linting utility for JavaScript and JSX.
   - [eslint-plugin-prettier v5][eslint-plugin-prettier]: Integrates Prettier with ESLint.
   - [eslint-plugin-simple-import-sort v12][eslint-plugin-simple-import-sort]: Enforces a consistent import order.

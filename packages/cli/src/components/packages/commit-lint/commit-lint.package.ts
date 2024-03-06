@@ -3,7 +3,7 @@ import { huskyService } from '../../../services/packages/husky/husky.service.js'
 import type { DependencyType } from '../../../type/types/dependency-type.type.js';
 import { packageIsInstalled } from '../../../utils/package-json.utils.js';
 import { BasePackage } from '../base.package.js';
-import { HuskyPackage } from '../husky/husky.package.js';
+import { HuskyPackage } from '../husky/index.js';
 import { CONFIG, CONFIG_NAME } from './commit-lint.constants.js';
 import { ConfigConventionalPackage } from './config-conventional/config-conventional.package.js';
 
@@ -14,7 +14,7 @@ import { ConfigConventionalPackage } from './config-conventional/config-conventi
 export class CommitLintPackage extends BasePackage {
   readonly title = 'commitLint 📔';
   readonly package = '@commitlint/cli';
-  readonly version = '18';
+  readonly version = '19';
   readonly extensions = [new ConfigConventionalPackage()];
   readonly dependencyType: DependencyType = 'devDependency';
   readonly description = 'Helps your team adhere to a commit convention.';
