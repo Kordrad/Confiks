@@ -23,6 +23,7 @@
     "configure",
     "configuration",
     "frontend",
+    "biomejs",
     "@commitlint/cli",
     "@commitlint/config-conventional",
     "eslint",
