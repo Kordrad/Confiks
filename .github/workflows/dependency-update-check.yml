@@ -36,19 +36,3 @@ jobs:
           name: update-check
           path: update-check/
           retention-days: ${{env.RETENTION_DAYS}}
-  project-dependency-check:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v3
-      - uses: actions/setup-node@v3
-        with:
-          node-version: ${{env.NODE_VERSION}}
-      - run: npm ci
-      - name: Check for outdated dependencies in project
-        run: npm run ci:dependency-check
-      - uses: actions/upload-artifact@v3
-        if: always()
-        with:
-          name: update-check
-          path: update-check/
-          retention-days: ${{env.RETENTION_DAYS}}
