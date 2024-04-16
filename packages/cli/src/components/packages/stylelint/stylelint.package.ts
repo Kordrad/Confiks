@@ -1,3 +1,4 @@
+import { STYLELINT_SCRIPTS } from '../../../constants/package-scripts-cli.constant.js';
 import type { DependencyType } from '../../../type/types/dependency-type.type.js';
 import { BasePackage } from '../base.package.js';
 import { StylelintConfigStandardScssPackage } from './stylelint-config-standard-scss/stylelint-config-standard-scss.package.js';
@@ -16,4 +17,8 @@ export class StylelintPackage extends BasePackage {
   readonly title = 'Stylelint';
   readonly version = 'latest';
   readonly extensions = [new StylelintConfigStandardScssPackage()];
+
+  postconfigure(): void {
+    this.addScripts(STYLELINT_SCRIPTS);
+  }
 }

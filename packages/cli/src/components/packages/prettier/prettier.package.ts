@@ -1,3 +1,4 @@
+import { PRETTIER_SCRIPTS } from '../../../constants/package-scripts-cli.constant.js';
 import { fileSystem } from '../../../services/node/file-system.service.js';
 import type { DependencyType } from '../../../type/types/dependency-type.type.js';
 import { BasePackage } from '../base.package.js';
@@ -18,5 +19,6 @@ export class PrettierPackage extends BasePackage {
   configure(): void {
     fileSystem.writeFile('.prettierrc', CONFIG());
     fileSystem.writeFile('.prettierignore', IGNORE);
+    this.addScripts(PRETTIER_SCRIPTS);
   }
 }

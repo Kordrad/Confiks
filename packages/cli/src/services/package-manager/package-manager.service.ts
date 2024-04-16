@@ -25,6 +25,13 @@ export class PackageManagerService {
     await this.#installPackages(global, InstallationType.global);
   }
 
+  /**
+   * @example set('scripts.test`, 'echo "test"')
+   * */
+  set(value: string): void {
+    childProcess.execSync(`${this.#packageManager} pkg set ${value}`);
+  }
+
   async create(packages: Package[]): Promise<void> {
     for (const _package of packages)
       try {
