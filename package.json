@@ -19,11 +19,7 @@
     "ls:prettier": "prettier --write --ignore-unknown",
     "ls:eslint": "eslint --quiet --fix",
     "ci:dependency-check": "npx --yes npm-check-updates -e 2",
-    "prepare": "husky",
-    "prettier:all": "prettier --ignore-unknown **/*",
-    "prettier:all::write": "prettier --write --ignore-unknown **/*",
-    "eslint:all": "eslint **/*",
-    "eslint:all::fix": "eslint **/* --fix"
+    "prepare": "husky"
   },
   "author": {
     "name": "Konrad Stępień",
