@@ -18,7 +18,7 @@ jobs:
           node-version: ${{env.NODE_VERSION}}
       - run: npm ci
       - run: npm run cli:lint
-      - uses: actions/upload-artifact@v3
+      - uses: actions/upload-artifact@v4
         if: always()
         with:
           name: lint-report
@@ -34,7 +34,7 @@ jobs:
           node-version: ${{env.NODE_VERSION}}
       - run: npm ci
       - run: npm run cli:performance
-      - uses: actions/upload-artifact@v3
+      - uses: actions/upload-artifact@v4
         if: always()
         with:
           name: performance-report
@@ -50,7 +50,7 @@ jobs:
           node-version: ${{env.NODE_VERSION}}
       - run: npm ci
       - run: npm run cli:test
-      - uses: actions/upload-artifact@v3
+      - uses: actions/upload-artifact@v4
         if: always()
         with:
           name: test-report
@@ -67,7 +67,7 @@ jobs:
           node-version: ${{env.NODE_VERSION}}
       - run: npm ci
       - run: npm run cli:build
-      - uses: actions/upload-artifact@v3
+      - uses: actions/upload-artifact@v4
         if: always()
         with:
           name: build-report
