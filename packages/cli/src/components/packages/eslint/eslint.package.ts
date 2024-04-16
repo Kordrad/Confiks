@@ -1,8 +1,9 @@
+import { ESLINT_SCRIPTS } from '../../../constants/package-scripts-cli.constant.js';
 import { EslintService } from '../../../services/packages/eslint/eslint.service.js';
 import type { DependencyType } from '../../../type/types/dependency-type.type.js';
 import { stringify } from '../../../utils/json.utils.js';
 import { BasePackage } from '../base.package.js';
-import IGNORE_CONTENT from './configs/eslintignore.constant.js';
+import IGNORE_CONTENT from './constants/eslintignore.constant.js';
 import { EslintPluginPrettierPackage } from './eslint-plugin-prettier/eslint-plugin-prettier.package.js';
 import { EslintPluginSimpleImportSortPackage } from './eslint-plugin-simple-import-sort/eslint-plugin-simple-import-sort.package.js';
 import { EslintPluginUnicornPackage } from './eslint-plugin-unicorn/eslint-plugin-unicorn.package.js';
@@ -31,11 +32,12 @@ export class EslintPackage extends BasePackage {
 
     // IGNORE
     this.#eslintService.prepareIgnoreFile(IGNORE_CONTENT);
+    this.addScripts(ESLINT_SCRIPTS);
   }
 
   async #prepareCustomConfig(): Promise<void> {
     const { CONFIG_NAME, CONFIG } = await import(
-      './configs/eslintrc-confiks.constant.js'
+      './constants/eslintrc-confiks.constant.js'
     );
 
     this.#eslintService.writeConfig(CONFIG_NAME, stringify(CONFIG()));
@@ -51,7 +53,7 @@ export class EslintPackage extends BasePackage {
 
   async #updateRootConfig(): Promise<void> {
     const { CONFIG_NAME } = await import(
-      './configs/eslintrc-confiks.constant.js'
+      './constants/eslintrc-confiks.constant.js'
     );
     if (this.#eslintService.localFileName) {
       this.#eslintService.addExtensions(this.#eslintService.localFileName, [
@@ -62,7 +64,7 @@ export class EslintPackage extends BasePackage {
 
   async #createRootConfig(): Promise<void> {
     const { ROOT_CONFIG, ROOT_CONFIG_NAME } = await import(
-      './configs/eslintrc.constant.js'
+      './constants/eslintrc.constant.js'
     );
 
     this.#eslintService.writeConfig(ROOT_CONFIG_NAME, stringify(ROOT_CONFIG));

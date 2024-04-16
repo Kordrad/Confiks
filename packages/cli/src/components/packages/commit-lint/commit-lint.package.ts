@@ -1,3 +1,4 @@
+import { COMMIT_MSG_COMMITLINT } from '../../../constants/husky-cli.constant.js';
 import { fileSystem } from '../../../services/node/file-system.service.js';
 import { huskyService } from '../../../services/packages/husky/husky.service.js';
 import type { DependencyType } from '../../../type/types/dependency-type.type.js';
@@ -32,6 +33,6 @@ export class CommitLintPackage extends BasePackage {
     if (!packageIsInstalled(new HuskyPackage().package)) {
       return;
     }
-    huskyService.addHook('commit-msg', 'npx --no -- commitlint --edit ${1}');
+    huskyService.addHook('commit-msg', COMMIT_MSG_COMMITLINT);
   }
 }

@@ -1,13 +1,13 @@
 {
   "extends": "./tsconfig.json",
   "compilerOptions": {
-    "module": "esnext",
+    "module": "NodeNext",
     "outDir": "../../dist/out-tsc",
     "declaration": true,
     "types": ["node"],
     "allowSyntheticDefaultImports": true,
     "verbatimModuleSyntax": true,
-    "moduleResolution": "node"
+    "moduleResolution": "NodeNext"
   },
   "exclude": [
     "jest.config.ts",
