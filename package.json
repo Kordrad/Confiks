@@ -33,7 +33,7 @@
     "@nx/eslint": "18.0.4",
     "@nx/eslint-plugin": "18.0.4",
     "@nx/jest": "18.0.4",
-    "@nx/js": "18.0.4",
+    "@nx/js": "18.2.4",
     "@nx/node": "18.0.4",
     "@types/chalk-animation": "^1.6.3",
     "@types/figlet": "^1.5.8",
