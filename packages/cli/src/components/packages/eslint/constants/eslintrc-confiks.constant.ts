@@ -58,7 +58,6 @@ const prettierConfig = (): EslintConfigPlugin =>
 
 export const CONFIG_NAME = '.eslintrc.confiks.json';
 export const CONFIG = (): EslintConfigPlugin => ({
-  ignorePatterns: ['**/*'],
   plugins: [
     ...unusedImportsConfig().plugins,
     ...simpleSortConfig().plugins,

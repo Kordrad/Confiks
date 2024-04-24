@@ -17,7 +17,7 @@ export const CONFIG = () => ({
     '*.{json,js,ts,html}': [PRETTIER_FIX],
   }),
   ...(packageIsInstalled(new EslintPackage().package) && {
-    '*.{js,ts,jsx}': [ESLINT_FIX],
+    '*.{js,ts,jsx,html}': [ESLINT_FIX],
   }),
   ...(packageIsInstalled(new StylelintPackage().package) && {
     [packageIsInstalled(new StylelintConfigStandardScssPackage().package)
