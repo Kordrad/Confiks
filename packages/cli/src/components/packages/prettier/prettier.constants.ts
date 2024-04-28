@@ -20,7 +20,6 @@ export const CONFIG = (): string => {
     bracketSpacing: true,
     arrowParens: 'avoid',
     trailingComma: 'es5',
-    bracketSameLine: true,
     printWidth: 80,
   });
 };
