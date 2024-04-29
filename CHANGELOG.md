@@ -1,3 +1,16 @@
+## 1.9.2 (2024-04-29)
+
+
+### 🩹 Fixes
+
+- **eslint-config:** remove unnecessary ignorePatterns property ([#116](https://github.com/Kordrad/Confiks/pull/116))
+- **lint-staged:** run eslint also for HTML ([#118](https://github.com/Kordrad/Confiks/pull/118))
+- **prettier:** remove bracketSameLine rule ([#119](https://github.com/Kordrad/Confiks/pull/119))
+
+### ❤️  Thank You
+
+- Kordrad @Kordrad
+
 ## 1.9.1 (2024-04-22)
 
 This was a version bump only, there were no code changes.
