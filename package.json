@@ -29,7 +29,7 @@
   "devDependencies": {
     "@commitlint/cli": "^19.2.2",
     "@commitlint/config-conventional": "^19.2.2",
-    "@nx/devkit": "18.3.3",
+    "@nx/devkit": "18.3.4",
     "@nx/eslint": "18.3.3",
     "@nx/eslint-plugin": "18.3.3",
     "@nx/jest": "18.3.3",
