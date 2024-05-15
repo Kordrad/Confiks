@@ -1,3 +1,20 @@
+## 1.10.0 (2024-05-15)
+
+
+### 🚀 Features
+
+- **biome:** add package ([#99](https://github.com/Kordrad/Confiks/pull/99))
+
+### 🩹 Fixes
+
+- **eslint-config:** remove unnecessary ignorePatterns property ([#116](https://github.com/Kordrad/Confiks/pull/116))
+- **lint-staged:** run eslint also for HTML ([#118](https://github.com/Kordrad/Confiks/pull/118))
+- **prettier:** remove bracketSameLine rule ([#119](https://github.com/Kordrad/Confiks/pull/119))
+
+### ❤️  Thank You
+
+- Kordrad @Kordrad
+
 ## 1.9.2 (2024-04-29)
 
 
