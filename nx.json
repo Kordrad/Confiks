@@ -11,7 +11,16 @@
   "$schema": "./node_modules/nx/schemas/nx-schema.json",
   "targetDefaults": {
     "build": {
-      "cache": true
+      "cache": true,
+      "configurations": {
+        "production": {
+          "tsConfig": "packages/cli/tsconfig.lib.prod.json"
+        },
+        "development": {
+          "tsConfig": "packages/cli/tsconfig.lib.json"
+        }
+      },
+      "defaultConfiguration": "production"
     },
     "@nx/jest:jest": {
       "inputs": ["default", "^default", "{workspaceRoot}/jest.preset.js"],
