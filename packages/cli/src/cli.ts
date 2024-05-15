@@ -13,6 +13,7 @@ import ora from 'ora';
 
 import { PackageChoice } from './components/choices/package.choice.js';
 import {
+  BiomePackage,
   CommitLintPackage,
   EslintPackage,
   HuskyPackage,
@@ -56,7 +57,10 @@ async function selectPackages(): Promise<PackageInterface[]> {
   const codeStyle = await selectPackageGroup({
     prefix: '🧼',
     message: 'Pick code style packages to install',
-    choices: [new PackageChoice(new PrettierPackage())],
+    choices: [
+      new PackageChoice(new BiomePackage()),
+      new PackageChoice(new PrettierPackage()),
+    ],
   });
 
   const automations = await selectPackageGroup({

@@ -25,8 +25,9 @@ dealing with configuration complexities.
 
 ### Packages Support
 
-###### Code style
+###### Formatters
 
+- [biomejs latest][biomejs]: A toolchain for web projects, aimed to provide functionalities to maintain them. Biome offers formatter and linter, usable via CLI and LSP.
 - [prettier v3][prettier]: A code formatter.
   - [prettier-plugin-organize-attributes v1][prettier-plugin-organize-attributes]: Organize your HTML attributes automatically with Prettier
 
@@ -56,6 +57,7 @@ dealing with configuration complexities.
 [confiksNpm]: https://www.npmjs.com/package/confiks
 [confiksRepo]: https://github.com/Kordrad/Confiks
 [confiksDemo]: https://github.com/Kordrad/Confiks/blob/master/readme/demo.gif?raw=true
+[biomejs]: https://biomejs.dev/
 [commit-lint]: https://commitlint.js.org/
 [config-conventional]: https://www.npmjs.com/package/@commitlint/config-conventional
 [eslint]: https://eslint.org/
