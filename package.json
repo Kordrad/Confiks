@@ -7,7 +7,7 @@
     "precli:start": "npm run demo:cleanup",
     "postcli:start": "npm run prepare",
     "cli:start": "cd apps/demo && npm run start",
-    "cli:build": "nx run cli:build",
+    "cli:build": "nx run cli:build --prod",
     "cli:build:watch": "nx run cli:build --watch",
     "cli:lint": "nx lint cli",
     "cli:test": "nx test cli",
