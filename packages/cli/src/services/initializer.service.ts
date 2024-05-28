@@ -15,7 +15,6 @@ export class InitializerService {
     const packagesToInstall: PackagesDependencyGroup = {
       dependency: [],
       devDependency: [],
-      global: [],
     };
     const packagesToInit: Package[] = [];
 
@@ -29,10 +28,6 @@ export class InitializerService {
           packagesToInstall.devDependency.push(package_.dependency);
           break;
         }
-        case 'global': {
-          packagesToInstall.global.push(package_.dependency);
-          break;
-        }
         case 'none': {
           packagesToInit.push(package_.package);
           break;
@@ -41,7 +36,7 @@ export class InitializerService {
     }
 
     await this.#packageManagerService.install(packagesToInstall);
-    await this.#packageManagerService.create(packagesToInit);
+    await this.#packageManagerService.init(packagesToInit);
   }
 
   configure(): Promise<void> {

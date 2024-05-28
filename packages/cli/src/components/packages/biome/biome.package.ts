@@ -1,4 +1,4 @@
-import { childProcess } from '../../../services/node/child-process.service.js';
+import { PackageManagerService } from '../../../services/package-manager/package-manager.service.js';
 import type { DependencyType } from '../../../type/types/dependency-type.type.js';
 import type { VersionRange } from '../../../type/types/package-version.type.js';
 import type { Package } from '../../../type/types/packages.type.js';
@@ -12,7 +12,11 @@ export class BiomePackage extends BasePackage {
   readonly title = 'Biome';
   readonly version: VersionRange = 'latest';
 
+  /**
+   * @see https://biomejs.dev/guides/getting-started/#configuration
+   */
+
   configure() {
-    childProcess.execSync('npx @biomejs/biome init');
+    new PackageManagerService().exec('biome init');
   }
 }

@@ -19,7 +19,7 @@ export class FileSystemService {
       /**/
     }
   ): void {
-    fs.writeFile(fileName, content, callback);
+    fs.writeFileSync(fileName, content);
   }
 
   appendFileSync(fileName: string, content: string): void {

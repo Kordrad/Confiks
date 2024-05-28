@@ -1,4 +1,5 @@
 import { childProcess } from '../../node/child-process.service.js';
+import { PackageManagerService } from '../../package-manager/package-manager.service.js';
 
 export class HuskyService {
   /**
@@ -14,7 +15,7 @@ export class HuskyService {
   }
 
   init(): void {
-    childProcess.execSync('npx husky init');
+    new PackageManagerService().exec('husky init');
   }
 }
 
