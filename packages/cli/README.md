@@ -11,8 +11,14 @@ Line Interface (CLI) aids in swiftly installing essential dependencies.
 
 ![usage example][confiksDemo]
 
+###### npm
 ```shell
-npx confiks@latest
+npx confiks@latest -y
+```
+
+###### pnpm
+```shell
+pnpm dlx confiks@latest
 ```
 
 ### Why?
