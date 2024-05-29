@@ -2,6 +2,7 @@ import { fileSystem } from '../../../services/node/file-system.service.js';
 import * as packageUtils from '../../../utils/package-json.utils.js';
 import { PrettierPackage } from './prettier.package.js';
 
+jest.mock('../../../services/node/child-process.service.js');
 jest.mock('../../../services/node/file-system.service.js');
 jest.mock('../../../utils/package-json.utils.js');
 

@@ -2,6 +2,7 @@ import { EslintService } from '../../../services/packages/eslint/eslint.service.
 import { EslintPackage } from './eslint.package.js';
 
 jest.mock('../../../services/packages/eslint/eslint.service.js');
+jest.mock('../../../services/node/child-process.service.js');
 
 describe('EslintPackage', () => {
   let fixture: EslintPackage;

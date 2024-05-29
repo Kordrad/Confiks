@@ -25,7 +25,7 @@ export abstract class BasePackage implements PackageInterface {
     return `${this.package}@"${this.version}"`;
   }
 
-  addScripts(scripts: { [kay: string]: string }): void {
+  addScripts(scripts: { [key: string]: string }): void {
     // @example 'scripts.test="echo"'
     const parsedScripts: string = Object.entries(scripts)
       .map(([key, value]) => `scripts.${key}="${value}"`)

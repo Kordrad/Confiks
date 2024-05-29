@@ -1,6 +1,6 @@
 import * as PackageJsonUtils from '../../../utils/package-json.utils.js';
-import { EslintPackage } from '../eslint/index.js';
-import { PrettierPackage } from '../prettier/index.js';
+import { EslintPackage } from '../eslint';
+import { PrettierPackage } from '../prettier';
 import { CONFIG, CONFIG_NAME } from './lint-staged-config.constant.js';
 
 describe('lint-staged constant', () => {

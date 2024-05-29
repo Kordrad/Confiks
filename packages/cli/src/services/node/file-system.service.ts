@@ -12,14 +12,8 @@ export class FileSystemService {
     });
   }
 
-  writeFile(
-    fileName: string,
-    content: string,
-    callback = () => {
-      /**/
-    }
-  ): void {
-    fs.writeFile(fileName, content, callback);
+  writeFile(fileName: string, content: string): void {
+    fs.writeFileSync(fileName, content);
   }
 
   appendFileSync(fileName: string, content: string): void {
