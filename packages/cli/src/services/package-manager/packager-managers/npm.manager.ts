@@ -11,7 +11,7 @@ export class NpmManager implements PackageManagerInterface {
   readonly cli: CLI = {
     install: 'npm i',
     set: `npm pkg set`,
-    exec: `npm exec`,
+    exec: `npx`,
     uninstall: `npm uninstall`,
     init: `npm init`,
   };

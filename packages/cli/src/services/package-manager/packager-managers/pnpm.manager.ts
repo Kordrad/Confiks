@@ -11,7 +11,7 @@ export class PnpmManager implements PackageManagerInterface {
   readonly cli: CLI = {
     install: 'pnpm add',
     set: `pnpm pkg set`,
-    exec: `pnpm exec`,
+    exec: `pnpm`,
     uninstall: `pnpm remove`,
     init: `pnpm dlx`,
   };
