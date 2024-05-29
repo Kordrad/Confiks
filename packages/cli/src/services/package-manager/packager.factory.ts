@@ -1,9 +1,8 @@
 import type { PackageManagerInterface } from '../../type/interfaces/package-manager.interface.js';
 import type { PackageManagerType } from '../../type/types/package-manager-type.type.js';
-import { NpmManager } from './packager-managers/npm.manager.js';
-import { PnpmManager } from './packager-managers/pnpm.manager.js';
+import { NpmManager, PnpmManager } from './packager-managers/index.js';
 
-export class PackagerFactoryService {
+export class PackagerFactory {
   createPackagerManager(
     type: PackageManagerType | undefined
   ): PackageManagerInterface {

@@ -5,11 +5,11 @@ import type {
 } from '../../type/interfaces/package-manager.interface.js';
 import type { PackagesDependencyGroup } from '../../type/types/packages-dependency-group.interface.js';
 import { detectPackageManager } from '../../utils/package-manager.utils.js';
-import { PackagerFactoryService } from './packager-factory.service.js';
+import { PackagerFactory } from './packager.factory.js';
 
 export class PackageManagerService {
   #packageManager: PackageManagerInterface =
-    new PackagerFactoryService().createPackagerManager(detectPackageManager());
+    new PackagerFactory().createPackagerManager(detectPackageManager());
 
   get cli(): CLI {
     return this.#packageManager.cli;
