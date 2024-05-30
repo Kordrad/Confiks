@@ -19,7 +19,9 @@
     "ls:prettier": "prettier --write --ignore-unknown",
     "ls:eslint": "eslint --quiet --fix",
     "ci:dependency-check": "npx --yes npm-check-updates -e 2",
-    "prepare": "husky"
+    "prepare": "husky",
+    "prelink": "npm run cli:build",
+    "link": "cd dist/packages/cli && npm link"
   },
   "author": {
     "name": "Konrad Stępień",
