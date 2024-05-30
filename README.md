@@ -1,4 +1,4 @@
-# [Confiks][confiks]
+# [Confiks](packages/cli)
 
 A repository for the "confiks" package, allowing you to run the Command Line Interface (CLI) for easy and quick
 configuration of frontend projects with the required dependencies.
@@ -31,7 +31,7 @@ or watch build
 npm run cli:build:watch
 ```
 
-### Run demo 
+### Run demo
 
 > Remember! Build is required!
 
@@ -39,42 +39,17 @@ npm run cli:build:watch
 npm run cli:start
 ```
 
-### Manual start for other projects
-
-Execute the following command:
-
-```bash
-# Provide a right path
-node ..\Confiks\dist\packages\cli\src
-```
-
-#### Via NPM 
+### Link Package
 
 1. Open the path of the Confiks project
-
-```bash
-cd .\dist\packages\cli\
-```
-
-2. Install globally
-
-```bash
-npm i -g .
-```
-
-3. Run in the test project
-
-```bash
-confiks
-# or
-npx confiks
-```
+2. Link project via command `npm run link`
+3. In another project, add an existing link to the project using: `npm link confiks`
+4. Now you are able to run. Available commands you can find [here](/packages/cli#usage)
 
 ## Commit Message Format
 
 In the project, we use commit-lint with [Conventional Commits][conventionalCommit] based
 on [Angular convention][angularConvention]
 
-[confiks]: https://github.com/Kordrad/Confiks/tree/master/packages/cli
 [conventionalCommit]: https://www.conventionalcommits.org/
 [angularConvention]: https://github.com/angular/angular/blob/main/CONTRIBUTING.md#commit
