@@ -1,3 +1,14 @@
+## 1.11.0 (2024-05-30)
+
+
+### 🚀 Features
+
+- **pnpm manager:** add pnpm command to configure projects ([#149](https://github.com/Kordrad/Confiks/pull/149))
+
+### ❤️  Thank You
+
+- Kordrad @Kordrad
+
 ## 1.10.0 (2024-05-15)
 
 
