@@ -21,6 +21,11 @@ npx confiks@latest -y
 pnpm dlx confiks@latest
 ```
 
+###### yarn
+```shell
+yarn dlx confiks@latest
+```
+
 ### Why?
 
 `Confiks` was developed to automate and optimize the process of setting up and configuring various tools for the

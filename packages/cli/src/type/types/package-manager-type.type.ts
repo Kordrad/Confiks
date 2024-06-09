@@ -1,1 +1,1 @@
-export type PackageManagerType = /*'bun' | 'bunx' | 'yarn' |*/ 'pnpm' | 'npm';
+export type PackageManagerType = /*'bun' | 'bunx' |*/ 'yarn' | 'pnpm' | 'npm';

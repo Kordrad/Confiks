@@ -5,20 +5,20 @@ import type {
 } from '../../../type/interfaces/package-manager.interface.js';
 import { PackageManagerAbstract } from './package-manager.abstract.js';
 
-export class NpmManager
+export class YarnManager
   extends PackageManagerAbstract
   implements PackageManagerInterface
 {
   readonly cli: CLI = {
-    install: 'npm i',
+    install: 'yarn add',
     set: `npm pkg set`,
-    exec: `npx`,
-    uninstall: `npm uninstall`,
-    init: `npm init`,
+    exec: `yarn`,
+    uninstall: `yarn remove`,
+    init: `yarn create`,
   };
 
   readonly dependencyInstallation: DependencyInstallation = {
-    dependency: '--save-prod',
-    devDependency: '--save-dev',
+    dependency: '--save',
+    devDependency: '--dev',
   };
 }
