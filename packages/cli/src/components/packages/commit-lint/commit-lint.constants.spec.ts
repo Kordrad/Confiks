@@ -2,6 +2,8 @@ import * as PackageJsonUtils from '../../../utils/package-json.utils.js';
 import { CONFIG, CONFIG_NAME } from './commit-lint.constants.js';
 import { ConfigConventionalPackage } from './config-conventional/config-conventional.package.js';
 
+jest.mock('../../../constants/husky-cli.constant.js');
+
 describe('lint-staged constant', () => {
   beforeEach(() => {
     jest

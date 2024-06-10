@@ -5,7 +5,11 @@ import * as packageManagerUtils from '../../utils/package-manager.utils.js';
 import * as childProcess from '../node/child-process.service.js';
 import { PackageManagerService } from './package-manager.service.js';
 import { PackagerFactory } from './packager.factory.js';
-import { NpmManager, PnpmManager } from './packager-managers';
+import {
+  NpmManager,
+  PnpmManager,
+  YarnManager,
+} from './packager-managers/index.js';
 
 jest.mock('../node/file-system.service.js');
 jest.mock('../node/child-process.service.js');
@@ -23,6 +27,7 @@ describe('PackageManagerService', () => {
   describe.each([
     { PM: 'pnpm', PMInstance: new PnpmManager() },
     { PM: 'npm', PMInstance: new NpmManager() },
+    { PM: 'yarn', PMInstance: new YarnManager() },
   ] satisfies {
     PM: PackageManagerType;
     PMInstance: PackageManagerInterface;
@@ -66,6 +71,7 @@ describe('PackageManagerService', () => {
 
         expect(spy).toHaveBeenCalledTimes(1);
         switch (PM) {
+          case 'yarn':
           case 'npm': {
             expect(spy).toHaveBeenCalledWith(`${PMInstance.cli.init} test`, {
               stderr: false,
