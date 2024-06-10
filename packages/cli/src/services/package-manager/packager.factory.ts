@@ -24,7 +24,6 @@ export class PackagerFactory {
       }
 
       default: {
-        console.log('??');
         throw new Error(`Unsupported package manager type`);
       }
     }

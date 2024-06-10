@@ -63,6 +63,7 @@ dealing with configuration complexities.
 
 - NPM
 - PNPM
+- YARN
 
 [//]: # 'Aliases:'
 [confiksNpm]: https://www.npmjs.com/package/confiks

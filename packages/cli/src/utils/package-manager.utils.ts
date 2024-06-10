@@ -11,7 +11,6 @@ export function detectPackageManager(): PackageManagerType | undefined {
   const manager = packageManagers.find(
     name => userAgent.includes(name) || argv.includes(name)
   );
-  console.log('TEST123:', userAgent, argv);
   _manager = manager;
   return manager;
 }

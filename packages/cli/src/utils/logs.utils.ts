@@ -10,7 +10,7 @@ import gradient from 'gradient-string';
 export function welcomeLog(callback: () => void | Promise<void>): void {
   console.clear();
   figlet(
-    `Confiks v1.12.0`,
+    `Confiks`,
     {
       font: 'Small',
     },

@@ -1,6 +1,6 @@
 {
   "name": "confiks",
-  "version": "1.12.0",
+  "version": "1.11.0",
   "description": "Confiks is a library designed to assist in the installation and configuration of frontend projects. Utilize this Command Line Interface (CLI) to swiftly install essential dependencies.",
   "repository": {
     "url": "https://github.com/Kordrad/Confiks",
@@ -23,6 +23,9 @@
     "configure",
     "configuration",
     "frontend",
+    "npm",
+    "pnpm",
+    "yarn",
     "biomejs",
     "@commitlint/cli",
     "@commitlint/config-conventional",

@@ -1,6 +1,23 @@
-import { PackageManagerService } from '../services/package-manager/package-manager.service.js';
+import type { HuskyCli } from '../type/interfaces/husky-cli.interface.js';
+import type { PackageManagerType } from '../type/types/package-manager-type.type.js';
+import { detectPackageManager } from '../utils/package-manager.utils.js';
 
-const CLI = new PackageManagerService().cli;
+const packageManagers: {
+  [packageManager in PackageManagerType]: () => Promise<{ default: HuskyCli }>;
+} = {
+  yarn: () => import('./husky-cli/yarn.js'),
+  npm: () => import('./husky-cli/npm.js'),
+  pnpm: () => import('./husky-cli/pnpm.js'),
+};
 
-export const COMMIT_MSG_COMMITLINT = `${CLI.exec} --no -- commitlint --edit $\{1}`;
-export const PRE_COMMIT_LINT_STAGED = `${CLI.exec} lint-staged`;
+async function factory(
+  type: PackageManagerType | undefined
+): Promise<HuskyCli> {
+  if (!type || !packageManagers[type]) {
+    throw new Error(`There is no husky CLI for that package manager`);
+  }
+  const { default: cli } = await packageManagers[type]();
+  return cli;
+}
+
+export default await factory(detectPackageManager());

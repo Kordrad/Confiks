@@ -22,8 +22,6 @@ function normalizeChoices<T>(normalizeArray: Choice<T>[]): Choice<T>[] {
 export const MultiSelect = async <T, Value>(
   options: Omit<Prompt<Value>, 'type'>
 ) =>
-  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-  // @ts-ignore @ts-expect-error
   await enquirer.prompt<T>({
     ...options,
     ...(typeof options.result === 'function' && { result: options.result }),
