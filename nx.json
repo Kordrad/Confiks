@@ -20,7 +20,7 @@
           "tsConfig": "packages/cli/tsconfig.lib.json"
         }
       },
-      "defaultConfiguration": "production"
+      "defaultConfiguration": "development"
     },
     "@nx/jest:jest": {
       "inputs": ["default", "^default", "{workspaceRoot}/jest.preset.js"],
