@@ -3,6 +3,8 @@ import { EslintPackage } from '../eslint';
 import { PrettierPackage } from '../prettier';
 import { CONFIG, CONFIG_NAME } from './lint-staged-config.constant.js';
 
+jest.mock('../../../constants/husky-cli.constant.js');
+
 describe('lint-staged constant', () => {
   beforeEach(() => {
     jest

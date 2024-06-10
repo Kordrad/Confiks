@@ -6,7 +6,8 @@ export function detectPackageManager(): PackageManagerType | undefined {
   const userAgent = process.env.npm_config_user_agent ?? '';
   const argv = process.argv.join(' ');
 
-  const packageManagers: PackageManagerType[] = ['pnpm', 'npm'];
+  const packageManagers: PackageManagerType[] = ['yarn', 'pnpm', 'npm'];
+
   const manager = packageManagers.find(
     name => userAgent.includes(name) || argv.includes(name)
   );

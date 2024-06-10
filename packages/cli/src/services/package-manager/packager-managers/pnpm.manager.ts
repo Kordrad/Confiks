@@ -3,11 +3,13 @@ import type {
   DependencyInstallation,
   PackageManagerInterface,
 } from '../../../type/interfaces/package-manager.interface.js';
-import type { DependencyTypeToInstall } from '../../../type/types/dependency-type.type.js';
-import type { Dependency } from '../../../type/types/package-version.type.js';
 import { childProcess } from '../../node/child-process.service.js';
+import { PackageManagerAbstract } from './package-manager.abstract.js';
 
-export class PnpmManager implements PackageManagerInterface {
+export class PnpmManager
+  extends PackageManagerAbstract
+  implements PackageManagerInterface
+{
   readonly cli: CLI = {
     install: 'pnpm add',
     set: `pnpm pkg set`,
@@ -21,37 +23,16 @@ export class PnpmManager implements PackageManagerInterface {
     devDependency: '--save-dev',
   };
 
-  async install(
-    packages: Dependency[],
-    type: DependencyTypeToInstall
-  ): Promise<void> {
-    await childProcess.execAsync(
-      `${this.cli.install} ${this.dependencyInstallation[type]} ${packages.join(' ')}`
-    );
-  }
-
-  set(value: string): void {
-    childProcess.execSync(`${this.cli.set} ${value}`);
-  }
-
-  async uninstall(packages: string[]): Promise<void> {
-    await childProcess.execAsync(`${this.cli.uninstall} ${packages.join(' ')}`);
-  }
-
-  exec(value: string) {
-    childProcess.execSync(`${this.cli.exec} ${value}`);
-  }
-
   async init(dependency: string): Promise<void> {
     await childProcess.execAsync(
-      `${this.cli.init} ${this.#addCreateWord(dependency)}`,
+      `${this.cli.init} ${this.addCreateWord(dependency)}`,
       {
         stderr: false,
       }
     );
   }
 
-  #addCreateWord(
+  private addCreateWord(
     dependency: string
   ): `${string}/create-${string}` | `create-${string}` {
     const value = dependency.split('/');

@@ -4,6 +4,7 @@ import * as PackageJsonUtils from '../../../utils/package-json.utils.js';
 import { CONFIG_NAME } from './commit-lint.constants';
 import { CommitLintPackage } from './commit-lint.package.js';
 
+jest.mock('../../../constants/husky-cli.constant.js');
 jest.mock('../../../services/packages/husky/husky.service.js');
 jest.mock('../../../services/node/file-system.service.js');
 

@@ -1,5 +1,7 @@
-import { CommitLintPackage } from '../commit-lint.package';
-import { ConfigConventionalPackage } from './config-conventional.package';
+import { CommitLintPackage } from '../commit-lint.package.js';
+import { ConfigConventionalPackage } from './config-conventional.package.js';
+
+jest.mock('../../../../constants/husky-cli.constant.js');
 
 describe('ConfigConventionalPackage', () => {
   const fixture = new ConfigConventionalPackage();

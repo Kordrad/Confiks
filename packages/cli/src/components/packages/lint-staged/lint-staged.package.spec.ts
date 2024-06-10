@@ -5,6 +5,7 @@ import { LintStagedPackage } from './lint-staged.package.js';
 
 jest.mock('../../../services/node/file-system.service.js');
 jest.mock('../../../services/packages/husky/husky.service.js');
+jest.mock('../../../constants/husky-cli.constant.js');
 
 describe('LintStagedPackage', () => {
   const fixture = new LintStagedPackage();
