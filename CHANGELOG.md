@@ -1,3 +1,14 @@
+## 1.12.0 (2024-06-11)
+
+
+### 🚀 Features
+
+- **yarn:** add package manager support ([#159](https://github.com/Kordrad/Confiks/pull/159))
+
+### ❤️  Thank You
+
+- Konrad @Kordrad
+
 ## 1.11.0 (2024-05-30)
 
 
