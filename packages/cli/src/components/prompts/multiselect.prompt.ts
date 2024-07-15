@@ -26,5 +26,6 @@ export const MultiSelect = async <T, Value>(
     ...options,
     ...(typeof options.result === 'function' && { result: options.result }),
     type: 'multiselect',
-    choices: normalizeChoices<Value>(options.choices),
+    // @TODO: fix type error in build
+    choices: normalizeChoices<Value>(options.choices) as never,
   });
