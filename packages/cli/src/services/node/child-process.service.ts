@@ -2,7 +2,9 @@ import * as cp from 'node:child_process';
 
 export class ChildProcessService {
   execSync(command: string, options?: cp.ExecSyncOptions): string {
-    return cp.execSync(command, { encoding: 'utf8', ...options }).toString();
+    return (
+      cp.execSync(command, { encoding: 'utf8', ...options })?.toString() || ''
+    );
   }
 
   execAsync(command: string, options?: { stderr: boolean }): Promise<string> {
@@ -14,6 +16,15 @@ export class ChildProcessService {
         if (stderr && stderrShow) return reject(stderr);
         resolve(stdout);
       });
+    });
+  }
+
+  execAsync2(command: string, options?: cp.ExecSyncOptions): Promise<string> {
+    return new Promise(resolve => {
+      const execSync =
+        cp.execSync(command, { encoding: 'utf8', ...options })?.toString() ||
+        '';
+      resolve(execSync);
     });
   }
 }

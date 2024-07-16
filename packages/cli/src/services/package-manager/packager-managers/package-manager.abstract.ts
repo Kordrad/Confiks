@@ -32,8 +32,8 @@ export abstract class PackageManagerAbstract
   }
 
   async init(dependency: string): Promise<void> {
-    await childProcess.execAsync(`${this.cli.init} ${dependency}`, {
-      stderr: false,
+    await childProcess.execAsync2(`${this.cli.init} ${dependency}`, {
+      stdio: 'inherit',
     });
   }
 }

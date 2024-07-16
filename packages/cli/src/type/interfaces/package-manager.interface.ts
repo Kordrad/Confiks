@@ -27,5 +27,5 @@ export interface PackageManagerInterface {
   set(value: string): void;
   exec(value: string): void;
   uninstall(packages: string[]): Promise<void>;
-  init(packages: string): Promise<void>;
+  init(packages: string): void;
 }

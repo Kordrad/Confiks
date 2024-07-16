@@ -4,6 +4,7 @@ export type Package =
   | '@commitlint/cli'
   | '@commitlint/config-conventional'
   | 'eslint'
+  | '@eslint/config'
   | 'eslint-plugin-prettier'
   | 'eslint-plugin-simple-import-sort'
   | 'eslint-plugin-unicorn'

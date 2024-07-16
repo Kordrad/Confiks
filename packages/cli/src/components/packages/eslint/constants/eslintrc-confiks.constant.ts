@@ -1,5 +1,6 @@
 import type { EslintConfig } from '../../../../type/interfaces/eslint-config.interface.js';
 import type { Required } from '../../../../type/utils/required.type-util.js';
+import { stringify } from '../../../../utils/json.utils.js';
 import { packageIsInstalled } from '../../../../utils/package-json.utils.js';
 import { EslintPluginPrettierPackage } from '../../eslint-plugin-prettier/eslint-plugin-prettier.package.js';
 import { EslintPluginSimpleImportSortPackage } from '../../eslint-plugin-simple-import-sort/eslint-plugin-simple-import-sort.package.js';
@@ -56,8 +57,9 @@ const prettierConfig = (): EslintConfigPlugin =>
       }
     : dumbConfig;
 
-export const CONFIG_NAME = '.eslintrc.confiks.json';
-export const CONFIG = (): EslintConfigPlugin => ({
+export const CONFIG_NAME = '.eslintrc.confiks.js';
+
+const config_options = (): EslintConfigPlugin => ({
   plugins: [
     ...unusedImportsConfig().plugins,
     ...simpleSortConfig().plugins,
@@ -81,3 +83,7 @@ export const CONFIG = (): EslintConfigPlugin => ({
     },
   ],
 });
+
+export const CONFIG = (): string => `
+export default ${stringify(config_options())}
+`;

@@ -76,7 +76,7 @@ export class PackageChoice
     if (options?.hint) this.hint = options.hint;
     if (packageModel.description) {
       const version = (packageModel as CommonPackageInterface).version;
-      const versionTemplate = version ? `(${version})` : '';
+      const versionTemplate = version ? `(v${version})` : '';
       const description = packageModel.description || '';
 
       this.hint = `${versionTemplate} ${description}`.trim();
