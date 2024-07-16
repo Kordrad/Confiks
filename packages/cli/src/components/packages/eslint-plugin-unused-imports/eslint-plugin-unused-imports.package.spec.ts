@@ -1,4 +1,4 @@
-import { EslintPackage } from '../eslint.package';
+import { EslintPackage } from '../eslint/eslint.package';
 import { EslintPluginUnusedImportsPackage } from './eslint-plugin-unused-imports.package';
 
 describe('EslintPluginUnusedImportsPackage', () => {

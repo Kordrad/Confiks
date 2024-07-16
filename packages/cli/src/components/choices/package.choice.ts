@@ -1,6 +1,10 @@
 import type { Choice } from '../../type/interfaces/choice.interface.js';
 import type { ChoiceState } from '../../type/interfaces/choice-state.interface.js';
-import type { PackageInterface } from '../../type/interfaces/package.interface.js';
+import type {
+  AngularSchematicInterface,
+  CommonPackageInterface,
+  CreatorPackageInterface,
+} from '../../type/interfaces/package.interface.js';
 import type { Package } from '../../type/types/packages.type.js';
 import { BaseChoice } from './base.choice.js';
 
@@ -12,16 +16,21 @@ import { BaseChoice } from './base.choice.js';
  * @implements Choice
  */
 
+type PackageType =
+  | CommonPackageInterface
+  | CreatorPackageInterface
+  | AngularSchematicInterface;
+
 export class PackageChoice
-  extends BaseChoice<PackageInterface>
-  implements Choice<PackageInterface>
+  extends BaseChoice<PackageType>
+  implements Choice<PackageType>
 {
   message!: string;
   name!: Package;
-  value!: PackageInterface;
+  value!: PackageType;
 
   hint = '';
-  choices: Choice<PackageInterface>[] = [];
+  choices: Choice<PackageType>[] = [];
   indent = ' ';
 
   #childIndent = this.indent + '  ';
@@ -30,7 +39,7 @@ export class PackageChoice
   readonly #parentIndicator = '√√';
 
   constructor(
-    packageModel: PackageInterface,
+    packageModel: PackageType,
     options?: Pick<Choice, 'hint' | 'indent'>
   ) {
     super();
@@ -40,8 +49,8 @@ export class PackageChoice
   }
 
   indicator(
-    state: ChoiceState<PackageInterface>,
-    choice: Choice<PackageInterface>
+    state: ChoiceState<PackageType>,
+    choice: Choice<PackageType>
   ): string {
     return this.#hasEnabledChoice(state, choice)
       ? this.#parentIndicator
@@ -49,8 +58,8 @@ export class PackageChoice
   }
 
   onChoice(
-    state: ChoiceState<PackageInterface>,
-    choice: Choice<PackageInterface>,
+    state: ChoiceState<PackageType>,
+    choice: Choice<PackageType>,
     index: number
   ) {
     this.#enableParent(state, choice, index);
@@ -58,7 +67,7 @@ export class PackageChoice
   }
 
   #initializeProperties(
-    packageModel: PackageInterface,
+    packageModel: PackageType,
     options?: Pick<Choice, 'hint' | 'indent'>
   ): void {
     this.name = packageModel.package;
@@ -66,11 +75,11 @@ export class PackageChoice
     this.value = packageModel;
     if (options?.hint) this.hint = options.hint;
     if (packageModel.description) {
-      const version = packageModel.version.startsWith('latest')
-        ? packageModel.version
-        : `v${packageModel.version}`;
+      const version = (packageModel as CommonPackageInterface).version;
+      const versionTemplate = version ? `(${version})` : '';
+      const description = packageModel.description || '';
 
-      this.hint = `(${version}) ${packageModel.description || ''}`;
+      this.hint = `${versionTemplate} ${description}`.trim();
     }
 
     if (options?.indent) this.indent = options.indent;
@@ -78,7 +87,7 @@ export class PackageChoice
       this.#makeChildrenChoices(packageModel.extensions);
   }
 
-  #makeChildrenChoices(extensions: PackageInterface[]): void {
+  #makeChildrenChoices(extensions: PackageType[]): void {
     for (const extension of extensions)
       this.choices.push(
         new PackageChoice(extension, {
@@ -88,8 +97,8 @@ export class PackageChoice
   }
 
   #saveEnabledState(
-    state: ChoiceState<PackageInterface>,
-    choice: Choice<PackageInterface>,
+    state: ChoiceState<PackageType>,
+    choice: Choice<PackageType>,
     index: number
   ): void {
     if (state.keypress?.name === 'a' && state.choices?.length)
@@ -108,8 +117,8 @@ export class PackageChoice
   }
 
   #enableParent(
-    state: ChoiceState<PackageInterface>,
-    choice: Choice<PackageInterface>,
+    state: ChoiceState<PackageType>,
+    choice: Choice<PackageType>,
     index: number
   ): void {
     if (this.#hasEnabledChoice(state, choice)) {
@@ -120,13 +129,13 @@ export class PackageChoice
   }
 
   #hasEnabledChoice(
-    state: ChoiceState<PackageInterface>,
-    choice: Choice<PackageInterface>
+    state: ChoiceState<PackageType>,
+    choice: Choice<PackageType>
   ): boolean {
     const depends = choice.value?.extensions || [];
     const sameChoices = state.choices?.filter(choice =>
       depends.find(
-        (extension: PackageInterface) => choice.name === extension.package
+        (extension: PackageType) => choice.name === extension.package
       )
     );
     return sameChoices?.some(({ enabled }) => enabled) || false;

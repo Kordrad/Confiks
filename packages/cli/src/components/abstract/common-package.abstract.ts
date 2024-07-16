@@ -1,5 +1,4 @@
-import { PackageManagerService } from '../../services/package-manager/package-manager.service.js';
-import type { PackageInterface } from '../../type/interfaces/package.interface.js';
+import type { CommonPackageInterface } from '../../type/interfaces/package.interface.js';
 import type { DependencyType } from '../../type/types/dependency-type.type.js';
 import type {
   Dependency,
@@ -14,22 +13,13 @@ import type { Package } from '../../type/types/packages.type.js';
  * @example
  * class NewPackage extends BasePackage { ... }
  * */
-export abstract class BasePackage implements PackageInterface {
+export abstract class CommonPackageAbstract implements CommonPackageInterface {
   abstract readonly title: string;
   abstract readonly package: Package;
   abstract readonly version: VersionRange;
   abstract readonly dependencyType: DependencyType;
-  readonly #packageManager = new PackageManagerService();
 
   get dependency(): Dependency {
     return `${this.package}@"${this.version}"`;
-  }
-
-  addScripts(scripts: { [key: string]: string }): void {
-    // @example 'scripts.test="echo"'
-    const parsedScripts: string = Object.entries(scripts)
-      .map(([key, value]) => `scripts.${key}="${value}"`)
-      .join(' ');
-    this.#packageManager.set(parsedScripts);
   }
 }

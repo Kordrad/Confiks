@@ -1,4 +1,4 @@
-import { EslintPackage } from '../eslint.package';
+import { EslintPackage } from '../eslint/eslint.package';
 import { EslintPluginSimpleImportSortPackage } from './eslint-plugin-simple-import-sort.package';
 
 describe('EslintPluginSimpleImportSortPackage', () => {

@@ -1,10 +1,10 @@
 import type { EslintConfig } from '../../../../type/interfaces/eslint-config.interface.js';
 import type { Required } from '../../../../type/utils/required.type-util.js';
 import { packageIsInstalled } from '../../../../utils/package-json.utils.js';
-import { EslintPluginPrettierPackage } from '../eslint-plugin-prettier/eslint-plugin-prettier.package.js';
-import { EslintPluginSimpleImportSortPackage } from '../eslint-plugin-simple-import-sort/eslint-plugin-simple-import-sort.package.js';
-import { EslintPluginUnicornPackage } from '../eslint-plugin-unicorn/eslint-plugin-unicorn.package.js';
-import { EslintPluginUnusedImportsPackage } from '../eslint-plugin-unused-imports/eslint-plugin-unused-imports.package.js';
+import { EslintPluginPrettierPackage } from '../../eslint-plugin-prettier/eslint-plugin-prettier.package.js';
+import { EslintPluginSimpleImportSortPackage } from '../../eslint-plugin-simple-import-sort/eslint-plugin-simple-import-sort.package.js';
+import { EslintPluginUnicornPackage } from '../../eslint-plugin-unicorn/eslint-plugin-unicorn.package.js';
+import { EslintPluginUnusedImportsPackage } from '../../eslint-plugin-unused-imports/eslint-plugin-unused-imports.package.js';
 
 type EslintConfigPlugin = Required<EslintConfig, 'plugins'>;
 

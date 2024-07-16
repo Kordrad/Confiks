@@ -1,4 +1,4 @@
-import { EslintPackage } from '../eslint.package';
+import { EslintPackage } from '../eslint/eslint.package';
 import { EslintPluginUnicornPackage } from './eslint-plugin-unicorn.package';
 
 describe('EslintPluginUnicornPackage', () => {

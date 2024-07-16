@@ -1,5 +1,5 @@
-import { PrettierPackage } from '../prettier.package.js';
-import { PrettierPluginOrganizeAttributesPackage } from './prettier-plugin-organize-attributes.package.js';
+import { PrettierPackage } from '../prettier/prettier.package';
+import { PrettierPluginOrganizeAttributesPackage } from './prettier-plugin-organize-attributes.package';
 
 describe('PrettierPluginOrganizeAttributesPackage', () => {
   let fixture: PrettierPluginOrganizeAttributesPackage;

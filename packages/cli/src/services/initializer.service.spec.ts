@@ -1,11 +1,11 @@
-import { BasePackage } from '../components/packages/base.package';
+import { CommonPackageAbstract } from '../components/abstract/common-package.abstract';
 import { DependencyType } from '../type/types/dependency-type.type';
 import { VersionRange } from '../type/types/package-version.type';
 import type { Package } from '../type/types/packages.type.js';
 import { InitializerService } from './initializer.service.js';
 
 const configureMock = jest.fn();
-class MockPackage extends BasePackage {
+class MockPackage extends CommonPackageAbstract {
   readonly dependencyType: DependencyType = 'none';
   readonly package = 'string' as Package;
   readonly title = 'string';
@@ -31,7 +31,7 @@ describe('InitializerService', () => {
 
   test('should add packages to variable via addPackages()', () => {
     fixture.addPackages(somePackages);
-    expect(fixture.packages).toEqual(somePackages);
+    expect(fixture.common).toEqual(somePackages);
   });
 
   describe('configure()', () => {

@@ -1,8 +1,8 @@
-import type { DependencyTypeToInstall } from '../types/dependency-type.type.js';
+import type { DependencyType } from '../types/dependency-type.type.js';
 import type { Dependency } from '../types/package-version.type.js';
 
 export type DependencyInstallation = {
-  readonly [key in DependencyTypeToInstall]: string;
+  readonly [key in DependencyType]: string;
 };
 
 type _CLI = 'install' | 'set' | 'exec' | 'uninstall' | 'init';
@@ -18,7 +18,7 @@ export interface PackageManagerInterface {
    * installation command
    * @example install('confiks', 'devDependency')
    */
-  install(packages: Dependency[], type: DependencyTypeToInstall): Promise<void>;
+  install(packages: Dependency[], type: DependencyType): Promise<void>;
 
   /**
    * script to set values in pkg

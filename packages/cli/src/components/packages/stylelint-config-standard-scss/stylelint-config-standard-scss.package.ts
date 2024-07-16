@@ -1,14 +1,14 @@
-import { fileSystem } from '../../../../services/node/file-system.service.js';
-import { PackageManagerService } from '../../../../services/package-manager/package-manager.service.js';
-import type { DependencyType } from '../../../../type/types/dependency-type.type.js';
-import type { Package } from '../../../../type/types/packages.type.js';
-import { BasePackage } from '../../base.package.js';
+import { fileSystem } from '../../../services/node/file-system.service.js';
+import { PackageManagerService } from '../../../services/package-manager/package-manager.service.js';
+import type { DependencyType } from '../../../type/types/dependency-type.type.js';
+import type { Package } from '../../../type/types/packages.type.js';
+import { CommonPackageAbstract } from '../../abstract/common-package.abstract.js';
 import {
   CONFIG_NAME,
   CONFIG_STANDARD_PACKAGE,
-} from '../stylelint.constants.js';
+} from '../stylelint/stylelint.constants.js';
 
-export class StylelintConfigStandardScssPackage extends BasePackage {
+export class StylelintConfigStandardScssPackage extends CommonPackageAbstract {
   readonly title = 'stylelint-config-standard-scss';
   readonly package: Package = 'stylelint-config-standard-scss';
   readonly version = '13';

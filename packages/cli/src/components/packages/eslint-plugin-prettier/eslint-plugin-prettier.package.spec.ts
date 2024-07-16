@@ -1,4 +1,4 @@
-import { EslintPackage } from '../eslint.package';
+import { EslintPackage } from '../eslint/eslint.package';
 import { EslintPluginPrettierPackage } from './eslint-plugin-prettier.package';
 
 describe('EslintPluginPrettierPackage', () => {

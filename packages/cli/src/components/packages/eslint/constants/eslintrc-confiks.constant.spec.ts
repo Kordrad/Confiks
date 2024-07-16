@@ -1,8 +1,8 @@
 import * as PackageJsonUtils from '../../../../utils/package-json.utils.js';
-import { EslintPluginPrettierPackage } from '../eslint-plugin-prettier/eslint-plugin-prettier.package';
-import { EslintPluginSimpleImportSortPackage } from '../eslint-plugin-simple-import-sort/eslint-plugin-simple-import-sort.package';
-import { EslintPluginUnicornPackage } from '../eslint-plugin-unicorn/eslint-plugin-unicorn.package';
-import { EslintPluginUnusedImportsPackage } from '../eslint-plugin-unused-imports/eslint-plugin-unused-imports.package';
+import { EslintPluginPrettierPackage } from '../../eslint-plugin-prettier/eslint-plugin-prettier.package';
+import { EslintPluginSimpleImportSortPackage } from '../../eslint-plugin-simple-import-sort/eslint-plugin-simple-import-sort.package';
+import { EslintPluginUnicornPackage } from '../../eslint-plugin-unicorn/eslint-plugin-unicorn.package';
+import { EslintPluginUnusedImportsPackage } from '../../eslint-plugin-unused-imports/eslint-plugin-unused-imports.package';
 import { CONFIG, CONFIG_NAME } from './eslintrc-confiks.constant';
 
 describe('lint-staged constant', () => {

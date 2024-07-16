@@ -1,7 +1,7 @@
-import type { DependencyType } from '../../../../type/types/dependency-type.type.js';
-import { BasePackage } from '../../base.package.js';
+import type { DependencyType } from '../../../type/types/dependency-type.type.js';
+import { CommonPackageAbstract } from '../../abstract/common-package.abstract.js';
 
-export class EslintPluginUnusedImportsPackage extends BasePackage {
+export class EslintPluginUnusedImportsPackage extends CommonPackageAbstract {
   readonly title = 'eslint-plugin-unused-imports 🚮';
   readonly package = 'eslint-plugin-unused-imports';
   readonly version = '4';

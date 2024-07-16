@@ -1,5 +1,7 @@
 import type { PackageManagerType } from '../type/types/package-manager-type.type.js';
+import { PackageManagerService } from '../services/package-manager/package-manager.service.js';
 
+const packageManager = new PackageManagerService();
 let _manager: PackageManagerType | undefined;
 export function detectPackageManager(): PackageManagerType | undefined {
   if (_manager) return _manager;
@@ -13,4 +15,12 @@ export function detectPackageManager(): PackageManagerType | undefined {
   );
   _manager = manager;
   return manager;
+}
+
+export function addScripts(scripts: { [key: string]: string }): void {
+  // @example 'scripts.test="echo"'
+  const parsedScripts: string = Object.entries(scripts)
+    .map(([key, value]) => `scripts.${key}="${value}"`)
+    .join(' ');
+  packageManager.set(parsedScripts);
 }

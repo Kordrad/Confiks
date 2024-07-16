@@ -3,7 +3,7 @@ import type {
   CLI,
   PackageManagerInterface,
 } from '../../type/interfaces/package-manager.interface.js';
-import type { DependencyTypeToInstall } from '../../type/types/dependency-type.type.js';
+import type { DependencyType } from '../../type/types/dependency-type.type.js';
 import type { Dependency } from '../../type/types/package-version.type.js';
 import type { PackagesDependencyGroup } from '../../type/types/packages-dependency-group.interface.js';
 import { detectPackageManager } from '../../utils/package-manager.utils.js';
@@ -50,7 +50,7 @@ export class PackageManagerService
 
   private async installPackages(
     packages: Dependency[],
-    type: DependencyTypeToInstall
+    type: DependencyType
   ): Promise<void> {
     if (packages.length > 0) {
       try {

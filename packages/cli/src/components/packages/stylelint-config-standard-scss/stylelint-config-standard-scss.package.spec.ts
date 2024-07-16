@@ -1,8 +1,8 @@
-import { fileSystem } from '../../../../services/node/file-system.service.js';
-import { StylelintPackage } from '../stylelint.package.js';
-import { StylelintConfigStandardScssPackage } from './stylelint-config-standard-scss.package.js';
+import { fileSystem } from '../../../services/node/file-system.service';
+import { StylelintPackage } from '../stylelint/stylelint.package';
+import { StylelintConfigStandardScssPackage } from './stylelint-config-standard-scss.package';
 
-jest.mock('../../../../services/node/file-system.service.js');
+jest.mock('../../../services/node/file-system.service');
 
 describe('StylelintConfigStandardScssPackage', () => {
   const fixture = new StylelintConfigStandardScssPackage();

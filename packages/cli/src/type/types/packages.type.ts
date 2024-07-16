@@ -1,4 +1,5 @@
 export type Package =
+  | '@angular-eslint/schematics'
   | '@biomejs/biome'
   | '@commitlint/cli'
   | '@commitlint/config-conventional'
