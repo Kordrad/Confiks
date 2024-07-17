@@ -24,7 +24,7 @@ export class PnpmManager
   };
 
   async init(dependency: string): Promise<void> {
-    await childProcess.execAsync2(
+    await childProcess.execAsync(
       `${this.cli.init} ${this.addCreateWord(dependency)}`,
       {
         stdio: 'inherit',

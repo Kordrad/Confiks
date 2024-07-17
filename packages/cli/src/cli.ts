@@ -53,7 +53,16 @@ function configureProject(packages: PackageInterface[]): Promise<void> {
       console.log(chalk.bold(gradient.vice('Configuration project')));
       const initializerService = new InitializerService();
       install.start();
-      initializerService.addPackages(packages);
+      try {
+        initializerService.addPackages(packages);
+      } catch (error) {
+        console.warn(
+          'Error while loading packages to initialization:\n',
+          error
+        );
+        install.fail();
+        return;
+      }
       initializerService
         .install()
         .then(() => {

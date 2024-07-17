@@ -21,6 +21,7 @@ export class InitializerService {
       | CommonPackageAbstract
       | AngularSchematicsAbstract
       | CreatorPackageAbstract
+      | PackageInterface
     )[]
   ): void {
     for (const _package of packages) {
@@ -36,6 +37,9 @@ export class InitializerService {
         case _package instanceof CreatorPackageAbstract: {
           this.creator.push(_package);
           break;
+        }
+        default: {
+          throw new Error(`Wrong instance implementation of ${_package.title}`);
         }
       }
     }
@@ -88,7 +92,7 @@ export class InitializerService {
   async #addAngularSchematics(): Promise<void> {
     const result = Promise.resolve();
     for (const schematic of this.angularSchematics) {
-      childProcess.execAsync(`ng add ${schematic.package}`).then();
+      childProcess.exec(`ng add ${schematic.package}`).then();
     }
     return result;
   }

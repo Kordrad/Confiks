@@ -7,7 +7,7 @@ export class ChildProcessService {
     );
   }
 
-  execAsync(command: string, options?: { stderr: boolean }): Promise<string> {
+  exec(command: string, options?: { stderr: boolean }): Promise<string> {
     const { stderr: stderrShow = true } = options || {};
 
     return new Promise((resolve, reject) => {
@@ -19,7 +19,7 @@ export class ChildProcessService {
     });
   }
 
-  execAsync2(command: string, options?: cp.ExecSyncOptions): Promise<string> {
+  execAsync(command: string, options?: cp.ExecSyncOptions): Promise<string> {
     return new Promise(resolve => {
       const execSync =
         cp.execSync(command, { encoding: 'utf8', ...options })?.toString() ||

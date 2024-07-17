@@ -14,7 +14,7 @@ export abstract class PackageManagerAbstract
   abstract readonly dependencyInstallation: DependencyInstallation;
 
   async install(packages: Dependency[], type: DependencyType): Promise<void> {
-    await childProcess.execAsync(
+    await childProcess.exec(
       `${this.cli.install} ${this.dependencyInstallation[type]} ${packages.join(' ')}`
     );
   }
@@ -28,11 +28,11 @@ export abstract class PackageManagerAbstract
   }
 
   async uninstall(packages: string[]): Promise<void> {
-    await childProcess.execAsync(`${this.cli.uninstall} ${packages.join(' ')}`);
+    await childProcess.exec(`${this.cli.uninstall} ${packages.join(' ')}`);
   }
 
   async init(dependency: string): Promise<void> {
-    await childProcess.execAsync2(`${this.cli.init} ${dependency}`, {
+    await childProcess.execAsync(`${this.cli.init} ${dependency}`, {
       stdio: 'inherit',
     });
   }

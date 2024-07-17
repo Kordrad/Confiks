@@ -43,8 +43,8 @@ describe('PackageManagerService', () => {
     });
 
     describe('install', () => {
-      it('should call execAsync for each installation type', async () => {
-        const spy = jest.spyOn(childProcess.childProcess, 'execAsync');
+      it('should call exec for each installation type', async () => {
+        const spy = jest.spyOn(childProcess.childProcess, 'exec');
 
         await fixture.install({
           dependency: ['SomePackage'] as unknown as Package[],
@@ -63,9 +63,9 @@ describe('PackageManagerService', () => {
       });
     });
     describe('init', () => {
-      it('should call execAsync to init automatically config', async () => {
+      it('should call exec to init automatically config', async () => {
         const mockPackageNameS = ['test'] as never;
-        const spy = jest.spyOn(childProcess.childProcess, 'execAsync');
+        const spy = jest.spyOn(childProcess.childProcess, 'exec');
 
         await fixture.init(mockPackageNameS);
 
@@ -92,9 +92,9 @@ describe('PackageManagerService', () => {
     });
 
     describe('uninstall', () => {
-      it('should call execAsync', async () => {
+      it('should call exec', async () => {
         const mockPackageNameS = ['test', '123'] as never;
-        const spy = jest.spyOn(childProcess.childProcess, 'execAsync');
+        const spy = jest.spyOn(childProcess.childProcess, 'exec');
 
         await fixture.uninstall(mockPackageNameS);
 
