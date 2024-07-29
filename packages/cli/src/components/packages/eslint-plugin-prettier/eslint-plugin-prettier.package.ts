@@ -1,7 +1,7 @@
-import type { DependencyType } from '../../../../type/types/dependency-type.type.js';
-import { BasePackage } from '../../base.package.js';
+import type { DependencyType } from '../../../type/types/dependency-type.type.js';
+import { CommonPackageAbstract } from '../../abstract/common-package.abstract.js';
 
-export class EslintPluginPrettierPackage extends BasePackage {
+export class EslintPluginPrettierPackage extends CommonPackageAbstract {
   readonly title = 'eslint-plugin-prettier 🖌️';
   readonly package = 'eslint-plugin-prettier';
   readonly version = '5';

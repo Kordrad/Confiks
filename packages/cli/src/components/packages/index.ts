@@ -5,3 +5,4 @@ export * from './husky/index.js';
 export * from './lint-staged/index.js';
 export * from './prettier/index.js';
 export * from './stylelint/stylelint.package.js';
+export * from './@angular-eslint-schematics/angular-eslint-schematics.package.js';

@@ -4,13 +4,13 @@ import { huskyService } from '../../../services/packages/husky/husky.service.js'
 import type { DependencyType } from '../../../type/types/dependency-type.type.js';
 import { stringify } from '../../../utils/json.utils.js';
 import { packageIsInstalled } from '../../../utils/package-json.utils.js';
-import { BasePackage } from '../base.package.js';
+import { CommonPackageAbstract } from '../../abstract/common-package.abstract.js';
 import { HuskyPackage } from '../husky/index.js';
 
 /**
  * @see https://www.npmjs.com/package/lint-staged
  * */
-export class LintStagedPackage extends BasePackage {
+export class LintStagedPackage extends CommonPackageAbstract {
   readonly title = '🚫💩 lint-staged';
   readonly package = 'lint-staged';
   readonly version = '15';

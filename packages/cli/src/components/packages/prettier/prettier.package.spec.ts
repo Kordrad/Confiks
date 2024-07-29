@@ -1,10 +1,15 @@
 import { fileSystem } from '../../../services/node/file-system.service.js';
+import { PackagerFactory } from '../../../services/package-manager/packager.factory';
+import { NpmManager } from '../../../services/package-manager/packager-managers';
 import * as packageUtils from '../../../utils/package-json.utils.js';
 import { PrettierPackage } from './prettier.package.js';
 
 jest.mock('../../../services/node/child-process.service.js');
 jest.mock('../../../services/node/file-system.service.js');
 jest.mock('../../../utils/package-json.utils.js');
+jest
+  .spyOn(PackagerFactory.prototype, 'createPackagerManager')
+  .mockReturnValue(new NpmManager());
 
 describe('PrettierPackage', () => {
   let prettierPackage: PrettierPackage;

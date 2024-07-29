@@ -1,54 +1,8 @@
 import { EslintConfigExtensions } from '../../../type/enums/eslint-config-extensions.enum.js';
 import { fileSystem } from '../../node/file-system.service.js';
-import type { ConfigManagement } from './config-management.interface.js';
-import { JsConfigService } from './js-config.service.js';
-import { JsonConfigService } from './json-config.service.js';
-import { YamlConfigService } from './yaml-config.service.js';
 
 export class EslintService {
-  readonly #ignoreFileName = '.eslintignore';
-
-  readonly localFileName = fileSystem.queryFileName('.eslintrc');
-  readonly localIgnoreFileName = fileSystem.queryFileName(this.#ignoreFileName);
-
-  readonly #jsonConfigService: ConfigManagement = new JsonConfigService();
-  // TODO: add logic for these configurations
-  readonly #yamlConfigService: ConfigManagement = new YamlConfigService();
-  readonly #jsConfigService: ConfigManagement = new JsConfigService();
-
-  get hasLocalFile(): boolean {
-    return !!this.localFileName;
-  }
-
-  get hasLocalIgnoreFile(): boolean {
-    return !!this.localIgnoreFileName;
-  }
-
-  get #localFileExtension(): undefined | EslintConfigExtensions | '' {
-    if (!this.hasLocalFile) return undefined;
-    if (this.localFileName?.split('.').length === 0) return '';
-    return this.localFileName
-      ?.split('.')
-      .reverse()[0] as EslintConfigExtensions;
-  }
-
-  get #configServiceFactory(): ConfigManagement {
-    switch (this.#localFileExtension) {
-      case EslintConfigExtensions.json: {
-        return this.#jsonConfigService;
-      }
-      case EslintConfigExtensions.yaml: {
-        return this.#yamlConfigService;
-      }
-      case EslintConfigExtensions.javascript: {
-        return this.#jsConfigService;
-      }
-
-      default: {
-        return this.#jsonConfigService;
-      }
-    }
-  }
+  readonly localFileName = fileSystem.queryFileName('eslint.config');
 
   writeConfig(
     fileName: `${string}.${EslintConfigExtensions}`,
@@ -57,13 +11,56 @@ export class EslintService {
     fileSystem.writeFile(fileName, config);
   }
 
-  addExtensions(fileName: string, extensions: string[]): void {
-    this.#configServiceFactory.addExtension(fileName, extensions);
-  }
+  addExtensions(): void {
+    const eslintConfigPath = this.localFileName;
+    console.log(eslintConfigPath);
+    /*
 
-  prepareIgnoreFile(content: string): void {
-    this.hasLocalIgnoreFile
-      ? fileSystem.appendFileSync(this.#ignoreFileName, content)
-      : fileSystem.writeFile(this.#ignoreFileName, content);
+    if (!eslintConfigPath) {
+      throw new Error('Configuration file not found.');
+    }
+
+    // Read the current ESLint configuration as a string
+    const eslintConfigContent = fileSystem.readFileSync(eslintConfigPath);
+
+    // Generate the code to import the additional configuration
+    const additionalConfigImport = `import confiksConfig from './.eslintrc.confiks.js';\n`;
+    const additionalConfigRequire = `const confiksConfig = require('./.eslintrc.confiks.js');\n`;
+
+    // Generate the code to add the additional configuration to the existing configuration
+    const mergeConfigCode = `{
+      ...confiksConfig
+    }`;
+
+    let updatedEslintConfigContent;
+
+    if (eslintConfigContent.includes('module.exports')) {
+      // Handle CommonJS module syntax
+      updatedEslintConfigContent =
+        additionalConfigRequire +
+        eslintConfigContent.replace(
+          'module.exports = [',
+          `module.exports = [
+    // Extend with configurations from .eslintrc.confiks.js
+    ${mergeConfigCode},`
+        );
+    } else if (eslintConfigContent.includes('export default')) {
+      // Handle ES6 module syntax
+      updatedEslintConfigContent =
+        additionalConfigImport +
+        eslintConfigContent.replace(
+          'export default [',
+          `export default [
+    // Extend with configurations from .eslintrc.confiks.js
+    ${mergeConfigCode},`
+        );
+    } else {
+      throw new Error('Unsupported ESLint configuration format.');
+    }
+
+    // Save the updated ESLint configuration back to the file
+    fileSystem.writeFile(eslintConfigPath, updatedEslintConfigContent);
+
+    console.log('ESLint configuration has been updated successfully.');*/
   }
 }

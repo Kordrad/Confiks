@@ -1,9 +1,9 @@
 /* eslint-disable @typescript-eslint/ban-ts-comment */
 import type { DependencyType } from '../../type/types/dependency-type.type';
 import { VersionRange } from '../../type/types/package-version.type';
-import { BasePackage } from './base.package.js';
+import { CommonPackageAbstract } from './common-package.abstract';
 
-class Mock extends BasePackage {
+class Mock extends CommonPackageAbstract {
   readonly dependencyType: DependencyType = 'dependency';
   readonly title = 'Mock';
   readonly package = 'husky';
@@ -14,7 +14,7 @@ class Mock extends BasePackage {
   }
 }
 
-describe('BasePackage', () => {
+describe('CommonPackage', () => {
   let fixture: Mock;
 
   beforeEach(() => {

@@ -6,15 +6,22 @@ import type {
 import type { Package } from '../types/packages.type.js';
 
 export interface PackageInterface {
-  readonly package: Package;
   readonly title: string;
-  readonly dependencyType: DependencyType;
-  readonly version: VersionRange;
   readonly description?: string;
+  readonly package: Package;
   readonly extensions?: PackageInterface[];
-  readonly dependency: Dependency;
 
   preconfigure?: () => void;
   configure?: () => void;
   postconfigure?: () => void;
 }
+
+export interface CommonPackageInterface extends PackageInterface {
+  readonly version: VersionRange;
+  readonly dependencyType: DependencyType;
+  readonly dependency: Dependency;
+}
+
+export type CreatorPackageInterface = PackageInterface;
+
+export type AngularSchematicInterface = PackageInterface;

@@ -1,6 +1,6 @@
 import * as JSON from '../../../utils/json.utils.js';
 import { packageIsInstalled } from '../../../utils/package-json.utils.js';
-import { PrettierPluginOrganizeAttributesPackage } from './prettier-plugin-organize-attributes/prettier-plugin-organize-attributes.package.js';
+import { PrettierPluginOrganizeAttributesPackage } from '../prettier-plugin-organize-attributes/prettier-plugin-organize-attributes.package.js';
 
 const organizeAttributes = new PrettierPluginOrganizeAttributesPackage();
 const organizeAttributesPluginCheck = () =>

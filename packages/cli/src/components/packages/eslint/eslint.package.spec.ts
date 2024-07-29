@@ -1,3 +1,5 @@
+import { PackagerFactory } from '../../../services/package-manager/packager.factory';
+import { NpmManager } from '../../../services/package-manager/packager-managers';
 import { EslintService } from '../../../services/packages/eslint/eslint.service.js';
 import { EslintPackage } from './eslint.package.js';
 
@@ -25,38 +27,22 @@ describe('EslintPackage', () => {
     expect(eslintServiceMock).toHaveBeenCalled();
   });
 
-  describe('configure', () => {
+  describe('postconfigure', () => {
     let writeConfig: jest.Mock;
 
     beforeEach(() => {
-      fixture.configure();
+      fixture.postconfigure();
       writeConfig = eslintServiceInstance.writeConfig as jest.Mock;
+      jest
+        .spyOn(PackagerFactory.prototype, 'createPackagerManager')
+        .mockReturnValue(new NpmManager());
     });
 
     describe('custom configuration', () => {
-      test('should create .eslintrc.confiks.json', () => {
+      test('should create .eslintrc.confiks.js', () => {
         expect(writeConfig).toHaveBeenNthCalledWith(
           1,
-          '.eslintrc.confiks.json',
-          expect.anything()
-        );
-      });
-
-      test('should provide json type configuration', () => {
-        const [, configValue] = writeConfig.mock.calls[0];
-        expect(writeConfig).toHaveBeenNthCalledWith(
-          1,
-          expect.anything(),
-          expect.anything()
-        );
-
-        expect(JSON.parse(configValue)).not.toBeUndefined();
-      });
-    });
-    describe('root configuration', () => {
-      test('should create .eslintrc.json', () => {
-        expect(writeConfig).toHaveBeenCalledWith(
-          '.eslintrc.json',
+          '.eslintrc.confiks.js',
           expect.anything()
         );
       });

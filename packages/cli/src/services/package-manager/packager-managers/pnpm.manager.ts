@@ -27,7 +27,7 @@ export class PnpmManager
     await childProcess.execAsync(
       `${this.cli.init} ${this.addCreateWord(dependency)}`,
       {
-        stderr: false,
+        stdio: 'inherit',
       }
     );
   }

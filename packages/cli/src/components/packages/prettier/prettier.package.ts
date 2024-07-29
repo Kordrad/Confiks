@@ -1,14 +1,15 @@
 import { PRETTIER_SCRIPTS } from '../../../constants/package-scripts-cli.constant.js';
 import { fileSystem } from '../../../services/node/file-system.service.js';
 import type { DependencyType } from '../../../type/types/dependency-type.type.js';
-import { BasePackage } from '../base.package.js';
+import { addScripts } from '../../../utils/package-manager.utils.js';
+import { CommonPackageAbstract } from '../../abstract/common-package.abstract.js';
+import { PrettierPluginOrganizeAttributesPackage } from '../prettier-plugin-organize-attributes/prettier-plugin-organize-attributes.package.js';
 import { CONFIG, IGNORE } from './prettier.constants.js';
-import { PrettierPluginOrganizeAttributesPackage } from './prettier-plugin-organize-attributes/prettier-plugin-organize-attributes.package.js';
 
 /**
  * @see https://www.npmjs.com/package/prettier
  * */
-export class PrettierPackage extends BasePackage {
+export class PrettierPackage extends CommonPackageAbstract {
   readonly title = 'Prettier 🖌️';
   readonly package = 'prettier';
   readonly version = '3';
@@ -19,6 +20,6 @@ export class PrettierPackage extends BasePackage {
   configure(): void {
     fileSystem.writeFile('.prettierrc', CONFIG());
     fileSystem.writeFile('.prettierignore', IGNORE);
-    this.addScripts(PRETTIER_SCRIPTS);
+    addScripts(PRETTIER_SCRIPTS);
   }
 }

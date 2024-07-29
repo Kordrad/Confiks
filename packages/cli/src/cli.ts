@@ -11,75 +11,34 @@ import chalk from 'chalk';
 import gradient from 'gradient-string';
 import ora from 'ora';
 
-import { PackageChoice } from './components/choices/package.choice.js';
 import {
-  BiomePackage,
-  CommitLintPackage,
-  EslintPackage,
-  HuskyPackage,
-  LintStagedPackage,
-  PrettierPackage,
-  StylelintPackage,
-} from './components/packages/index.js';
-import { MultiSelect } from './components/prompts/multiselect.prompt.js';
+  AutomationsChoices,
+  CodeStyleChoices,
+  LintersChoices,
+} from './constants/choices.constant.js';
 import { InitializerService } from './services/initializer.service.js';
 import type { PackageInterface } from './type/interfaces/package.interface.js';
 import { getModifiedFiles, getUntrackedFiles } from './utils/git.utils.js';
 import { pathsLog, welcomeLog } from './utils/logs.utils.js';
-
-async function selectPackageGroup({
-  prefix,
-  message,
-  choices,
-}: {
-  prefix: string;
-  message: string;
-  choices: PackageChoice[];
-}): Promise<PackageInterface[]> {
-  const result = await MultiSelect<
-    { group: PackageInterface[] },
-    PackageInterface
-  >({
-    prefix,
-    message,
-    choices,
-    name: 'group',
-    result() {
-      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-      // @ts-ignore workaround, selected is "private" member of enquirer
-      return this.selected.map(({ value }) => value);
-    },
-  });
-  return result.group;
-}
+import { selectPackageGroup } from './utils/select-package-group.util.js';
 
 async function selectPackages(): Promise<PackageInterface[]> {
   const codeStyle = await selectPackageGroup({
     prefix: '🧼',
     message: 'Pick code style packages to install',
-    choices: [
-      new PackageChoice(new BiomePackage()),
-      new PackageChoice(new PrettierPackage()),
-    ],
+    choices: CodeStyleChoices,
   });
 
   const automations = await selectPackageGroup({
     prefix: '🤖',
     message: 'Pick automation packages to install',
-    choices: [
-      new PackageChoice(new HuskyPackage()),
-      new PackageChoice(new LintStagedPackage()),
-    ],
+    choices: AutomationsChoices,
   });
 
   const linters = await selectPackageGroup({
     prefix: '🧹',
     message: 'Pick linter packages to install',
-    choices: [
-      new PackageChoice(new CommitLintPackage()),
-      new PackageChoice(new EslintPackage()),
-      new PackageChoice(new StylelintPackage()),
-    ],
+    choices: LintersChoices,
   });
 
   return [...codeStyle, ...linters, ...automations];
@@ -94,7 +53,16 @@ function configureProject(packages: PackageInterface[]): Promise<void> {
       console.log(chalk.bold(gradient.vice('Configuration project')));
       const initializerService = new InitializerService();
       install.start();
-      initializerService.addPackages(packages);
+      try {
+        initializerService.addPackages(packages);
+      } catch (error) {
+        console.warn(
+          'Error while loading packages to initialization:\n',
+          error
+        );
+        install.fail();
+        return;
+      }
       initializerService
         .install()
         .then(() => {

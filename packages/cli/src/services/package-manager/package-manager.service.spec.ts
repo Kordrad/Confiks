@@ -1,5 +1,5 @@
-import type { PackageManagerInterface } from '../../type/interfaces/package-manager.interface.js';
-import type { PackageManagerType } from '../../type/types/package-manager-type.type.js';
+import { PackageManagerInterface } from '../../type/interfaces/package-manager.interface';
+import { PackageManagerType } from '../../type/types/package-manager-type.type';
 import { Package } from '../../type/types/packages.type.js';
 import * as packageManagerUtils from '../../utils/package-manager.utils.js';
 import * as childProcess from '../node/child-process.service.js';
@@ -13,38 +13,33 @@ import {
 
 jest.mock('../node/file-system.service.js');
 jest.mock('../node/child-process.service.js');
+
 describe('PackageManagerService', () => {
   let fixture: PackageManagerService;
 
-  beforeEach(() => {
-    fixture = new PackageManagerService();
-  });
-
-  afterEach(() => {
-    jest.resetAllMocks();
-  });
-
   describe.each([
-    { PM: 'pnpm', PMInstance: new PnpmManager() },
-    { PM: 'npm', PMInstance: new NpmManager() },
-    { PM: 'yarn', PMInstance: new YarnManager() },
+    { PM: 'pnpm', pmInstance: new PnpmManager() },
+    { PM: 'npm', pmInstance: new NpmManager() },
+    { PM: 'yarn', pmInstance: new YarnManager() },
   ] satisfies {
     PM: PackageManagerType;
-    PMInstance: PackageManagerInterface;
-  }[])('should do action for $PM', ({ PM, PMInstance }) => {
+    pmInstance: PackageManagerInterface;
+  }[])('should do action for $PM', ({ PM, pmInstance }) => {
     beforeEach(() => {
       jest
         .spyOn(packageManagerUtils, 'detectPackageManager')
         .mockReturnValue(PM);
+
       jest
         .spyOn(PackagerFactory.prototype, 'createPackagerManager')
-        .mockReturnValue(PMInstance);
+        .mockReturnValue(pmInstance);
+
       fixture = new PackageManagerService();
     });
 
     describe('install', () => {
-      it('should call execAsync for each installation type', async () => {
-        const spy = jest.spyOn(childProcess.childProcess, 'execAsync');
+      it('should call exec for each installation type', async () => {
+        const spy = jest.spyOn(childProcess.childProcess, 'exec');
 
         await fixture.install({
           dependency: ['SomePackage'] as unknown as Package[],
@@ -52,8 +47,8 @@ describe('PackageManagerService', () => {
         } as never);
 
         const resultsExpected = [
-          `${PMInstance.cli.install} ${PMInstance.dependencyInstallation.dependency} SomePackage`,
-          `${PMInstance.cli.install} ${PMInstance.dependencyInstallation.devDependency} AnotherPackage`,
+          `${pmInstance.cli.install} ${pmInstance.dependencyInstallation.dependency} SomePackage`,
+          `${pmInstance.cli.install} ${pmInstance.dependencyInstallation.devDependency} AnotherPackage`,
         ];
 
         expect(spy).toHaveBeenCalledTimes(resultsExpected.length);
@@ -62,8 +57,9 @@ describe('PackageManagerService', () => {
         }
       });
     });
+
     describe('init', () => {
-      it('should call execAsync to init automatically config', async () => {
+      it('should call exec to init automatically config', async () => {
         const mockPackageNameS = ['test'] as never;
         const spy = jest.spyOn(childProcess.childProcess, 'execAsync');
 
@@ -73,16 +69,16 @@ describe('PackageManagerService', () => {
         switch (PM) {
           case 'yarn':
           case 'npm': {
-            expect(spy).toHaveBeenCalledWith(`${PMInstance.cli.init} test`, {
-              stderr: false,
+            expect(spy).toHaveBeenCalledWith(`${pmInstance.cli.init} test`, {
+              stdio: 'inherit',
             });
             break;
           }
           case 'pnpm': {
             expect(spy).toHaveBeenCalledWith(
-              `${PMInstance.cli.init} create-test`,
+              `${pmInstance.cli.init} create-test`,
               {
-                stderr: false,
+                stdio: 'inherit',
               }
             );
             break;
@@ -92,15 +88,15 @@ describe('PackageManagerService', () => {
     });
 
     describe('uninstall', () => {
-      it('should call execAsync', async () => {
+      it('should call exec', async () => {
         const mockPackageNameS = ['test', '123'] as never;
-        const spy = jest.spyOn(childProcess.childProcess, 'execAsync');
+        const spy = jest.spyOn(childProcess.childProcess, 'exec');
 
         await fixture.uninstall(mockPackageNameS);
 
         expect(spy).toHaveBeenCalledTimes(1);
         expect(spy).toHaveBeenCalledWith(
-          `${PMInstance.cli.uninstall} test 123`
+          `${pmInstance.cli.uninstall} test 123`
         );
       });
     });

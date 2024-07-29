@@ -1,8 +1,14 @@
-import { fileSystem } from '../../../../services/node/file-system.service.js';
-import { StylelintPackage } from '../stylelint.package.js';
-import { StylelintConfigStandardScssPackage } from './stylelint-config-standard-scss.package.js';
+import { fileSystem } from '../../../services/node/file-system.service';
+import { PackagerFactory } from '../../../services/package-manager/packager.factory';
+import { NpmManager } from '../../../services/package-manager/packager-managers';
+import { StylelintPackage } from '../stylelint/stylelint.package';
+import { StylelintConfigStandardScssPackage } from './stylelint-config-standard-scss.package';
 
-jest.mock('../../../../services/node/file-system.service.js');
+jest.mock('../../../services/node/file-system.service');
+
+jest
+  .spyOn(PackagerFactory.prototype, 'createPackagerManager')
+  .mockReturnValue(new NpmManager());
 
 describe('StylelintConfigStandardScssPackage', () => {
   const fixture = new StylelintConfigStandardScssPackage();

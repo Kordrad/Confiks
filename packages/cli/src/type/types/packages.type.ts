@@ -1,8 +1,10 @@
 export type Package =
+  | '@angular-eslint/schematics'
   | '@biomejs/biome'
   | '@commitlint/cli'
   | '@commitlint/config-conventional'
   | 'eslint'
+  | '@eslint/config'
   | 'eslint-plugin-prettier'
   | 'eslint-plugin-simple-import-sort'
   | 'eslint-plugin-unicorn'

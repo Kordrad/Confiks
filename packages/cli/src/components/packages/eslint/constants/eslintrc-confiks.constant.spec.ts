@@ -1,8 +1,8 @@
 import * as PackageJsonUtils from '../../../../utils/package-json.utils.js';
-import { EslintPluginPrettierPackage } from '../eslint-plugin-prettier/eslint-plugin-prettier.package';
-import { EslintPluginSimpleImportSortPackage } from '../eslint-plugin-simple-import-sort/eslint-plugin-simple-import-sort.package';
-import { EslintPluginUnicornPackage } from '../eslint-plugin-unicorn/eslint-plugin-unicorn.package';
-import { EslintPluginUnusedImportsPackage } from '../eslint-plugin-unused-imports/eslint-plugin-unused-imports.package';
+import { EslintPluginPrettierPackage } from '../../eslint-plugin-prettier/eslint-plugin-prettier.package';
+import { EslintPluginSimpleImportSortPackage } from '../../eslint-plugin-simple-import-sort/eslint-plugin-simple-import-sort.package';
+import { EslintPluginUnicornPackage } from '../../eslint-plugin-unicorn/eslint-plugin-unicorn.package';
+import { EslintPluginUnusedImportsPackage } from '../../eslint-plugin-unused-imports/eslint-plugin-unused-imports.package';
 import { CONFIG, CONFIG_NAME } from './eslintrc-confiks.constant';
 
 describe('lint-staged constant', () => {
@@ -20,7 +20,7 @@ describe('lint-staged constant', () => {
 
   test('config should return object type', () => {
     expect(CONFIG()).toBeTruthy();
-    expect(typeof CONFIG()).toEqual('object');
+    expect(typeof CONFIG()).toEqual('string');
   });
 
   describe('extension configuration', () => {
@@ -47,7 +47,7 @@ describe('lint-staged constant', () => {
       expect(PackageJsonUtils.packageIsInstalled).toHaveBeenCalledWith(
         packageName
       );
-      expect(config.plugins.includes(plugin)).toBeTruthy();
+      expect(config.includes(plugin)).toBeTruthy();
     });
   });
 });
