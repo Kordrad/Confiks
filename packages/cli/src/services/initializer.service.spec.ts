@@ -3,10 +3,17 @@ import { DependencyType } from '../type/types/dependency-type.type';
 import { VersionRange } from '../type/types/package-version.type';
 import type { Package } from '../type/types/packages.type.js';
 import { InitializerService } from './initializer.service.js';
+import { PackagerFactory } from './package-manager/packager.factory.js';
+import { NpmManager } from './package-manager/packager-managers';
+
+jest
+  .spyOn(PackagerFactory.prototype, 'createPackagerManager')
+  .mockReturnValue(new NpmManager())
+  .mockClear();
 
 const configureMock = jest.fn();
 class MockPackage extends CommonPackageAbstract {
-  readonly dependencyType: DependencyType = 'none';
+  readonly dependencyType: DependencyType = 'devDependency';
   readonly package = 'string' as Package;
   readonly title = 'string';
   configure = configureMock;

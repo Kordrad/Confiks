@@ -20,7 +20,7 @@ describe('lint-staged constant', () => {
 
   test('config should return object type', () => {
     expect(CONFIG()).toBeTruthy();
-    expect(typeof CONFIG()).toEqual('object');
+    expect(typeof CONFIG()).toEqual('string');
   });
 
   describe('extension configuration', () => {
@@ -47,7 +47,7 @@ describe('lint-staged constant', () => {
       expect(PackageJsonUtils.packageIsInstalled).toHaveBeenCalledWith(
         packageName
       );
-      expect(config.plugins.includes(plugin)).toBeTruthy();
+      expect(config.includes(plugin)).toBeTruthy();
     });
   });
 });

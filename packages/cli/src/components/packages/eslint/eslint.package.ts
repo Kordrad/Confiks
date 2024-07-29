@@ -20,12 +20,9 @@ export class EslintPackage extends CreatorPackageAbstract {
 
   readonly #eslintService = new EslintService();
 
-  configure(): void {
-    // addScripts(ESLINT_SCRIPTS);
-  }
-
   postconfigure(): void {
     this.#prepareCustomConfig().then();
+    this.#eslintService.addExtensions();
   }
 
   async #prepareCustomConfig(): Promise<void> {

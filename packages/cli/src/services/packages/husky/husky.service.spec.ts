@@ -1,4 +1,6 @@
 import { childProcess } from '../../node/child-process.service.js';
+import { PackagerFactory } from '../../package-manager/packager.factory';
+import { NpmManager } from '../../package-manager/packager-managers';
 import { HuskyService } from './husky.service.js';
 
 jest.mock('../../node/child-process.service.js');
@@ -41,8 +43,14 @@ describe('HuskyService', () => {
 
   describe('init', () => {
     test('should call husky init', () => {
+      jest
+        .spyOn(PackagerFactory.prototype, 'createPackagerManager')
+        .mockReturnValue(new NpmManager())
+        .mockClear();
       fixture.init();
-      expect(childProcess.execSync).toHaveBeenLastCalledWith('npx husky init');
+      expect(childProcess.execSync).toHaveBeenLastCalledWith(
+        expect.stringContaining('husky init')
+      );
     });
   });
 });
