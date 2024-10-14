@@ -1,55 +1,76 @@
-# [Confiks](packages/cli)
+# ConfiksWorkspace
 
-A repository for the "confiks" package, allowing you to run the Command Line Interface (CLI) for easy and quick
-configuration of frontend projects with the required dependencies.
+<a alt="Nx logo" href="https://nx.dev" target="_blank" rel="noreferrer"><img src="https://raw.githubusercontent.com/nrwl/nx/master/images/nx-logo.png" width="45"></a>
 
-For detailed information about the CLI, please refer to the documentation [here][confiks].
+✨ Your new, shiny [Nx workspace](https://nx.dev) is almost ready ✨.
 
-What will you find here?
+Run `npx nx graph` to visually explore what got created. Now, let's get you up to speed!
 
-The following section contains technical documentation only.
+## Finish your CI setup
 
-## How to Run Locally
+[Click here to finish setting up your workspace!](https://cloud.nx.app/connect/B3BzCxtrff)
 
-1. Clone the project
 
-```bash
-git clone https://github.com/Kordrad/Confiks
-cd .\Confiks
-npm i
+## Run tasks
+
+To run tasks with Nx use:
+
+```sh
+npx nx <target> <project-name>
 ```
 
-2. Create build
+For example:
 
-```bash
-npm run cli:build
+```sh
+npx nx build myproject
 ```
 
-or watch build
+These targets are either [inferred automatically](https://nx.dev/concepts/inferred-tasks?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects) or defined in the `project.json` or `package.json` files.
 
-```bash
-npm run cli:build:watch
+[More about running tasks in the docs &raquo;](https://nx.dev/features/run-tasks?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
+
+## Add new projects
+
+While you could add new projects to your workspace manually, you might want to leverage [Nx plugins](https://nx.dev/concepts/nx-plugins?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects) and their [code generation](https://nx.dev/features/generate-code?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects) feature.
+
+To install a new plugin you can use the `nx add` command. Here's an example of adding the React plugin:
+```sh
+npx nx add @nx/react
 ```
 
-### Run demo
+Use the plugin's generator to create new projects. For example, to create a new React app or library:
 
-> Remember! Build is required!
+```sh
+# Genenerate an app
+npx nx g @nx/react:app demo
 
-```bash
-npm run cli:start
+# Generate a library
+npx nx g @nx/react:lib some-lib
 ```
 
-### Link Package
+You can use `npx nx list` to get a list of installed plugins. Then, run `npx nx list <plugin-name>` to learn about more specific capabilities of a particular plugin. Alternatively, [install Nx Console](https://nx.dev/getting-started/editor-setup?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects) to browse plugins and generators in your IDE.
 
-1. Open the path of the Confiks project
-2. Link project via command `npm run link`
-3. In another project, add an existing link to the project using: `npm link confiks`
-4. Now you are able to run. Available commands you can find [here](/packages/cli#usage)
+[Learn more about Nx plugins &raquo;](https://nx.dev/concepts/nx-plugins?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects) | [Browse the plugin registry &raquo;](https://nx.dev/plugin-registry?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
 
-## Commit Message Format
 
-In the project, we use commit-lint with [Conventional Commits][conventionalCommit] based
-on [Angular convention][angularConvention]
+[Learn more about Nx on CI](https://nx.dev/ci/intro/ci-with-nx#ready-get-started-with-your-provider?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
 
-[conventionalCommit]: https://www.conventionalcommits.org/
-[angularConvention]: https://github.com/angular/angular/blob/main/CONTRIBUTING.md#commit
+## Install Nx Console
+
+Nx Console is an editor extension that enriches your developer experience. It lets you run tasks, generate code, and improves code autocompletion in your IDE. It is available for VSCode and IntelliJ.
+
+[Install Nx Console &raquo;](https://nx.dev/getting-started/editor-setup?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
+
+## Useful links
+
+Learn more:
+
+- [Learn about Nx on CI](https://nx.dev/ci/intro/ci-with-nx?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
+- [Releasing Packages with Nx release](https://nx.dev/features/manage-releases?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
+- [What are Nx plugins?](https://nx.dev/concepts/nx-plugins?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
+
+And join the Nx community:
+- [Discord](https://go.nx.dev/community)
+- [Follow us on X](https://twitter.com/nxdevtools) or [LinkedIn](https://www.linkedin.com/company/nrwl)
+- [Our Youtube channel](https://www.youtube.com/@nxdevtools)
+- [Our blog](https://nx.dev/blog?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)

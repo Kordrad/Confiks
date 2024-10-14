@@ -1,0 +1,14 @@
+{
+  "name": "confiks",
+  "version": "0.0.1",
+  "dependencies": {
+    "create-nx-workspace": "20.0.0",
+    "tslib": "^2.3.0"
+  },
+  "type": "commonjs",
+  "main": "./src/index.js",
+  "typings": "./src/index.d.ts",
+  "bin": {
+    "confiks": "./bin/index.js"
+  }
+}

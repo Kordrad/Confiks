@@ -4,7 +4,7 @@ storage: ../tmp/local-registry/storage
 # a list of other known repositories we can talk to
 uplinks:
   npmjs:
-    url: https://registry.npmjs.org/
+    url: http://registry.npmjs.org/
     maxage: 60m
 
 packages:
@@ -19,7 +19,7 @@ packages:
     proxy: npmjs
 
 # log settings
-logs:
+log:
   type: stdout
   format: pretty
   level: warn

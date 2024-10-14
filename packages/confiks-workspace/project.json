@@ -1,0 +1,64 @@
+{
+  "name": "confiks-workspace",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "packages/confiks-workspace/src",
+  "projectType": "library",
+  "release": {
+    "version": {
+      "generatorOptions": {
+        "packageRoot": "dist/{projectRoot}",
+        "currentVersionResolver": "git-tag"
+      }
+    }
+  },
+  "tags": [],
+  "targets": {
+    "build": {
+      "executor": "@nx/js:tsc",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/packages/confiks-workspace",
+        "main": "packages/confiks-workspace/src/index.ts",
+        "tsConfig": "packages/confiks-workspace/tsconfig.lib.json",
+        "assets": [
+          "packages/confiks-workspace/*.md",
+          {
+            "input": "./packages/confiks-workspace/src",
+            "glob": "**/!(*.ts)",
+            "output": "./src"
+          },
+          {
+            "input": "./packages/confiks-workspace/src",
+            "glob": "**/*.d.ts",
+            "output": "./src"
+          },
+          {
+            "input": "./packages/confiks-workspace",
+            "glob": "generators.json",
+            "output": "."
+          },
+          {
+            "input": "./packages/confiks-workspace",
+            "glob": "executors.json",
+            "output": "."
+          }
+        ]
+      }
+    },
+    "nx-release-publish": {
+      "options": {
+        "packageRoot": "dist/{projectRoot}"
+      }
+    },
+    "lint": {
+      "executor": "@nx/eslint:lint"
+    },
+    "test": {
+      "executor": "@nx/jest:jest",
+      "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
+      "options": {
+        "jestConfig": "packages/confiks-workspace/jest.config.ts"
+      }
+    }
+  }
+}

@@ -1,7 +1,0 @@
-{
-  "*.{json,js,ts,mjs}": [
-    "npm run ls:performance",
-    "npm run ls:prettier",
-    "npm run ls:eslint"
-  ]
-}

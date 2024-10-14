@@ -1,2 +1,0 @@
-npm run demo:cleanup # clean everything in demo
-npx lint-staged
