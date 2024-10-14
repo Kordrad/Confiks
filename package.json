@@ -9,6 +9,8 @@
     "create-nx-workspace": "20.0.0"
   },
   "devDependencies": {
+    "@commitlint/cli": "^19.5.0",
+    "@commitlint/config-conventional": "^19.5.0",
     "@eslint/js": "^9.8.0",
     "@nx/eslint": "20.0.0",
     "@nx/eslint-plugin": "20.0.0",
