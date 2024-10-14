@@ -1,12 +1,29 @@
 {
   "name": "confiks",
   "version": "0.0.1",
+  "description": "Confiks is a library designed to assist in the installation and configuration of frontend projects. Utilize this Command Line Interface (CLI) to swiftly install essential dependencies.",
+  "repository": {
+    "url": "https://github.com/Kordrad/Confiks",
+    "directory": "packages/cli"
+  },
+  "bugs": {
+    "url": "https://github.com/Kordrad/Confiks/issues"
+  },
+  "author": {
+    "name": "Konrad Stępień",
+    "email": "kord.stp@gmail.com",
+    "url": "https://www.linkedin.com/in/kordrad/"
+  },
+  "license": "MIT",
   "dependencies": {
     "create-nx-workspace": "20.0.0",
     "tslib": "^2.3.0"
   },
-  "type": "commonjs",
+  "type": "module",
   "main": "./src/index.js",
+  "engines": {
+    "node": ">=v18"
+  },
   "typings": "./src/index.d.ts",
   "bin": {
     "confiks": "./bin/index.js"
