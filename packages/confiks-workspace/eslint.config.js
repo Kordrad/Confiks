@@ -1,6 +1,7 @@
-const baseConfig = require('../../eslint.config.js');
+import baseConfig from '../../eslint.config.js';
+import jsoncEslintParser from 'jsonc-eslint-parser';
 
-module.exports = [
+export default [
   ...baseConfig,
   {
     files: ['**/*.json'],
@@ -12,17 +13,14 @@ module.exports = [
         },
       ],
     },
-    languageOptions: {
-      parser: require('jsonc-eslint-parser'),
-    },
+
+    languageOptions: { parser: jsoncEslintParser },
   },
   {
     files: ['**/package.json', '**/package.json', '**/generators.json'],
     rules: {
       '@nx/nx-plugin-checks': 'error',
     },
-    languageOptions: {
-      parser: require('jsonc-eslint-parser'),
-    },
+    languageOptions: { parser: jsoncEslintParser },
   },
 ];
