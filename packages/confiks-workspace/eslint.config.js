@@ -6,23 +6,21 @@ export default [
   {
     files: ['**/*.json'],
     rules: {
-      // TODO: fix
-      /*'@nx/dependency-checks': [
+      '@nx/dependency-checks': [
         'error',
         {
           ignoredFiles: ['{projectRoot}/eslint.config.{js,cjs,mjs}'],
         },
-      ],*/
+      ],
     },
 
     languageOptions: { parser: jsoncEslintParser },
   },
   {
     files: ['**/package.json', '**/package.json', '**/generators.json'],
-    // TODO: fix
-    /*rules: {
+    rules: {
       '@nx/nx-plugin-checks': 'error',
-    },*/
+    },
     languageOptions: { parser: jsoncEslintParser },
   },
 ];

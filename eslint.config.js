@@ -1,8 +1,10 @@
-import * as nx from '@nx/eslint-plugin';
-import unusedImports from 'eslint-plugin-unused-imports';
-import simpleImportSort from 'eslint-plugin-simple-import-sort';
+import nxFlatBase from '@nx/eslint-plugin/src/flat-configs/base.js';
+import nxFlatJavaScript from '@nx/eslint-plugin/src/flat-configs/javascript.js';
+import nxFlatTypeScript from '@nx/eslint-plugin/src/flat-configs/typescript.js';
 import eslintPluginPrettierRecommended from 'eslint-plugin-prettier/recommended';
+import simpleImportSort from 'eslint-plugin-simple-import-sort';
 import eslintPluginUnicorn from 'eslint-plugin-unicorn';
+import unusedImports from 'eslint-plugin-unused-imports';
 import jsoncEslintParser from 'jsonc-eslint-parser';
 
 const unusedImportsConfig = [
@@ -61,29 +63,18 @@ const eslintPluginUnicornConfig = [
   },
 ];
 
-export default [
-  {
-    files: ['**/*.json'],
-    // Override or add rules here
-    rules: {},
-    languageOptions: { parser: jsoncEslintParser },
-  },
-  // TODO: fix
-  // ...nx.configs['flat/base'],
-  // ...nx.configs['flat/typescript'],
-  // ...nx.configs['flat/javascript'],
-  {
-    ignores: ['**/dist'],
-  },
+const nxConfigs = [
+  ...nxFlatBase.default,
+  ...nxFlatTypeScript.default,
+  ...nxFlatJavaScript.default,
   {
     files: ['**/*.ts', '**/*.tsx', '**/*.js', '**/*.jsx'],
     rules: {
-      // TODO: fix
-      /* '@nx/enforce-module-boundaries': [
+      '@nx/enforce-module-boundaries': [
         'error',
         {
           enforceBuildableLibDependency: true,
-          allow: ['^.*!/eslint(\\.base)?\\.config\\.[cm]?js$'],
+          allow: [String.raw`^.*!/eslint(\.base)?\.config\.[cm]?js$`],
           depConstraints: [
             {
               sourceTag: '*',
@@ -91,8 +82,21 @@ export default [
             },
           ],
         },
-      ],*/
+      ],
     },
+  },
+];
+
+export default [
+  {
+    files: ['**/*.json'],
+    // Override or add rules here
+    rules: {},
+    languageOptions: { parser: jsoncEslintParser },
+  },
+  ...nxConfigs,
+  {
+    ignores: ['**/dist'],
   },
   {
     files: ['**/*.ts', '**/*.tsx', '**/*.js', '**/*.jsx'],

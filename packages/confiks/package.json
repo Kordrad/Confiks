@@ -15,10 +15,7 @@
     "url": "https://www.linkedin.com/in/kordrad/"
   },
   "license": "MIT",
-  "dependencies": {
-    "create-nx-workspace": "20.0.0",
-    "tslib": "^2.3.0"
-  },
+  "dependencies": {},
   "type": "module",
   "main": "./src/index.js",
   "engines": {
