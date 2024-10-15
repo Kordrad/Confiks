@@ -1,7 +1,4 @@
 {
-  "*.{json,js,ts,mjs}": [
-    "npm run ls:performance",
-    "npm run ls:prettier",
-    "npm run ls:eslint"
-  ]
+  "*.{json,js,ts,mjs}": ["prettier --write --ignore-unknown"],
+  "*.{js,ts,mjs}": ["eslint --quiet --fix"]
 }
